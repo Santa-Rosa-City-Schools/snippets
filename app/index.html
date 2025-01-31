@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +71,7 @@
             border-radius: 0.5rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .snippet-header {
@@ -121,7 +122,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .modal-content {
@@ -159,6 +160,7 @@
         .copied {
             background: #10b981 !important;
         }
+
         .folder-path {
             margin-bottom: 1rem;
             padding: 0.5rem;
@@ -175,6 +177,7 @@
         #addForm .path-input input {
             flex: 1;
         }
+
         #snippetsContainer.empty {
             text-align: center;
             color: #6b7280;
@@ -182,6 +185,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -219,137 +223,140 @@
     </div>
 
     <script>
-    // Add these functions back to the script
-    function getWordSimilarity(word1, word2) {
-        word1 = word1.toLowerCase();
-        word2 = word2.toLowerCase();
-        
-        // Exact match
-        if (word1 === word2) return 1.0;
-        
-        // Contains as substring
-        if (word1.includes(word2) || word2.includes(word1)) {
-            return 0.8;
+        // Add these functions back to the script
+        function getWordSimilarity(word1, word2) {
+            word1 = word1.toLowerCase();
+            word2 = word2.toLowerCase();
+
+            // Exact match
+            if (word1 === word2) return 1.0;
+
+            // Contains as substring
+            if (word1.includes(word2) || word2.includes(word1)) {
+                return 0.8;
+            }
+
+            // Levenshtein distance for typos
+            const distance = levenshteinDistance(word1, word2);
+            const maxLength = Math.max(word1.length, word2.length);
+            const similarity = 1 - (distance / maxLength);
+
+            return similarity > 0.6 ? similarity : 0;
         }
-        
-        // Levenshtein distance for typos
-        const distance = levenshteinDistance(word1, word2);
-        const maxLength = Math.max(word1.length, word2.length);
-        const similarity = 1 - (distance / maxLength);
-        
-        return similarity > 0.6 ? similarity : 0;
-    }
 
-    function levenshteinDistance(str1, str2) {
-        const m = str1.length;
-        const n = str2.length;
-        const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+        function levenshteinDistance(str1, str2) {
+            const m = str1.length;
+            const n = str2.length;
+            const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
 
-        for (let i = 0; i <= m; i++) dp[i][0] = i;
-        for (let j = 0; j <= n; j++) dp[0][j] = j;
+            for (let i = 0; i <= m; i++) dp[i][0] = i;
+            for (let j = 0; j <= n; j++) dp[0][j] = j;
 
-        for (let i = 1; i <= m; i++) {
-            for (let j = 1; j <= n; j++) {
-                if (str1[i - 1] === str2[j - 1]) {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = Math.min(
-                        dp[i - 1][j - 1] + 1,
-                        dp[i - 1][j] + 1,
-                        dp[i][j - 1] + 1
-                    );
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (str1[i - 1] === str2[j - 1]) {
+                        dp[i][j] = dp[i - 1][j - 1];
+                    } else {
+                        dp[i][j] = Math.min(
+                            dp[i - 1][j - 1] + 1,
+                            dp[i - 1][j] + 1,
+                            dp[i][j - 1] + 1
+                        );
+                    }
                 }
             }
+            return dp[m][n];
         }
-        return dp[m][n];
-    }
-        // Modify the loadSnippets function to handle GitHub Pages path
         async function loadSnippets() {
             try {
-                // Check if running on GitHub Pages or local development
-                const baseUrl = window.location.hostname === 'localhost' 
-                    ? '' 
-                    : window.location.pathname.split('/').slice(0, -1).join('/');
-                
+                // Determine base path for GitHub Pages or local development
+                const baseUrl = window.location.hostname === 'localhost'
+                    ? ''
+                    : '/' + window.location.pathname.split('/')[1];
+
+                // Construct full index path
                 const indexPath = `${baseUrl}/snippets/index.json`;
-                
+
                 const response = await fetch(indexPath);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch index');
+                    throw new Error(`Failed to fetch index: ${indexPath}`);
                 }
                 const index = await response.json();
                 const snippets = [];
-    
+
+                // Fetch each snippet using relative path
                 for (const entry of index.snippets) {
-                    // Use the full path from the index entry
-                    const snippetResponse = await fetch(`${baseUrl}/${entry.path}`);
+                    const snippetPath = `${baseUrl}/${entry.path}`;
+                    const snippetResponse = await fetch(snippetPath);
+
                     if (!snippetResponse.ok) {
-                        console.warn(`Failed to load snippet: ${entry.path}`);
+                        console.error(`Failed to load snippet: ${snippetPath}`);
                         continue;
                     }
+
                     const snippet = await snippetResponse.json();
                     snippets.push(snippet);
                 }
-    
+
                 return snippets;
             } catch (error) {
-                console.error('Error loading snippets:', error);
+                console.error('Comprehensive Snippet Loading Error:', error);
                 return [];
             }
         }
-    
+
         // Modify the calculateSnippetScore function to add score threshold and limit results
         function calculateSnippetScore(snippet, searchTerms) {
             const snippetText = `${snippet.title} ${snippet.description}`.toLowerCase();
             const snippetWords = snippetText.split(/\W+/);
             const tags = snippet.tags.map(tag => tag.toLowerCase());
-            
+
             let totalScore = 0;
-            
+
             for (const searchTerm of searchTerms) {
                 let termScore = 0;
-                
+
                 // Check exact matches in tags (highest priority)
                 if (tags.some(tag => tag.includes(searchTerm))) {
                     termScore += 2;
                 }
-                
+
                 // Check title matches (high priority)
                 if (snippet.title.toLowerCase().includes(searchTerm)) {
                     termScore += 1.5;
                 }
-                
+
                 // Check description for contextual relevance
                 let contextScore = 0;
                 for (const word of snippetWords) {
                     const similarity = getWordSimilarity(searchTerm, word);
                     contextScore = Math.max(contextScore, similarity);
                 }
-                
+
                 termScore += contextScore;
                 totalScore += termScore;
             }
-            
+
             // Normalize score based on number of search terms
             return totalScore / searchTerms.length;
         }
-    
+
         // Modify searchSnippets to limit results and handle empty state
         async function searchSnippets() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const snippetsContainer = document.getElementById('snippetsContainer');
-            
+
             if (!query.trim()) {
                 snippetsContainer.innerHTML = 'Start searching to view code snippets';
                 snippetsContainer.classList.add('empty');
                 return;
             }
-            
+
             const snippets = await loadSnippets();
-            
+
             // Split search query into terms
             const searchTerms = query.split(/\s+/).filter(term => term.length > 1);
-            
+
             // Calculate scores and sort results
             const results = snippets
                 .map(snippet => ({
@@ -359,10 +366,10 @@
                 .filter(result => result.score > 1) // Increase threshold for more relevant results
                 .sort((a, b) => b.score - a.score)
                 .slice(0, 10); // Limit to top 10 results
-            
+
             // Remove score from display in production
             const displayResults = results.map(({ snippet }) => snippet);
-            
+
             if (displayResults.length === 0) {
                 snippetsContainer.innerHTML = 'No snippets found matching your search';
                 snippetsContainer.classList.add('empty');
@@ -371,7 +378,7 @@
                 displaySnippets(displayResults);
             }
         }
-    
+
         // Modify copyCode to properly escape code
         function copyCode(code) {
             try {
@@ -382,7 +389,7 @@
                 tempTextArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(tempTextArea);
-    
+
                 const button = event.target;
                 button.textContent = 'Copied!';
                 button.classList.add('copied');
@@ -394,7 +401,7 @@
                 console.error('Failed to copy:', err);
             }
         }
-    
+
         // Modify displaySnippets to properly escape button attributes
         function displaySnippets(snippets) {
             const container = document.getElementById('snippetsContainer');
@@ -406,7 +413,7 @@
                     .replace(/>/g, '&gt;')
                     .replace(/"/g, '&quot;')
                     .replace(/'/g, '&#039;');
-    
+
                 return `
                 <div class="snippet-card">
                     <div class="snippet-header">
@@ -423,10 +430,10 @@
                     </div>
                 </div>
             `}).join('');
-    
+
             Prism.highlightAll();
         }
-    
+
         // Remove automatic loading of snippets on page load
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('searchInput').addEventListener('keyup', (event) => {
@@ -435,6 +442,7 @@
                 }
             });
         });
-        </script>
-    </body>
-    </html>
+    </script>
+</body>
+
+</html>
