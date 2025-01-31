@@ -272,7 +272,7 @@
                 const baseUrl = window.location.origin +
                     (window.location.hostname === 'localhost' ? '' : window.location.pathname.split('/').slice(0, -1).join('/'));
 
-                const indexPath = `${baseUrl}/snippets/snippets.json`;
+                const indexPath = `${baseUrl}/snippets.json`;
 
                 const response = await fetch(indexPath, {
                     method: 'GET',
