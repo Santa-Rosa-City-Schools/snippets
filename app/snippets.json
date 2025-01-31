@@ -35,12 +35,15 @@
     },
     {
       "id": "1738287868679",
-      "title": "No Name Change Query",
-      "description": "No Name Change Query - ",
+      "title": "Change Authorizer in Assertive Discipline",
+      "description": "Change assertive discipline authorizer from 10 to 0 if a student wasn't suspended",
       "code": "CHANGE STU ADS DSP DSP.AA TO \"10\" IF DSP.AA = \"\" AND DSP.DS : SUS",
-      "language": "change queries",
-      "tags": [],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "language": "aeries-query",
+      "tags": [
+        "Assertive Discipline",
+        "Change"
+      ],
+      "createdAt": 1738362852104
     },
     {
       "id": "1738287868644",
@@ -89,13 +92,13 @@
     {
       "id": "1738287868638",
       "title": "Update STU.LF to IFEP 1st Query",
-      "description": "Update STU.LF to IFEP 1st Query - ",
+      "description": "Update STU.LF to IFEP 1st Query",
       "code": "LIST STU LAC STU.ID STU.LF LAC.ITF IF STU.LF = \"T\" AND LAC.ITF = \"IFEP\"",
-      "language": "change queries",
+      "language": "aeries-query",
       "tags": [
         "Testing - ELPAC Initial"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738364199042
     },
     {
       "id": "1738287868647",
@@ -146,11 +149,11 @@
       "title": "Update STU.LF to IFEP 2nd Query",
       "description": "Update STU.LF to IFEP 2nd Query - This will update the STU.LF to IFEP based on the Initial ELPAC test results once those are imported. Run Update STU.LF to IFEP 1st Query first.",
       "code": "CHANGE STU LAC STU.LF TO \"I\"   IF STU.LF = \"T\" AND LAC.ITF = \"IFEP\"",
-      "language": "change queries",
+      "language": "aeries-query",
       "tags": [
         "Testing - ELPAC Initial"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738364208462
     },
     {
       "id": "1738287868633",
@@ -253,14 +256,16 @@
     },
     {
       "id": "1738287868199",
-      "title": "Student Contact Info",
-      "description": "Student Contact Info",
-      "code": "LIST STU ID FN MN LN AD CY ST ZC TL GR",
-      "language": "contact queries",
+      "title": "Student Mailing Info",
+      "description": "Student mailing address",
+      "code": "LIST STU ID FN MN LN GR AD CY ST ZC TL",
+      "language": "aeries-query",
       "tags": [
-        "Contacts"
+        "Contacts",
+        "Mailing",
+        "Students"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738362900928
     },
     {
       "id": "1738287868202",
@@ -1235,11 +1240,11 @@
       "title": "University Center - Grade 9 (Next Year)",
       "description": "University Center - Grade 9 (Next Year) - ",
       "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF PGM.CD = \"UC\" AND STU.NG = 9  AND TG = *",
-      "language": "scheduling - finding groups of students",
+      "language": "aeries-query",
       "tags": [
         "Scheduling"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738364220879
     },
     {
       "id": "1738287868319",
@@ -2524,14 +2529,14 @@
     },
     {
       "id": "1738287868427",
-      "title": "",
-      "description": "",
+      "title": "Student EL programs",
+      "description": "List student programs for English Language Learners",
       "code": "LIST STU LAC PGM STU.CID STU.ID STU.NM STU.GR STU.SC? LAC.EAC PGM.CD IF PGM.CD = 301 AND PGM.ESD >= 8/12/2023 AND LAC.EAC = EL",
-      "language": "student queries",
+      "language": "aeries-query",
       "tags": [
         "Student Programs"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738364272381
     },
     {
       "id": "1738287868356",
