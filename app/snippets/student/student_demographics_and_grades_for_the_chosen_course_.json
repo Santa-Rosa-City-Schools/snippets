@@ -1,0 +1,12 @@
+{
+  "id": "1738287868405",
+  "title": "Student Demographics and Grades for the chosen course.",
+  "description": "Student Demographics and Grades for the chosen course. Change XXXXXX to desired course number.",
+  "code": "LIST STU HIS STU.ID STU.LN STU.FN STU.GR STU.GN STU.U13? STU.LF? STU.HL? STU.ETH? STU.RC1? CRS.CO HIS.TE? HIS.YR? HIS.MK IF CRS.CN = XXXXXX",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/student_demographics_and_grades_for_the_chosen_course_.json"
+}

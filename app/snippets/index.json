@@ -1,0 +1,1132 @@
+{
+  "snippets": [
+    {
+      "path": "snippets/calpads/all_programs.json",
+      "id": "1738287868190"
+    },
+    {
+      "path": "snippets/calpads/elpac_scores.json",
+      "id": "1738287868192"
+    },
+    {
+      "path": "snippets/calpads/end_of_year_students_not_returning.json",
+      "id": "1738287868196"
+    },
+    {
+      "path": "snippets/calpads/enrollment_numbers.json",
+      "id": "1738287868195"
+    },
+    {
+      "path": "snippets/calpads/overall_elpac_scores.json",
+      "id": "1738287868193"
+    },
+    {
+      "path": "snippets/change/chage_isp_attendance_class_mst_au_1st_query.json",
+      "id": "1738287868623"
+    },
+    {
+      "path": "snippets/change/chage_isp_attendance_class_mst_au_2nd_query.json",
+      "id": "1738287868625"
+    },
+    {
+      "path": "snippets/change/chage_isp_attendance_class_mst_au__elementary__1st_query.json",
+      "id": "1738287868628"
+    },
+    {
+      "path": "snippets/change/chage_isp_attendance_class_mst_au__elementary__2nd_query.json",
+      "id": "1738287868631"
+    },
+    {
+      "path": "snippets/change/change__vision_date_and_value_entry_1st_query.json",
+      "id": "1738287868671"
+    },
+    {
+      "path": "snippets/change/change__vision_date_and_value_entry_2nd_query.json",
+      "id": "1738287868674"
+    },
+    {
+      "path": "snippets/change/change_accop_youth_indicator_to_n_.json",
+      "id": "1738287868681"
+    },
+    {
+      "path": "snippets/change/change_discipline_action_authority.json",
+      "id": "1738287868677"
+    },
+    {
+      "path": "snippets/change/change_hearing_date_and_value_entry_1st_query.json",
+      "id": "1738287868664"
+    },
+    {
+      "path": "snippets/change/change_hearing_date_and_value_entry_2nd_query.json",
+      "id": "1738287868666"
+    },
+    {
+      "path": "snippets/change/change_isp_subject_class_mst_st_1st_query.json",
+      "id": "1738287868633"
+    },
+    {
+      "path": "snippets/change/change_isp_subject_class_mst_st_2nd_query.json",
+      "id": "1738287868636"
+    },
+    {
+      "path": "snippets/change/next_year_program_1st_query.json",
+      "id": "1738287868656"
+    },
+    {
+      "path": "snippets/change/next_year_program_2nd_query.json",
+      "id": "1738287868658"
+    },
+    {
+      "path": "snippets/change/no_name_change_query.json",
+      "id": "1738287868679"
+    },
+    {
+      "path": "snippets/change/update_isp_ab130_from_not_applicable_to_eligible_participating_1st_query.json",
+      "id": "1738287868654"
+    },
+    {
+      "path": "snippets/change/update_stu_lf_to_el_1st_query.json",
+      "id": "1738287868642"
+    },
+    {
+      "path": "snippets/change/update_stu_lf_to_el_2nd_query.json",
+      "id": "1738287868644"
+    },
+    {
+      "path": "snippets/change/update_stu_lf_to_ifep_1st_query.json",
+      "id": "1738287868638"
+    },
+    {
+      "path": "snippets/change/update_stu_lf_to_ifep_2nd_query.json",
+      "id": "1738287868640"
+    },
+    {
+      "path": "snippets/change/update_teachers_electronic_tags_to_all_1st_query.json",
+      "id": "1738287868647"
+    },
+    {
+      "path": "snippets/change/update_teachers_electronic_tags_to_all_2nd_query.json",
+      "id": "1738287868650"
+    },
+    {
+      "path": "snippets/contact/.json",
+      "id": "1738287868198"
+    },
+    {
+      "path": "snippets/contact/contacts__erh_portal_access_w_o_email.json",
+      "id": "1738287868205"
+    },
+    {
+      "path": "snippets/contact/parent_portal_activity_all_.json",
+      "id": "1738287868209"
+    },
+    {
+      "path": "snippets/contact/parent_portal_log_in_activity.json",
+      "id": "1738287868210"
+    },
+    {
+      "path": "snippets/contact/parent_portal_not_accessed.json",
+      "id": "1738287868212"
+    },
+    {
+      "path": "snippets/contact/student__parent__email__and_address_info.json",
+      "id": "1738287868213"
+    },
+    {
+      "path": "snippets/contact/student_and_contacts_with_red_flags.json",
+      "id": "1738287868214"
+    },
+    {
+      "path": "snippets/contact/student_contact_info.json",
+      "id": "1738287868199"
+    },
+    {
+      "path": "snippets/contact/student_info__parent_name__number__and_address_if_contact_is_ed_rights_holder.json",
+      "id": "1738287868206"
+    },
+    {
+      "path": "snippets/contact/student_w__parent_email_if_contact_is_ed_rights_holder.json",
+      "id": "1738287868207"
+    },
+    {
+      "path": "snippets/contact/students_atttending_school_of_residence.json",
+      "id": "1738287868200"
+    },
+    {
+      "path": "snippets/contact/students_not_atttending_school_of_residence.json",
+      "id": "1738287868202"
+    },
+    {
+      "path": "snippets/contact/students_whos_contact_address_does_not_match_demographic_address.json",
+      "id": "1738287868203"
+    },
+    {
+      "path": "snippets/course/course_listing_by_department.json",
+      "id": "1738287868216"
+    },
+    {
+      "path": "snippets/course/courses_with__0__credits.json",
+      "id": "1738287868230"
+    },
+    {
+      "path": "snippets/course/demographic__grade__and_attendance_information_of_student_s_in_specific_course.json",
+      "id": "1738287868227"
+    },
+    {
+      "path": "snippets/course/demographic_information_of_student_s_in_specific_course.json",
+      "id": "1738287868223"
+    },
+    {
+      "path": "snippets/course/elementary_students_with_associated_teacher__ccla_and_srfacs_.json",
+      "id": "1738287868235"
+    },
+    {
+      "path": "snippets/course/finding_newcomers_by_course.json",
+      "id": "1738287868219"
+    },
+    {
+      "path": "snippets/course/finds_all_students_in_a_specific_course.json",
+      "id": "1738287868217"
+    },
+    {
+      "path": "snippets/course/list_of_students_by_course.json",
+      "id": "1738287868220"
+    },
+    {
+      "path": "snippets/course/list_of_students_in_ap_courses.json",
+      "id": "1738287868221"
+    },
+    {
+      "path": "snippets/course/skip_students_with_ald_course.json",
+      "id": "1738287868234"
+    },
+    {
+      "path": "snippets/course/sped_students_and_their_current_math__english__and__if_applicable__ald_courses.json",
+      "id": "1738287868232"
+    },
+    {
+      "path": "snippets/course/student_who_are_not_in_a_science_course__2_step_.json",
+      "id": "1738287868237"
+    },
+    {
+      "path": "snippets/course/students_in_a_.json",
+      "id": "1738287868226"
+    },
+    {
+      "path": "snippets/course/students_in_cte_courses.json",
+      "id": "1738287868228"
+    },
+    {
+      "path": "snippets/course/students_who_are_not_in_a_science_course__2_step_.json",
+      "id": "1738287868238"
+    },
+    {
+      "path": "snippets/course/students_who_had_have_a_cte_course.json",
+      "id": "1738287868224"
+    },
+    {
+      "path": "snippets/course/this_query_will_show_you_which_grades_in_your_grd_table_are_also_missing_credits.json",
+      "id": "1738287868231"
+    },
+    {
+      "path": "snippets/course_requests/course_request.json",
+      "id": "1738287868252"
+    },
+    {
+      "path": "snippets/course_requests/course_request_only_special_ed.json",
+      "id": "1738287868255"
+    },
+    {
+      "path": "snippets/course_requests/course_tally_report_including_special_ed.json",
+      "id": "1738287868253"
+    },
+    {
+      "path": "snippets/course_requests/find_students_with_course_requests.json",
+      "id": "1738287868246"
+    },
+    {
+      "path": "snippets/course_requests/find_students_with_course_requests_includes_subject_1_area__department__and_counselor_name.json",
+      "id": "1738287868249"
+    },
+    {
+      "path": "snippets/course_requests/find_students_with_course_requests_includes_subject_1_area_and_department.json",
+      "id": "1738287868248"
+    },
+    {
+      "path": "snippets/course_requests/list_of_requests_for_summer_school.json",
+      "id": "1738287868258"
+    },
+    {
+      "path": "snippets/course_requests/list_of_students_for_next_year.json",
+      "id": "1738287868256"
+    },
+    {
+      "path": "snippets/course_requests/student_requests___sped_and_language_included.json",
+      "id": "1738287868251"
+    },
+    {
+      "path": "snippets/data_department/cal_grant_extract_keep.json",
+      "id": "1738287868242"
+    },
+    {
+      "path": "snippets/data_department/grade_change_log.json",
+      "id": "1738287868239"
+    },
+    {
+      "path": "snippets/data_department/log_of_all_activity_for_a_student_in_aeries_and_who_made_the_change.json",
+      "id": "1738287868245"
+    },
+    {
+      "path": "snippets/data_department/school_site_information.json",
+      "id": "1738287868244"
+    },
+    {
+      "path": "snippets/data_department/searching_logs.json",
+      "id": "1738287868241"
+    },
+    {
+      "path": "snippets/other/caa__caaspp__cast_scores_by_grade_all_subjects.json",
+      "id": "1738287868509"
+    },
+    {
+      "path": "snippets/other/caaspp___english_language_arts_literacy_and_math_all_students.json",
+      "id": "1738287868513"
+    },
+    {
+      "path": "snippets/other/caaspp___english_language_arts_literacy_and_math_by_grade.json",
+      "id": "1738287868511"
+    },
+    {
+      "path": "snippets/other/caaspp___english_language_arts_literacy_test_scores_by_grade.json",
+      "id": "1738287868514"
+    },
+    {
+      "path": "snippets/other/caaspp___mathematics_test_scores_by_grade.json",
+      "id": "1738287868516"
+    },
+    {
+      "path": "snippets/other/elpac_overal_score_results.json",
+      "id": "1738287868503"
+    },
+    {
+      "path": "snippets/other/notes.json",
+      "id": "1738287868616"
+    },
+    {
+      "path": "snippets/other/to_see_what_students_had_their_demographic_pages_updated.json",
+      "id": "1738287868618"
+    },
+    {
+      "path": "snippets/other/to_see_what_students_had_their_language_page_updated.json",
+      "id": "1738287868620"
+    },
+    {
+      "path": "snippets/other/when_importing_new_ssids_all_students_are__updated_with_a_yes_or_no_in_sped_per_calpads_information_.json",
+      "id": "1738287868621"
+    },
+    {
+      "path": "snippets/scheduling/artquest___all.json",
+      "id": "1738287868300"
+    },
+    {
+      "path": "snippets/scheduling/artquest___grade_10__next_year_.json",
+      "id": "1738287868303"
+    },
+    {
+      "path": "snippets/scheduling/artquest___grade_11__next_year_.json",
+      "id": "1738287868305"
+    },
+    {
+      "path": "snippets/scheduling/artquest___grade_12__next_year_.json",
+      "id": "1738287868306"
+    },
+    {
+      "path": "snippets/scheduling/artquest___grade_9__next_year_.json",
+      "id": "1738287868302"
+    },
+    {
+      "path": "snippets/scheduling/early_college_magnet___all_students.json",
+      "id": "1738287868308"
+    },
+    {
+      "path": "snippets/scheduling/early_college_magnet___grade_10__next_year_.json",
+      "id": "1738287868311"
+    },
+    {
+      "path": "snippets/scheduling/early_college_magnet___grade_11__next_year_.json",
+      "id": "1738287868312"
+    },
+    {
+      "path": "snippets/scheduling/early_college_magnet___grade_12__next_year_.json",
+      "id": "1738287868314"
+    },
+    {
+      "path": "snippets/scheduling/early_college_magnet___grade_9__next_year_.json",
+      "id": "1738287868309"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el____all.json",
+      "id": "1738287868288"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el__grade_10__next_year_.json",
+      "id": "1738287868296"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el__grade_11__next_year_.json",
+      "id": "1738287868297"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el__grade_12__next_year_.json",
+      "id": "1738287868299"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el__grade_7__next_year_.json",
+      "id": "1738287868291"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el__grade_8__next_year_.json",
+      "id": "1738287868292"
+    },
+    {
+      "path": "snippets/scheduling/english_language_learners__el__grade_9__next_year_.json",
+      "id": "1738287868295"
+    },
+    {
+      "path": "snippets/scheduling/grade_10__next_year_.json",
+      "id": "1738287868263"
+    },
+    {
+      "path": "snippets/scheduling/grade_11__next_year_.json",
+      "id": "1738287868265"
+    },
+    {
+      "path": "snippets/scheduling/grade_12__next_year_.json",
+      "id": "1738287868266"
+    },
+    {
+      "path": "snippets/scheduling/grade_7__next_year_.json",
+      "id": "1738287868259"
+    },
+    {
+      "path": "snippets/scheduling/grade_8__next_year_.json",
+      "id": "1738287868261"
+    },
+    {
+      "path": "snippets/scheduling/grade_9__next_year_.json",
+      "id": "1738287868262"
+    },
+    {
+      "path": "snippets/scheduling/preenrolled_students.json",
+      "id": "1738287868322"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students___all_incoming.json",
+      "id": "1738287868278"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students_grade_10__next_year_.json",
+      "id": "1738287868284"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students_grade_11__next_year_.json",
+      "id": "1738287868285"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students_grade_12__next_year_.json",
+      "id": "1738287868286"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students_grade_7__next_year_.json",
+      "id": "1738287868279"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students_grade_8__next_year_.json",
+      "id": "1738287868281"
+    },
+    {
+      "path": "snippets/scheduling/sdc_students_grade_9__next_year_.json",
+      "id": "1738287868282"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students___all.json",
+      "id": "1738287868268"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students_grade_10__next_year_.json",
+      "id": "1738287868273"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students_grade_11__next_year_.json",
+      "id": "1738287868275"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students_grade_12__next_year_.json",
+      "id": "1738287868276"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students_grade_7__next_year_.json",
+      "id": "1738287868269"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students_grade_8__next_year_.json",
+      "id": "1738287868270"
+    },
+    {
+      "path": "snippets/scheduling/special_ed_students_grade_9__next_year_.json",
+      "id": "1738287868272"
+    },
+    {
+      "path": "snippets/scheduling/university_center___all_students.json",
+      "id": "1738287868315"
+    },
+    {
+      "path": "snippets/scheduling/university_center___grade_10__next_year_.json",
+      "id": "1738287868318"
+    },
+    {
+      "path": "snippets/scheduling/university_center___grade_11__next_year_.json",
+      "id": "1738287868319"
+    },
+    {
+      "path": "snippets/scheduling/university_center___grade_12__next_year_.json",
+      "id": "1738287868321"
+    },
+    {
+      "path": "snippets/scheduling/university_center___grade_9__next_year_.json",
+      "id": "1738287868316"
+    },
+    {
+      "path": "snippets/state_testing/9th_graders_without_PE.json",
+      "id": "1738287868614"
+    },
+    {
+      "path": "snippets/state_testing/caa_for_science__12th_grade.json",
+      "id": "1738287868600"
+    },
+    {
+      "path": "snippets/state_testing/cast__12th_grade.json",
+      "id": "1738287868607"
+    },
+    {
+      "path": "snippets/state_testing/dhh_students.json",
+      "id": "1738287868609"
+    },
+    {
+      "path": "snippets/state_testing/eahs_student_list_for_tracking_sheet_.json",
+      "id": "1738287868560"
+    },
+    {
+      "path": "snippets/state_testing/elementary_student_list_for_tracking_sheet.json",
+      "id": "1738287868558"
+    },
+    {
+      "path": "snippets/state_testing/elementary_summative_elpac__el_students.json",
+      "id": "1738287868544"
+    },
+    {
+      "path": "snippets/state_testing/elementary_teacher_list_by_grade.json",
+      "id": "1738287868538"
+    },
+    {
+      "path": "snippets/state_testing/elementary_unique_teacher_list.json",
+      "id": "1738287868549"
+    },
+    {
+      "path": "snippets/state_testing/hsms_student_list_for_tracking_sheet_.json",
+      "id": "1738287868577"
+    },
+    {
+      "path": "snippets/state_testing/initial_elpac__pre_enrolled_students.json",
+      "id": "1738287868543"
+    },
+    {
+      "path": "snippets/state_testing/initial_elpac__tbd_students.json",
+      "id": "1738287868541"
+    },
+    {
+      "path": "snippets/state_testing/mchs_student_list_for_tracking_sheet.json",
+      "id": "1738287868565"
+    },
+    {
+      "path": "snippets/state_testing/mhs_student_list_for_tracking_sheet.json",
+      "id": "1738287868567"
+    },
+    {
+      "path": "snippets/state_testing/middle_charter_schools_student_list_for_tracking_sheet.json",
+      "id": "1738287868575"
+    },
+    {
+      "path": "snippets/state_testing/nps_students_testing.json",
+      "id": "1738287868594"
+    },
+    {
+      "path": "snippets/state_testing/pft__components_not_taken.json",
+      "id": "1738287868589"
+    },
+    {
+      "path": "snippets/state_testing/pft__elementary_students_with_teachers.json",
+      "id": "1738287868582"
+    },
+    {
+      "path": "snippets/state_testing/pft__list_of_students_w_teachers.json",
+      "id": "1738287868584"
+    },
+    {
+      "path": "snippets/state_testing/pft__no_entries_.json",
+      "id": "1738287868587"
+    },
+    {
+      "path": "snippets/state_testing/pft__scores_and_status.json",
+      "id": "1738287868532"
+    },
+    {
+      "path": "snippets/state_testing/pft__secondary_students.json",
+      "id": "1738287868580"
+    },
+    {
+      "path": "snippets/state_testing/phs_student_list_for_tracking_sheet.json",
+      "id": "1738287868571"
+    },
+    {
+      "path": "snippets/state_testing/secondary_primary_teacher_list.json",
+      "id": "1738287868551"
+    },
+    {
+      "path": "snippets/state_testing/secondary_summative_elpac__el_students.json",
+      "id": "1738287868563"
+    },
+    {
+      "path": "snippets/state_testing/secondary_summative_elpac__el_swd_students.json",
+      "id": "1738287868547"
+    },
+    {
+      "path": "snippets/state_testing/secondary_teacher_list_by_department.json",
+      "id": "1738287868540"
+    },
+    {
+      "path": "snippets/state_testing/srhs_student_list_for_tracking_sheet.json",
+      "id": "1738287868573"
+    },
+    {
+      "path": "snippets/state_testing/students_w_o_courses_for_testing___secondary__two_step_process__1st_query.json",
+      "id": "1738287868553"
+    },
+    {
+      "path": "snippets/state_testing/students_w_o_courses_for_testing___secondary__two_step_process__2nd_query.json",
+      "id": "1738287868556"
+    },
+    {
+      "path": "snippets/state_testing/students_w_o_p_e__class.json",
+      "id": "1738287868612"
+    },
+    {
+      "path": "snippets/student/.json",
+      "id": "1738287868427"
+    },
+    {
+      "path": "snippets/student/10_or_more_all_day_absences.json",
+      "id": "1738287868353"
+    },
+    {
+      "path": "snippets/student/504_with_accomodations.json",
+      "id": "1738287868485"
+    },
+    {
+      "path": "snippets/student/absence_percentage_with_atleast_31_days_of_enrollment_.json",
+      "id": "1738287868469"
+    },
+    {
+      "path": "snippets/student/aeries_seis_data_comparison_3.json",
+      "id": "1738287868342"
+    },
+    {
+      "path": "snippets/student/all_icoming_students_at_a_site_by_next_grade_and_last_name.json",
+      "id": "1738287868465"
+    },
+    {
+      "path": "snippets/student/all_students_in_grades_tk___6_who_have_a_lip_program.json",
+      "id": "1738287868429"
+    },
+    {
+      "path": "snippets/student/attendance_percentage__days_enrolled__present__days_absent_.json",
+      "id": "1738287868446"
+    },
+    {
+      "path": "snippets/student/both_504_plan_and_504_program.json",
+      "id": "1738287868392"
+    },
+    {
+      "path": "snippets/student/change__hearing_date_and_value_entry_1st_query.json",
+      "id": "1738287868328"
+    },
+    {
+      "path": "snippets/student/change__hearing_date_and_value_entry_2nd_query.json",
+      "id": "1738287868329"
+    },
+    {
+      "path": "snippets/student/credit_deficient_based_on_grade.json",
+      "id": "1738287868350"
+    },
+    {
+      "path": "snippets/student/credits_completed_current_ceniors.json",
+      "id": "1738287868380"
+    },
+    {
+      "path": "snippets/student/current_ald_students_.json",
+      "id": "1738287868457"
+    },
+    {
+      "path": "snippets/student/current_class_rank___by_counselor.json",
+      "id": "1738287868402"
+    },
+    {
+      "path": "snippets/student/current_class_rank___by_gpa_and_grade.json",
+      "id": "1738287868401"
+    },
+    {
+      "path": "snippets/student/current_class_rank___individual_student.json",
+      "id": "1738287868404"
+    },
+    {
+      "path": "snippets/student/current_students_and_where_are_they_going_to_next_year.json",
+      "id": "1738287868337"
+    },
+    {
+      "path": "snippets/student/daily_medical_log_overview_for_health_techs.json",
+      "id": "1738287868440"
+    },
+    {
+      "path": "snippets/student/demographic__grade__and_attendance_information_of_student_s_in_specific_course.json",
+      "id": "1738287868421"
+    },
+    {
+      "path": "snippets/student/demographics__semester_grades__and_attendance_by_subject_and_or_period.json",
+      "id": "1738287868443"
+    },
+    {
+      "path": "snippets/student/display_immunization_exemption_values.json",
+      "id": "1738287868340"
+    },
+    {
+      "path": "snippets/student/early_college_managment_students.json",
+      "id": "1738287868382"
+    },
+    {
+      "path": "snippets/student/el_students_by_teacher__elementary_only_.json",
+      "id": "1738287868418"
+    },
+    {
+      "path": "snippets/student/elementary_only_attendance___unexcused_absenses_and_tardys_with_percentages__for_all_day_codes__.json",
+      "id": "1738287868459"
+    },
+    {
+      "path": "snippets/student/elementary_students_new_to_district_by_teacher__part_1_.json",
+      "id": "1738287868478"
+    },
+    {
+      "path": "snippets/student/elementary_students_new_to_district_by_teacher__part_2_.json",
+      "id": "1738287868480"
+    },
+    {
+      "path": "snippets/student/elementary_students_with_parent_email_and_teacher_name.json",
+      "id": "1738287868486"
+    },
+    {
+      "path": "snippets/student/end_of_year_students_not_returning.json",
+      "id": "1738287868331"
+    },
+    {
+      "path": "snippets/student/feeder_schools_from_outside_.json",
+      "id": "1738287868435"
+    },
+    {
+      "path": "snippets/student/feeder_schools_from_within_.json",
+      "id": "1738287868434"
+    },
+    {
+      "path": "snippets/student/foster_and_homeless_students.json",
+      "id": "1738287868373"
+    },
+    {
+      "path": "snippets/student/free_or_reduced_programs_with_parent_confirmation_and_direct_cert.json",
+      "id": "1738287868430"
+    },
+    {
+      "path": "snippets/student/gate_alps_students.json",
+      "id": "1738287868355"
+    },
+    {
+      "path": "snippets/student/gate_alps_students_limited_grade.json",
+      "id": "1738287868356"
+    },
+    {
+      "path": "snippets/student/grade_is_5th_or_below_and_next_school_to_middle_site.json",
+      "id": "1738287868335"
+    },
+    {
+      "path": "snippets/student/grades_for_el___sped_with_case_manager.json",
+      "id": "1738287868482"
+    },
+    {
+      "path": "snippets/student/has_504_plan_or_504_program.json",
+      "id": "1738287868395"
+    },
+    {
+      "path": "snippets/student/hearing_and_vision_results.json",
+      "id": "1738287868426"
+    },
+    {
+      "path": "snippets/student/homeless_students_missing_unaccop_youth_indicator.json",
+      "id": "1738287868398"
+    },
+    {
+      "path": "snippets/student/homeroom_teacher_for_specific_grade_level.json",
+      "id": "1738287868455"
+    },
+    {
+      "path": "snippets/student/honor_roll_students_with_3rd_period_teacher__based_on_semester_1_gpa_.json",
+      "id": "1738287868483"
+    },
+    {
+      "path": "snippets/student/in_progress_dtp_vaccine.json",
+      "id": "1738287868474"
+    },
+    {
+      "path": "snippets/student/in_progress_polio_vaccine.json",
+      "id": "1738287868472"
+    },
+    {
+      "path": "snippets/student/incoming_students_at_given_site.json",
+      "id": "1738287868370"
+    },
+    {
+      "path": "snippets/student/interdistrict_students.json",
+      "id": "1738287868359"
+    },
+    {
+      "path": "snippets/student/intradistrict_students.json",
+      "id": "1738287868361"
+    },
+    {
+      "path": "snippets/student/list_of_d_and_f_grades_for_fall_semester.json",
+      "id": "1738287868364"
+    },
+    {
+      "path": "snippets/student/list_of_d_and_f_grades_for_spring_semester.json",
+      "id": "1738287868365"
+    },
+    {
+      "path": "snippets/student/list_of_demographics____specific_course_by_section__.json",
+      "id": "1738287868390"
+    },
+    {
+      "path": "snippets/student/list_of_special_ed_students.json",
+      "id": "1738287868376"
+    },
+    {
+      "path": "snippets/student/list_of_students___3_years_in_district.json",
+      "id": "1738287868374"
+    },
+    {
+      "path": "snippets/student/list_of_students_in_ab_130.json",
+      "id": "1738287868379"
+    },
+    {
+      "path": "snippets/student/list_of_students_in_indian_education.json",
+      "id": "1738287868377"
+    },
+    {
+      "path": "snippets/student/look_up_students_in_a_specific_section_from_the_master_schedule__make_sure_to_run_at_site_level_in_aeries_.json",
+      "id": "1738287868460"
+    },
+    {
+      "path": "snippets/student/media_opt_out___do_not_release.json",
+      "id": "1738287868326"
+    },
+    {
+      "path": "snippets/student/media_opt_out___may_release_info___1st_query.json",
+      "id": "1738287868323"
+    },
+    {
+      "path": "snippets/student/media_opt_out___may_release_info___2nd_query.json",
+      "id": "1738287868325"
+    },
+    {
+      "path": "snippets/student/migrant_students.json",
+      "id": "1738287868396"
+    },
+    {
+      "path": "snippets/student/next_grade___current_grade.json",
+      "id": "1738287868332"
+    },
+    {
+      "path": "snippets/student/next_year_504_students_moving_into_middle_or_high_school.json",
+      "id": "1738287868463"
+    },
+    {
+      "path": "snippets/student/next_year_school_miss_match.json",
+      "id": "1738287868358"
+    },
+    {
+      "path": "snippets/student/next_year_students_at_site.json",
+      "id": "1738287868362"
+    },
+    {
+      "path": "snippets/student/next_year_students_leaving.json",
+      "id": "1738287868368"
+    },
+    {
+      "path": "snippets/student/next_years_ald_students_.json",
+      "id": "1738287868452"
+    },
+    {
+      "path": "snippets/student/no_504_plan_and_has_a_504_program.json",
+      "id": "1738287868393"
+    },
+    {
+      "path": "snippets/student/open_enrollment_students.json",
+      "id": "1738287868367"
+    },
+    {
+      "path": "snippets/student/percentage_present_by_teacher__elementary__run_at_site_level__.json",
+      "id": "1738287868471"
+    },
+    {
+      "path": "snippets/student/pre_enrolled___incoming_students_for_next_year_including_last_school__school_of_enrollment__grade__next_grade_and_sped_status.json",
+      "id": "1738287868449"
+    },
+    {
+      "path": "snippets/student/pre_enrolled___incoming_students_for_next_year_including_last_school__school_of_enrollment__grade__next_grade_and_sped_status_limited_by_next_grade.json",
+      "id": "1738287868444"
+    },
+    {
+      "path": "snippets/student/program_look_up_at_site_including_pre_enrolled_.json",
+      "id": "1738287868450"
+    },
+    {
+      "path": "snippets/student/race_code___indian_education.json",
+      "id": "1738287868388"
+    },
+    {
+      "path": "snippets/student/report_of_my_504_and_or_iep_students.json",
+      "id": "1738287868412"
+    },
+    {
+      "path": "snippets/student/report_of_my_504_students.json",
+      "id": "1738287868410"
+    },
+    {
+      "path": "snippets/student/report_of_my_iep_students.json",
+      "id": "1738287868411"
+    },
+    {
+      "path": "snippets/student/report_of_students_with_truancy_letters.json",
+      "id": "1738287868414"
+    },
+    {
+      "path": "snippets/student/retained_students.json",
+      "id": "1738287868352"
+    },
+    {
+      "path": "snippets/student/sarb_intervention_after_date.json",
+      "id": "1738287868468"
+    },
+    {
+      "path": "snippets/student/sart_intervention_after_date.json",
+      "id": "1738287868466"
+    },
+    {
+      "path": "snippets/student/scores_on_caasp___migrant_ed.json",
+      "id": "1738287868386"
+    },
+    {
+      "path": "snippets/student/semester_gpa_for_students_in_a_program_limited_by_gpa.json",
+      "id": "1738287868438"
+    },
+    {
+      "path": "snippets/student/special_ed_students_with_next_school_info.json",
+      "id": "1738287868437"
+    },
+    {
+      "path": "snippets/student/special_ed_students_with_placement_and_course_data.json",
+      "id": "1738287868441"
+    },
+    {
+      "path": "snippets/student/student_and_contact_info_for_famillies_who_have_not_filled_out_pdc_or_alternaite_income__step_one_.json",
+      "id": "1738287868488"
+    },
+    {
+      "path": "snippets/student/student_and_contact_info_for_famillies_who_have_not_filled_out_pdc_or_alternaite_income__step_two_.json",
+      "id": "1738287868489"
+    },
+    {
+      "path": "snippets/student/student_and_parent_contact_data_with___of_days_absent__present__and_enrolled.json",
+      "id": "1738287868491"
+    },
+    {
+      "path": "snippets/student/student_and_parent_guardian_contact_info.json",
+      "id": "1738287868454"
+    },
+    {
+      "path": "snippets/student/student_attendance_percentage_with_special_ed_status__parent_contact_info__and_atttendance_summary_data.json",
+      "id": "1738287868475"
+    },
+    {
+      "path": "snippets/student/student_birthdays_by_month.json",
+      "id": "1738287868477"
+    },
+    {
+      "path": "snippets/student/student_demographics_and_grades_for_the_chosen_course_.json",
+      "id": "1738287868405"
+    },
+    {
+      "path": "snippets/student/student_locator_by_period.json",
+      "id": "1738287868462"
+    },
+    {
+      "path": "snippets/student/students_granted_access_on_medical_billing.json",
+      "id": "1738287868399"
+    },
+    {
+      "path": "snippets/student/students_in_given_group.json",
+      "id": "1738287868432"
+    },
+    {
+      "path": "snippets/student/students_in_program_s__ordered_by_program.json",
+      "id": "1738287868389"
+    },
+    {
+      "path": "snippets/student/students_new_to_ca_this_year.json",
+      "id": "1738287868385"
+    },
+    {
+      "path": "snippets/student/students_quarter_or_ipr_grades_for_all_of_courses.json",
+      "id": "1738287868415"
+    },
+    {
+      "path": "snippets/student/students_that_are_ltel_and_el.json",
+      "id": "1738287868423"
+    },
+    {
+      "path": "snippets/student/students_that_were_ltel_at_one_time_and_have_been_redesignated.json",
+      "id": "1738287868424"
+    },
+    {
+      "path": "snippets/student/students_who_left_section.json",
+      "id": "1738287868347"
+    },
+    {
+      "path": "snippets/student/students_who_received_an_f__demographic__attendance__and_course_information_.json",
+      "id": "1738287868420"
+    },
+    {
+      "path": "snippets/student/students_who_received_an_f__demographic_and_course_information_.json",
+      "id": "1738287868417"
+    },
+    {
+      "path": "snippets/student/students_with_14_or_more_absences.json",
+      "id": "1738287868334"
+    },
+    {
+      "path": "snippets/student/students_with_504_or_iep.json",
+      "id": "1738287868492"
+    },
+    {
+      "path": "snippets/student/students_with_a_504_by_school_and_grade.json",
+      "id": "1738287868407"
+    },
+    {
+      "path": "snippets/student/students_with_a_504_by_teacher.json",
+      "id": "1738287868408"
+    },
+    {
+      "path": "snippets/student/students_with_discipline.json",
+      "id": "1738287868349"
+    },
+    {
+      "path": "snippets/student/students_with_specific_teacher_name__period__and_room_number_.json",
+      "id": "1738287868338"
+    },
+    {
+      "path": "snippets/student/students_with_student_flags_and_flag_comments.json",
+      "id": "1738287868447"
+    },
+    {
+      "path": "snippets/student/students_without_sup_bg_values.json",
+      "id": "1738287868383"
+    },
+    {
+      "path": "snippets/student/totals_for_attendance_codes_t_and_r.json",
+      "id": "1738287868346"
+    },
+    {
+      "path": "snippets/student/totals_of_tardies__t__and_tardy_30_min__r__by_grade_level.json",
+      "id": "1738287868344"
+    },
+    {
+      "path": "snippets/student/tracking_504_student_under_the_fof.json",
+      "id": "1738287868343"
+    },
+    {
+      "path": "snippets/teacher/all_teachers_teaching_ald.json",
+      "id": "1738287868498"
+    },
+    {
+      "path": "snippets/teacher/list_of_all_teachers_.json",
+      "id": "1738287868497"
+    },
+    {
+      "path": "snippets/teacher/teachers___8th_grade_math_and_physical_science.json",
+      "id": "1738287868495"
+    },
+    {
+      "path": "snippets/teacher/teachers_by_deparment.json",
+      "id": "1738287868494"
+    },
+    {
+      "path": "snippets/test_scores/caa_caaspp_cast___test_scores_all_subjects.json",
+      "id": "1738287868508"
+    },
+    {
+      "path": "snippets/test_scores/caaspp_scores_w_language_fluency.json",
+      "id": "1738287868506"
+    },
+    {
+      "path": "snippets/test_scores/cast_scores_w_language_fluency.json",
+      "id": "1738287868505"
+    },
+    {
+      "path": "snippets/test_scores/cast_test_scores___all_students.json",
+      "id": "1738287868517"
+    },
+    {
+      "path": "snippets/test_scores/cast_test_scores_by_grade.json",
+      "id": "1738287868520"
+    },
+    {
+      "path": "snippets/test_scores/electronic_score_report___undelivered.json",
+      "id": "1738287868528"
+    },
+    {
+      "path": "snippets/test_scores/ellevation_letters.json",
+      "id": "1738287868535"
+    },
+    {
+      "path": "snippets/test_scores/elpac_test_score_results.json",
+      "id": "1738287868500"
+    },
+    {
+      "path": "snippets/test_scores/no_caaspp_test_scores_showing_in_aeries.json",
+      "id": "1738287868530"
+    },
+    {
+      "path": "snippets/test_scores/scores_4_or_3.json",
+      "id": "1738287868536"
+    },
+    {
+      "path": "snippets/test_scores/test_score_import_confirmation.json",
+      "id": "1738287868522"
+    }
+  ]
+}

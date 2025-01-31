@@ -1,0 +1,10 @@
+{
+  "id": "1738287868239",
+  "title": "Grade Change Log",
+  "description": "Grade Change Log - Change dates and student ID to reveiw grade history change log.",
+  "code": "LIST LOG OB DT USR SC ID CO OD ND IF DT > 8/11/2023 AND DT < 8/13/2023 AND CD = HISCHG AND ID = XXXXXX",
+  "language": "data department use only",
+  "tags": [],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/data department use only/grade_change_log.json"
+}

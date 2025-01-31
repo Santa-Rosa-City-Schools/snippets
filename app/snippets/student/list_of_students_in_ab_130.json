@@ -1,0 +1,12 @@
+{
+  "id": "1738287868379",
+  "title": "List of Students in AB 130",
+  "description": "List of Students in AB 130 - ",
+  "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.GR? STU.SC? PGM.CD IF PGM.CD = ISP",
+  "language": "student queries",
+  "tags": [
+    "Student Programs"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/list_of_students_in_ab_130.json"
+}

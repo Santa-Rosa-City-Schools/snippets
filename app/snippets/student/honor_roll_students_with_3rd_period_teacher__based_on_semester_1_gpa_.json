@@ -1,0 +1,12 @@
+{
+  "id": "1738287868483",
+  "title": "Honor Roll Students With 3rd Period Teacher (Based on Semester 1 GPA)",
+  "description": "Honor Roll Students With 3rd Period Teacher (Based on Semester 1 GPA)",
+  "code": "LIST STU SEC MST FTF SSE STF GRG STU.ID STU.LN STU.FN STU.GR GRG.T6 STF.LN MST.RM BY STU.LN STF.LN IF SSE.PR = 1 AND FTF.STI = 3 AND GRG.T6 >= 4  AND GRG.YR = 2023   ",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/honor_roll_students_with_3rd_period_teacher__based_on_semester_1_gpa_.json"
+}

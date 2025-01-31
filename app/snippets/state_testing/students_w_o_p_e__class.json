@@ -1,0 +1,12 @@
+{
+  "id": "1738287868612",
+  "title": "Students w/o P.E. Class",
+  "description": "Step 1: Skip 9th grade students with PE",
+  "code": "SKIP STU SEC CRS IF CRS.DC = G AND GR = 9",
+  "language": "testing queries",
+  "tags": [
+    "Testing - PFT"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/students_w_o_p_e__class.json"
+}

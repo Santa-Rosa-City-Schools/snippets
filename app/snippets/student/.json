@@ -1,0 +1,12 @@
+{
+  "id": "1738287868427",
+  "title": "",
+  "description": "",
+  "code": "LIST STU LAC PGM STU.CID STU.ID STU.NM STU.GR STU.SC? LAC.EAC PGM.CD IF PGM.CD = 301 AND PGM.ESD >= 8/12/2023 AND LAC.EAC = EL",
+  "language": "student queries",
+  "tags": [
+    "Student Programs"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/.json"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "1738287868203",
+  "title": "Students whos contact address does not match demographic address",
+  "description": "Students whos contact address does not match demographic address",
+  "code": "LIST STU CON STU.ID STU.LN STU.FN STU.SC? STU.RAD CON.RL? CON.AD CON.SQ IF CON.AD # STU.RAD AND CON.AD # \" \" AND CON.ERH = Y",
+  "language": "contact queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/students_whos_contact_address_does_not_match_demographic_address.json"
+}

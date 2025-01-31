@@ -1,0 +1,12 @@
+{
+  "id": "1738287868633",
+  "title": "Change ISP Subject Class MST.ST 1st Query",
+  "description": "Change ISP Subject Class MST.ST 1st Query - ",
+  "code": "LIST MST FTF MST.SC MST.SCL MST.FSQ MST.CSQ FTF.STI MST.CN MST.RM MST.ST MST.AU IF FTF.STI = \"ISP\"",
+  "language": "change queries",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/change queries/change_isp_subject_class_mst_st_1st_query.json"
+}

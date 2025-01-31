@@ -1,0 +1,12 @@
+{
+  "id": "1738287868356",
+  "title": "GATE/ALPS Students Limited Grade",
+  "description": "GATE/ALPS Students Limited Grade - Will return students with a GATE/ALPS program limited by grade level. GATE/ALPS is not in Student Special Programs.",
+  "code": "LIST STU GTE STU.ID STU.LN STU.FN STU.GR? STU.SC? GTE.ESD GTE.PSD IF GTE.ESD # NULL AND ( STU.GR = 3 OR STU.GR = 4 OR STU.GR = 5 OR STU.GR = 6 )",
+  "language": "student queries",
+  "tags": [
+    "Student Programs"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/gate_alps_students_limited_grade.json"
+}

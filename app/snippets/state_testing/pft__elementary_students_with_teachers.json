@@ -1,0 +1,12 @@
+{
+  "id": "1738287868582",
+  "title": "PFT: Elementary Students with Teachers",
+  "description": "List of 5th grade students with teacher name",
+  "code": "LIST STU SEC MST FTF SSE STF PFT STU.ID STU.LN STU.FN STU.GR STU.SC? STF.FN STF.LN FTF.STI CRS.DC? PFT.TA BY STU.ID IF ( ( SSE.PR = 1  AND ( MST.CN = KE005 OR MST.CN = SESD5 OR MST.CN = SEDH5 ) AND PFT.TA = NULL ) ",
+  "language": "testing queries",
+  "tags": [
+    "Testing - PFT"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/pft__elementary_students_with_teachers.json"
+}

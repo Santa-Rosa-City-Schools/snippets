@@ -1,0 +1,12 @@
+{
+  "id": "1738287868540",
+  "title": "Secondary Teacher List by Department",
+  "description": "Secondary Teacher List  - Used for creating TOMS accounts for testing\n",
+  "code": "LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM MST.CN CRS.DC? IF CRS.DC = \"E\" OR CRS.DC = \"M\" OR CRS.DC = \"K\"",
+  "language": "testing queries",
+  "tags": [
+    "Testing - CAASPP Interim"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/secondary_teacher_list_by_department.json"
+}

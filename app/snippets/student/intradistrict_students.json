@@ -1,0 +1,12 @@
+{
+  "id": "1738287868361",
+  "title": "IntraDistrict Students",
+  "description": "IntraDistrict Students - Something about Intradistrict transfers",
+  "code": "LIST STU ENR STU.ID STU.LN STU.FN STU.SC? STU.IT? ENR.ED ENR.LD IF STU.IT : I AND ENR.ED >= 08/01/2023 AND ENR.LD = NULL",
+  "language": "student queries",
+  "tags": [
+    "Enrollment"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/intradistrict_students.json"
+}

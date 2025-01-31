@@ -1,0 +1,12 @@
+{
+  "id": "1738287868486",
+  "title": "Elementary Students with Parent email and Teacher name",
+  "description": "Student with Parent email and Teacher name (Elementary Only)",
+  "code": "LIST STU ID NM GR PEM PRIMARYTEACHERNAME BY PRIMARYTEACHERNAME ",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/elementary_students_with_parent_email_and_teacher_name.json"
+}

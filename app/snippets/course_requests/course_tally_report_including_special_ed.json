@@ -1,0 +1,12 @@
+{
+  "id": "1738287868253",
+  "title": "Course Tally Report including Special Ed",
+  "description": "Course Tally Report including Special Ed - ",
+  "code": "LIST STU CSE SSS CRS STU.ID STU.LN STU.FN STU.NG STU.SC SSS.CN CR S.CO CSE.PL",
+  "language": "scheduling - course request queries",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/scheduling - course request queries/course_tally_report_including_special_ed.json"
+}

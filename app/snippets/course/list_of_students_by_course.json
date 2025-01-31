@@ -1,0 +1,12 @@
+{
+  "id": "1738287868220",
+  "title": "List of Students by Course",
+  "description": "List of Students by Course",
+  "code": "LIST STU SSS CRS STU.ID STU.LN STU.FN STU.GR STU.SC SSS.CN CRS.CO BY CRS.CO  ",
+  "language": "cousre queries",
+  "tags": [
+    "Courses"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/cousre queries/list_of_students_by_course.json"
+}

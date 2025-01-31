@@ -1,0 +1,12 @@
+{
+  "id": "1738287868235",
+  "title": "Elementary students with associated teacher (CCLA and SRFACS)",
+  "description": "Elementary students with associated teacher (CCLA SRFACS)",
+  "code": "LIST STU SEC MST SSE STF STU.ID STU.LN STU.FN STU.BD STU.GR STU.SC STF.LN STF.FN STU.PG STU.PEM BY STU.GR STF.LN IF STU.GR < 7  ",
+  "language": "cousre queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/cousre queries/elementary_students_with_associated_teacher__ccla_and_srfacs_.json"
+}

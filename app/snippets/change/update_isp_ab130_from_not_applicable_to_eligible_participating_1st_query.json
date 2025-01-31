@@ -1,0 +1,12 @@
+{
+  "id": "1738287868654",
+  "title": "Update ISP AB130 from Not Applicable to Eligible/Participating 1st Query",
+  "description": "Update ISP AB130 from Not Applicable to Eligible/Participating 1st Query - Will change PGM.ST for students who are not listed correctly. Run Update ISP AB130 from Not Applicable to Eligible/Participating 1st Query first.",
+  "code": "CHANGE PGM PGM.ST TO \"2\" IF PGM.CD = ISP AND PGM.ST = \"\"",
+  "language": "change queries",
+  "tags": [
+    "Student Programs"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/change queries/update_isp_ab130_from_not_applicable_to_eligible_participating_1st_query.json"
+}

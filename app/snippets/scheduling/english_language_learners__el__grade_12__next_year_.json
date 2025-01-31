@@ -1,0 +1,12 @@
+{
+  "id": "1738287868299",
+  "title": "English Language Learners (EL) Grade 12 (Next Year)",
+  "description": "English Language Learners (EL) Grade 12 (Next Year) - ",
+  "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.LF? IF STU.LF = L AND STU.NG = 12",
+  "language": "scheduling - finding groups of students",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_12__next_year_.json"
+}

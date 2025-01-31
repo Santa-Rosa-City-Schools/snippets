@@ -1,0 +1,12 @@
+{
+  "id": "1738287868454",
+  "title": "Student and Parent/Guardian Contact info",
+  "description": "Student and Parent/Guardian Contact info",
+  "code": "LIST STU STU.NM PG RAD RCY RST RZC TL PEM HL?  ",
+  "language": "student queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/student_and_parent_guardian_contact_info.json"
+}

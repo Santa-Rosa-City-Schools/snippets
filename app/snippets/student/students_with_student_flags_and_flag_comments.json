@@ -1,0 +1,12 @@
+{
+  "id": "1738287868447",
+  "title": "Students with student flags and flag comments",
+  "description": "Students with student flags and flag comments",
+  "code": "LIST STU FLG STU.NM STU.GR STU.ID FLG.TC FLG.CO BY STU.NM IF FLG.TC # \" \" \u000bAND FLG.CO # \" \" ",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/students_with_student_flags_and_flag_comments.json"
+}

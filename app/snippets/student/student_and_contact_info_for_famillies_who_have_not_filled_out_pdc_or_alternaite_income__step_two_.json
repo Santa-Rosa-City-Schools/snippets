@@ -1,0 +1,12 @@
+{
+  "id": "1738287868489",
+  "title": "Student and Contact Info for famillies who have not filled out PDC or Alternaite Income (Step Two)",
+  "description": "Student and Contact Info for famillies who have not filled out PDC or Alternaite Income (Step Two)",
+  "code": "LIST STU ID NM GR SC? PG CL? TL PEM",
+  "language": "student queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/student_and_contact_info_for_famillies_who_have_not_filled_out_pdc_or_alternaite_income__step_two_.json"
+}

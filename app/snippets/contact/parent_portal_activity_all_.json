@@ -1,0 +1,12 @@
+{
+  "id": "1738287868209",
+  "title": "Parent Portal Activity-All ",
+  "description": "Provides a list of all Aeries Parent Portal activity with date created and number of times accessed",
+  "code": "LIST PWA PWS STU.ID STU.LN STU.FN STU.SC? STU.GR PWA.EM PWA.TY PWA.LC PWA.LDT PWA.CD IF PWA.TY = \"P\"",
+  "language": "contact queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/parent_portal_activity_all_.json"
+}

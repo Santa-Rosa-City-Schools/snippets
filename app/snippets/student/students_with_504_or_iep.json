@@ -1,0 +1,12 @@
+{
+  "id": "1738287868492",
+  "title": "Students with 504 or IEP",
+  "description": "Students with 504 or IEP",
+  "code": "LIST STU ID LN FN BD SEM U13? IF U13 > 0 ",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/students_with_504_or_iep.json"
+}

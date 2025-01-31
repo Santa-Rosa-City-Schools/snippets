@@ -1,0 +1,12 @@
+{
+  "id": "1738287868395",
+  "title": "Has 504 Plan or 504 Program",
+  "description": "Has 504 Plan or 504 Program - This query will give you any student with a 504 Plan or a 504 Program. Review as needed.",
+  "code": "LIST STU SC? ID LN FN 504_PLAN 504_PRG BY STU.SC IF 504_PLAN =YES OR 504_PRG = YES",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/has_504_plan_or_504_program.json"
+}

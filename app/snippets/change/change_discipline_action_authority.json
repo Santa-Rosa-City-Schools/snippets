@@ -1,0 +1,12 @@
+{
+  "id": "1738287868677",
+  "title": "Change Discipline Action Authority",
+  "description": "Change Discipline Action Authority - ",
+  "code": "LIST STU ADS DSP STU.CID STU.NM ADS.DT ADS.IID DSP.DS DSP.AA IF DSP.AA = \"\" AND DSP.DS : SUS",
+  "language": "change queries",
+  "tags": [
+    "Discipline"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/change queries/change_discipline_action_authority.json"
+}

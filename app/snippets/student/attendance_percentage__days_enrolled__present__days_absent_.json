@@ -1,0 +1,12 @@
+{
+  "id": "1738287868446",
+  "title": "Attendance Percentage (Days enrolled, present, days absent)",
+  "description": "Attendance Percentage (Days enrolled, present, days absent)",
+  "code": "LIST STU NM GR SC? DE DA DP (( LEFT (1.0 * DP / DE * 100 , 5 ) + \"%\" )) BY (( DP / DE )) REV IF DE # 0",
+  "language": "student queries",
+  "tags": [
+    "Attendance"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/attendance_percentage__days_enrolled__present__days_absent_.json"
+}

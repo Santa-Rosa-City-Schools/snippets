@@ -1,0 +1,12 @@
+{
+  "id": "1738287868231",
+  "title": "This query will show you which grades in your GRD table are also missing credits",
+  "description": "This query will show you which grades in your GRD table are also missing credits",
+  "code": "LIST STU GRD CRS STU.ID STU.NM STU.GR? GRD.PD GRD.CN CRS.CO GRD.TN GRD.MK GRD.M1 GRD.M2 GRD.M3 GRD.CR GRD.TM GRD.SE IF GRD.CR = 0 ",
+  "language": "cousre queries",
+  "tags": [
+    "Courses"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/cousre queries/this_query_will_show_you_which_grades_in_your_grd_table_are_also_missing_credits.json"
+}

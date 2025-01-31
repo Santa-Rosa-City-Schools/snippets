@@ -1,0 +1,12 @@
+{
+  "id": "1738287868223",
+  "title": "Demographic information of student's in specific course",
+  "description": "Demographic information of student's in specific course",
+  "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR? STU.LF? STU.HL? STU.ETH? STU.RC1? STU.GN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CN = MH034  ",
+  "language": "cousre queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/cousre queries/demographic_information_of_student_s_in_specific_course.json"
+}

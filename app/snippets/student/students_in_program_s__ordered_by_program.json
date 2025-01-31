@@ -1,0 +1,12 @@
+{
+  "id": "1738287868389",
+  "title": "Students in Program(s) ordered by program",
+  "description": "Students in Program(s) ordered by program -- for parent contact info, upload csv of program group into parentsquare",
+  "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.SC? STU.GR PGM.CD? PGM.EED BY PGM.CD IF PGM.CD # \"\" AND ( PGM.EED = NULL OR PGM.EED > 08/11/2023 ) ",
+  "language": "student queries",
+  "tags": [
+    "Student Programs"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/students_in_program_s__ordered_by_program.json"
+}

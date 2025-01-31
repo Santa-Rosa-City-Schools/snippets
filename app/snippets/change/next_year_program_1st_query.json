@@ -1,0 +1,12 @@
+{
+  "id": "1738287868656",
+  "title": "Next Year Program 1st Query",
+  "description": "Next Year Program 1st Query - ",
+  "code": "LIST STU NM ID NSP IF NSP = I",
+  "language": "change queries",
+  "tags": [
+    "Enrollment"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/change queries/next_year_program_1st_query.json"
+}

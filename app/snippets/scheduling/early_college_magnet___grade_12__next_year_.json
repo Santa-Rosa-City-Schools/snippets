@@ -1,0 +1,12 @@
+{
+  "id": "1738287868314",
+  "title": "Early College Magnet - Grade 12 (Next Year)",
+  "description": "Early College Magnet - Grade 12 (Next Year) - ",
+  "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? PGM.CD? PGM.CD IF PGM.CD = \"ECM\" AND STU.NG = 12",
+  "language": "scheduling - finding groups of students",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/scheduling - finding groups of students/early_college_magnet___grade_12__next_year_.json"
+}

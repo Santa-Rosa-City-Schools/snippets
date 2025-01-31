@@ -1,0 +1,12 @@
+{
+  "id": "1738287868205",
+  "title": "Contacts: ERH-Portal Access w/o Email",
+  "description": "Contacts: ERH-Portal Access w/o Email - Contacts that have Ed Rights and Portal Activiated, but no Email",
+  "code": "LIST STU CON STU.ID STU.NM STU.SC? STU.GR? CON.NM CON.EM CON.ERH CON.AP IF CON.AP = Y AND CON.EM = \"\" AND CON.ERH = Y",
+  "language": "contact queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/contacts__erh_portal_access_w_o_email.json"
+}

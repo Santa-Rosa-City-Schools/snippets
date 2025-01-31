@@ -1,0 +1,12 @@
+{
+  "id": "1738287868558",
+  "title": "Elementary Student List for Tracking Sheet",
+  "description": "Elementary Student List for Tracking Sheet - Needs to be updated for Flex Scheduling",
+  "code": "LIST STU SEC MST TCH STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR TCH.TF TCH.TLN IF ( MST.CN = KE003 OR MST.CN = KE004 OR MST.CN = KE005 OR MST.CN = KE006 OR MST.CN = SESD3 OR MST.CN = SESD4 OR MST.CN = SESD5 OR MST.CN = SESD6 OR MST.CN = SEDH4 OR MST.CN = SEDH4 OR MST.CN = SEDH5 OR MST.CN = SEDH6 )",
+  "language": "testing queries",
+  "tags": [
+    "Testing - CAASPP"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/elementary_student_list_for_tracking_sheet.json"
+}

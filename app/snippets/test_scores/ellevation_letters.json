@@ -1,0 +1,12 @@
+{
+  "id": "1738287868535",
+  "title": "Ellevation Letters",
+  "description": "",
+  "code": "LIST STU LAC STU.ID STU.NM STU.SC? STU.LF STU.CL? IF ( LAC.EIT = \"ELPAC\" AND LAC.EID >= 2/1/2023 ) ",
+  "language": "test score queries",
+  "tags": [
+    "Testing - PFT"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/test score queries/ellevation_letters.json"
+}

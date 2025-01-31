@@ -1,0 +1,12 @@
+{
+  "id": "1738287868543",
+  "title": "Initial ELPAC: Pre-enrolled Students",
+  "description": "Initial ELPAC: Pre-enrolled Students - Run to identify all pre-enrolled students whose language proficiency is identified as TBD",
+  "code": "LIST STU LAC STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.NG? STU.ED STU.LF IF STU.LF = T AND STU.TG = \"*\"",
+  "language": "testing queries",
+  "tags": [
+    "Testing - ELPAC Initial"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/initial_elpac__pre_enrolled_students.json"
+}

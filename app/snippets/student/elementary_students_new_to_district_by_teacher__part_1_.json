@@ -1,0 +1,12 @@
+{
+  "id": "1738287868478",
+  "title": "Elementary Students New to District By Teacher (Part 1)",
+  "description": "Students New to District By Teacher (Part 1)",
+  "code": "SKIP STU ENR IF ENR.YR < 2023",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/elementary_students_new_to_district_by_teacher__part_1_.json"
+}

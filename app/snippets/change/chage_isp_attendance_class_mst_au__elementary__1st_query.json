@@ -1,0 +1,12 @@
+{
+  "id": "1738287868628",
+  "title": "Chage ISP Attendance Class MST.AU (Elementary) 1st Query",
+  "description": "Chage ISP Attendance Class MST.AU (Elementary) 1st Query - ",
+  "code": "LIST MST CRS CRS.CO MST.RM MST.ISI MST.AU IF MST.RM = \"ISP\" AND CRS.CO : \"ISP\"",
+  "language": "change queries",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/change queries/chage_isp_attendance_class_mst_au__elementary__1st_query.json"
+}

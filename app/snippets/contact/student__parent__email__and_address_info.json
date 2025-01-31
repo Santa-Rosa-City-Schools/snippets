@@ -1,0 +1,12 @@
+{
+  "id": "1738287868213",
+  "title": "Student, Parent, Email, and Address Info",
+  "description": "Student, Parent, Email and Address Info",
+  "code": "LIST STU CON STU.NM STU.GR STU.PG STU.AD STU.CY STU.ST STU.ZC STU.TL CON.EM STU.HL? IF CON.NM = STU.PG  ",
+  "language": "contact queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/student__parent__email__and_address_info.json"
+}

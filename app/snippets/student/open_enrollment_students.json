@@ -1,0 +1,12 @@
+{
+  "id": "1738287868367",
+  "title": "Open Enrollment Students",
+  "description": "Open Enrollment Students - ",
+  "code": "LIST STU CHI STU.ID STU.LN STU.FN STU.SC? IT? STU.ITD CHI.NM CHI.SCH CHI.U1? IF STU.IT : I AND CHI.U1 # \" \"",
+  "language": "student queries",
+  "tags": [
+    "Enrollment"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/open_enrollment_students.json"
+}

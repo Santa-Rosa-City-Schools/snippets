@@ -1,0 +1,12 @@
+{
+  "id": "1738287868402",
+  "title": "Current Class Rank - By Counselor",
+  "description": "This report will provide the class rank sorted by last name. Be sure and change the number at the end of the query to match the counselor number you are looking for.",
+  "code": "LIST STU SUP STU.ID STU.LN STU.FN SUP.RNK IF STU.CU = 106",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/current_class_rank___by_counselor.json"
+}

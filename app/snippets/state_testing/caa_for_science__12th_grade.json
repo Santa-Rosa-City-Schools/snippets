@@ -1,0 +1,12 @@
+{
+  "id": "1738287868600",
+  "title": "CAA for Science: 12th grade",
+  "description": "Then run your information query for 12th graders who did not take the CAA Part 3 (Science) SPRG22",
+  "code": "Step 3: LIST STU STU.ID STU.CID STU.LN STU.FN STU.MN STU.SC? STU.GR ",
+  "language": "testing queries",
+  "tags": [
+    "Testing - CA Alternate"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/caa_for_science__12th_grade.json"
+}

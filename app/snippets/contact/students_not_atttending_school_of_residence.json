@@ -1,0 +1,12 @@
+{
+  "id": "1738287868202",
+  "title": "Students NOT Atttending School of Residence",
+  "description": "Students NOT Atttending School of Residence",
+  "code": "LIST STU ID NM GR? SC? IT IF IT # \" \"",
+  "language": "contact queries",
+  "tags": [
+    "Enrollment"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/students_not_atttending_school_of_residence.json"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "1738287868609",
+  "title": "DHH STudents",
+  "description": "",
+  "code": "LIST STU STU.CID STU.ID STU.LN STU.FN STU.GR LAC.EAC CSE.SS? CSE.DI IF CSE.DI = 230",
+  "language": "testing queries",
+  "tags": [
+    "Testing - ELPAC Initial"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/dhh_students.json"
+}

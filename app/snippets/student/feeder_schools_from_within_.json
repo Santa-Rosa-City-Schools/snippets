@@ -1,0 +1,12 @@
+{
+  "id": "1738287868434",
+  "title": "Feeder Schools from within ",
+  "description": "Feeder Schools from within [Replace ENR.YR (enrollment year), STU.SC(current site), and STU.GR(current grade) as needed]",
+  "code": "LIST STU ENR STU.ID STU.LN STU.FN STU.GR ENR.SC ENR.YR IF ENR.YR = 2021 AND STU.SC = 31  AND STU.GR = 7 AND ENR.SC < 100  ",
+  "language": "student queries",
+  "tags": [
+    "Student"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/feeder_schools_from_within_.json"
+}

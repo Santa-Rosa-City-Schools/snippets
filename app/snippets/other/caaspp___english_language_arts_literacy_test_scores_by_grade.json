@@ -1,0 +1,12 @@
+{
+  "id": "1738287868514",
+  "title": "CAASPP - English Language Arts/Literacy Test Scores by Grade",
+  "description": "ELA scores by grade level. Replace the X with the grade level the assessment was given (3rd graders tested in 2023-24 are now 4th graders, etc.).",
+  "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRGXX AND TST.ID = \"SBAC\" AND TST.PT = 1 AND STU.GR = X",
+  "language": "",
+  "tags": [
+    "Testing - CAASPP"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets//caaspp___english_language_arts_literacy_test_scores_by_grade.json"
+}

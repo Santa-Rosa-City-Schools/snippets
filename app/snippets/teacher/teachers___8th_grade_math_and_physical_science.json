@@ -1,0 +1,12 @@
+{
+  "id": "1738287868495",
+  "title": "Teachers - 8th Grade Math and Physical Science",
+  "description": "Teachers - 8th Grade Math and Physical Science - By changing the department code or the list of courses you can get other teachers.",
+  "code": "LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM CRS.DC? MST.SC? IF MST.SC < 50 AND ( CRS.DC = \"P\" OR CRS.CN = MMH05 OR CRS.CN = MMH06 OR CRS.CN = MMH08 OR CRS.CN = MMH0082 OR CRS.CN = MMH083 OR CRS.CN = MM008 OR CRS.CN = MMP08 OR CRS.CN = MMV08 OR CRS.CN = MMV082 OR CRS.CN = MMV083 OR CRS.CN = MM001P )",
+  "language": "teacher queries",
+  "tags": [
+    "Teacher"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/teacher queries/teachers___8th_grade_math_and_physical_science.json"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "1738287868230",
+  "title": "Courses with \"0\" Credits",
+  "description": "Courses with \"0\" Credits",
+  "code": "LIST MST CRS MST.SE MST.PD MST.SM MST.CN CRS.CO MST.TN MST.CR MST.TS  IF MST.CR = 0 AND MST.TS > 0    ",
+  "language": "cousre queries",
+  "tags": [
+    "Courses"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/cousre queries/courses_with__0__credits.json"
+}

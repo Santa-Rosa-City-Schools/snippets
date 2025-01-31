@@ -1,0 +1,12 @@
+{
+  "id": "1738287868584",
+  "title": "PFT: List of students w/Teachers",
+  "description": "PFT: Flex Scheduling list of students - Run to identify students that do not have any PFT scores for administration year",
+  "code": "LIST STU SEC MST FTF SSE STF PFT STU.ID STU.LN STU.FN STU.GR STU.SC? STF.FN STF.LN FTF.STI CRS.DC? PFT.TA BY STU.ID IF ( ( SSE.PR = 1 AND CRS.DC = G ) AND ( STU.GR = 7 OR STU.GR = 9 ) AND PFT.TA = NULL ) OR ( STU.GR = 5 AND STU.SC < 90 AND PFT.TA = NULL AND STF.PSC = STU.SC )    ",
+  "language": "testing queries",
+  "tags": [
+    "Testing - PFT"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/pft__list_of_students_w_teachers.json"
+}

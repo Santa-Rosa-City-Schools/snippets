@@ -1,0 +1,12 @@
+{
+  "id": "1738287868468",
+  "title": "SARB Intervention after date",
+  "description": "SARB Intervention after date",
+  "code": "LIST STU INV STU.ID STU.LN STU.FN STU.GR STU.SC? INV.CD? INV.DT IF INV.DT > XX/XX/20XX AND INV.CD = \"SB\"",
+  "language": "student queries",
+  "tags": [
+    "Attendance"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/sarb_intervention_after_date.json"
+}

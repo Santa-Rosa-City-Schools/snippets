@@ -1,0 +1,12 @@
+{
+  "id": "1738287868347",
+  "title": "Students who left section",
+  "description": "Students who left section - Run this query to find students that are no longer in Section. Change XXX to the section #",
+  "code": "LIST STU CAR STU.ED STU.GR STU.ID CAR.SE CAR.DS CAR.DE IF CAR.SE = XXX",
+  "language": "student queries",
+  "tags": [
+    "Courses"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/students_who_left_section.json"
+}

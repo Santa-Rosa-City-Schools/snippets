@@ -1,0 +1,12 @@
+{
+  "id": "1738287868308",
+  "title": "Early College Magnet - All Students",
+  "description": "Early College Magnet - All Students - ",
+  "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF STU.NG # 13 AND PGM.CD = \"ECM\"",
+  "language": "scheduling - finding groups of students",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/scheduling - finding groups of students/early_college_magnet___all_students.json"
+}

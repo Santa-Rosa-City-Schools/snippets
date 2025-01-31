@@ -1,0 +1,12 @@
+{
+  "id": "1738287868474",
+  "title": "In Progress DTP Vaccine",
+  "description": "In Progress DTP Vaccine",
+  "code": "LIST STU IMM STU.ID STU.LN STU.FN STU.GR STU.SC? IMM.DE? IMM.DC IF IMM.DE = I   ",
+  "language": "student queries",
+  "tags": [
+    "Health"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/in_progress_dtp_vaccine.json"
+}

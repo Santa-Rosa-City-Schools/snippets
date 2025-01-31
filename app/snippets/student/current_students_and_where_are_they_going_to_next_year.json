@@ -1,0 +1,12 @@
+{
+  "id": "1738287868337",
+  "title": "Current Students and where are they going to next year",
+  "description": "Current Students and where are they going to next year - Delete IF GR = 8 to see all students.",
+  "code": "LIST STU ID LN FN SEM GR? NS? IF GR = 8",
+  "language": "student queries",
+  "tags": [
+    "Scheduling"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/current_students_and_where_are_they_going_to_next_year.json"
+}

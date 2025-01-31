@@ -1,0 +1,12 @@
+{
+  "id": "1738287868216",
+  "title": "Course Listing by Department",
+  "description": "Course Listing by Department - List course code and title by department (C=CTE, E=English, etc)",
+  "code": "LIST CRS CN CO DC IF CRS.DC = \"C\"",
+  "language": "cousre queries",
+  "tags": [
+    "Courses"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/cousre queries/course_listing_by_department.json"
+}

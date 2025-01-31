@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets Library</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f3f4f6;
+            --text-color: #1f2937;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .snippet-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .snippet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .snippet-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .snippet-metadata {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #e5e7eb;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #374151;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            cursor: pointer;
+        }
+
+        #addForm {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #addForm input,
+        #addForm textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+        }
+
+        .copied {
+            background: #10b981 !important;
+        }
+        .folder-path {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: #e5e7eb;
+            border-radius: 0.375rem;
+        }
+
+        #addForm .path-input {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        #addForm .path-input input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Code Snippets Library</h1>
+            <button onclick="showAddSnippetModal()">Add New Snippet</button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search snippets...">
+            <button onclick="searchSnippets()">Search</button>
+        </div>
+
+        <div id="snippetsContainer"></div>
+    </div>
+
+    <div id="addSnippetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideAddSnippetModal()">&times;</span>
+            <h2>Add New Snippet</h2>
+            <form id="addForm" onsubmit="handleSnippetSubmit(event)">
+                <div class="path-input">
+                    <input type="text" id="folderPath" placeholder="Folder path (e.g., javascript/react)" required>
+                    <input type="text" id="filename" placeholder="Filename (without .json)" required>
+                </div>
+                <input type="text" id="title" placeholder="Title" required>
+                <textarea id="description" placeholder="Description" required></textarea>
+                <textarea id="code" placeholder="Code" required></textarea>
+                <input type="text" id="language" placeholder="Language (e.g., javascript, python)" required>
+                <input type="text" id="tags" placeholder="Tags (comma-separated)">
+                <button type="submit">Download Snippet JSON</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    // Load snippets from index file
+    async function loadSnippets() {
+        try {
+            const response = await fetch('snippets/index.json');
+            const index = await response.json();
+            const snippets = [];
+
+            for (const entry of index.snippets) {
+                const snippetResponse = await fetch(entry.path);
+                const snippet = await snippetResponse.json();
+                snippets.push(snippet);
+            }
+
+            return snippets;
+        } catch (error) {
+            console.error('Error loading snippets:', error);
+            return [];
+        }
+    }
+
+    // Add this at the start of your script section
+    function getWordSimilarity(word1, word2) {
+        word1 = word1.toLowerCase();
+        word2 = word2.toLowerCase();
+        
+        // Exact match
+        if (word1 === word2) return 1.0;
+        
+        // Contains as substring
+        if (word1.includes(word2) || word2.includes(word1)) {
+            return 0.8;
+        }
+        
+        // Levenshtein distance for typos
+        const distance = levenshteinDistance(word1, word2);
+        const maxLength = Math.max(word1.length, word2.length);
+        const similarity = 1 - (distance / maxLength);
+        
+        return similarity > 0.6 ? similarity : 0;
+    }
+
+    function levenshteinDistance(str1, str2) {
+        const m = str1.length;
+        const n = str2.length;
+        const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+
+        for (let i = 0; i <= m; i++) dp[i][0] = i;
+        for (let j = 0; j <= n; j++) dp[0][j] = j;
+
+        for (let i = 1; i <= m; i++) {
+            for (let j = 1; j <= n; j++) {
+                if (str1[i - 1] === str2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = Math.min(
+                        dp[i - 1][j - 1] + 1,
+                        dp[i - 1][j] + 1,
+                        dp[i][j - 1] + 1
+                    );
+                }
+            }
+        }
+        return dp[m][n];
+    }
+
+    function calculateSnippetScore(snippet, searchTerms) {
+        const snippetText = `${snippet.title} ${snippet.description}`.toLowerCase();
+        const snippetWords = snippetText.split(/\W+/);
+        const tags = snippet.tags.map(tag => tag.toLowerCase());
+        
+        let totalScore = 0;
+        
+        for (const searchTerm of searchTerms) {
+            let termScore = 0;
+            
+            // Check exact matches in tags (highest priority)
+            if (tags.some(tag => tag.includes(searchTerm))) {
+                termScore += 2;
+            }
+            
+            // Check title matches (high priority)
+            if (snippet.title.toLowerCase().includes(searchTerm)) {
+                termScore += 1.5;
+            }
+            
+            // Check description for contextual relevance
+            let contextScore = 0;
+            for (const word of snippetWords) {
+                const similarity = getWordSimilarity(searchTerm, word);
+                contextScore = Math.max(contextScore, similarity);
+            }
+            
+            termScore += contextScore;
+            totalScore += termScore;
+        }
+        
+        // Normalize score based on number of search terms
+        return totalScore / searchTerms.length;
+    }
+
+    // Replace your existing searchSnippets function with this one
+    async function searchSnippets() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const snippets = await loadSnippets();
+        
+        if (!query.trim()) {
+            displaySnippets(snippets);
+            return;
+        }
+        
+        // Split search query into terms
+        const searchTerms = query.split(/\s+/).filter(term => term.length > 1);
+        
+        // Calculate scores and sort results
+        const results = snippets
+            .map(snippet => ({
+                snippet,
+                score: calculateSnippetScore(snippet, searchTerms)
+            }))
+            .filter(result => result.score > 0.2) // Minimum relevance threshold
+            .sort((a, b) => b.score - a.score);
+        
+        // Add score indicators in development (remove in production)
+        const resultsWithScores = results.map(({ snippet, score }) => ({
+            ...snippet,
+            title: `${snippet.title} (score: ${score.toFixed(2)})`  // Remove this line in production
+        }));
+        
+        displaySnippets(resultsWithScores);
+    }
+
+    // UI functions
+    function displaySnippets(snippets) {
+        const container = document.getElementById('snippetsContainer');
+        container.innerHTML = snippets.map(snippet => `
+            <div class="snippet-card">
+                <div class="snippet-header">
+                    <h3 class="snippet-title">${snippet.title}</h3>
+                    <button onclick="copyCode('${snippet.code}')" id="copy-${snippet.id}">Copy Code</button>
+                </div>
+                <div class="snippet-metadata">
+                    Created on ${new Date(snippet.createdAt).toLocaleDateString()}
+                </div>
+                <div>${marked.parse(snippet.description)}</div>
+                <pre><code class="language-${snippet.language}">${snippet.code}</code></pre>
+                <div class="tags">
+                    ${snippet.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            </div>
+        `).join('');
+
+        Prism.highlightAll();
+    }
+
+    async function copyCode(code) {
+        try {
+            await navigator.clipboard.writeText(code);
+            const button = event.target;
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+            setTimeout(() => {
+                button.textContent = 'Copy Code';
+                button.classList.remove('copied');
+            }, 2000);
+        } catch (err) {
+            console.error('Failed to copy:', err);
+        }
+    }
+
+    function showAddSnippetModal() {
+        document.getElementById('addSnippetModal').style.display = 'block';
+    }
+
+    function hideAddSnippetModal() {
+        document.getElementById('addSnippetModal').style.display = 'none';
+    }
+
+    function handleSnippetSubmit(event) {
+        event.preventDefault();
+        
+        const folderPath = document.getElementById('folderPath').value.trim();
+        const filename = document.getElementById('filename').value.trim();
+        const fullPath = `snippets/${folderPath}/${filename}.json`;
+
+        const snippet = {
+            id: Date.now().toString(),
+            title: document.getElementById('title').value,
+            description: document.getElementById('description').value,
+            code: document.getElementById('code').value,
+            language: document.getElementById('language').value,
+            tags: document.getElementById('tags').value.split(',').map(tag => tag.trim()),
+            createdAt: new Date().toISOString(),
+            path: fullPath
+        };
+
+        // Create and download the JSON file
+        const jsonContent = JSON.stringify(snippet, null, 2);
+        const blob = new Blob([jsonContent], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${filename}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        // Also generate index entry
+        const indexEntry = {
+            path: fullPath,
+            id: snippet.id
+        };
+        
+        const indexEntryBlob = new Blob([JSON.stringify(indexEntry, null, 2)], { type: 'application/json' });
+        const indexUrl = URL.createObjectURL(indexEntryBlob);
+        const indexA = document.createElement('a');
+        indexA.href = indexUrl;
+        indexA.download = 'index-entry.json';
+        document.body.appendChild(indexA);
+        indexA.click();
+        document.body.removeChild(indexA);
+        URL.revokeObjectURL(indexUrl);
+
+        hideAddSnippetModal();
+        event.target.reset();
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', async () => {
+        const snippets = await loadSnippets();
+        displaySnippets(snippets);
+        
+        document.getElementById('searchInput').addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                searchSnippets();
+            }
+        });
+    });
+    </script>
+</body>
+</html>

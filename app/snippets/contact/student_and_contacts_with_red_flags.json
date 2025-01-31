@@ -1,0 +1,12 @@
+{
+  "id": "1738287868214",
+  "title": "Student and Contacts with Red Flags",
+  "description": "Student and Contacts with Red Flags (ex: restraining order, important notes, etc)",
+  "code": "LIST STU CON STU.ID STU.LN STU.FN STU.GR CON.NM CON.RF CON.RL? CON.ME IF CON.RF > 0",
+  "language": "contact queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/student_and_contacts_with_red_flags.json"
+}

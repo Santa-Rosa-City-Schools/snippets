@@ -1,0 +1,10 @@
+{
+  "id": "1738287868679",
+  "title": "No Name Change Query",
+  "description": "No Name Change Query - ",
+  "code": "CHANGE STU ADS DSP DSP.AA TO \"10\" IF DSP.AA = \"\" AND DSP.DS : SUS",
+  "language": "change queries",
+  "tags": [],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/change queries/no_name_change_query.json"
+}

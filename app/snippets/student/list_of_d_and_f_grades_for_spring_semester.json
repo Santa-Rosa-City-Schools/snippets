@@ -1,0 +1,12 @@
+{
+  "id": "1738287868365",
+  "title": "List of D and F grades for Spring Semester",
+  "description": "List of D and F grades for Spring Semester - 21. Change the 21 for other years.\n\n*In Aeries, the year is the start of the school year, not the end.",
+  "code": "LIST STU HIS STU.ID STU.LN STU.FN STU.GR? HIS.YR HIS.TE HIS.MK CRS.CO IF HIS.YR = \"21\" AND ( HIS.TE = \"3\" OR HIS.TE = \"4\" ) AND ( HIS.MK = \"F\" OR HIS.MK : \"D\" )",
+  "language": "student queries",
+  "tags": [
+    "Grades"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/student queries/list_of_d_and_f_grades_for_spring_semester.json"
+}

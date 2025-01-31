@@ -1,0 +1,12 @@
+{
+  "id": "1738287868207",
+  "title": "Student w/ Parent Email if contact is Ed-Rights Holder",
+  "description": "Student w/ Parent Email if contact is Ed-Rights Holder",
+  "code": "LIST STU CON STU.LN STU.FN STU.MN STU.ID STU.BD STU.GR CON.EM IF CON.ERH = Y \n",
+  "language": "contact queries",
+  "tags": [
+    "Contacts"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/contact queries/student_w__parent_email_if_contact_is_ed_rights_holder.json"
+}

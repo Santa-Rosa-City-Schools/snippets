@@ -1,0 +1,12 @@
+{
+  "id": "1738287868193",
+  "title": "Overall ELPAC scores",
+  "description": "This will give you a list of EL students and their overall ELPAC ScoreOverall ELPAC scores - ",
+  "code": "LIST STU TST LN FN GR TST.ID TST.PT TST.SS TST.OT TST.TD TST.TA IF TST.TD > 8/1/2020 AND TST.PT = 0",
+  "language": "calpas queries",
+  "tags": [
+    "Testing - ELPAC Summative"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/calpas queries/overall_elpac_scores.json"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "1738287868560",
+  "title": "EAHS Student List for Tracking Sheet ",
+  "description": "EAHS Student List for Tracking Sheet  - Run at the site level for a full list of eligible students for CAASPP testing in the specific classes the site is testing \n(Testing in English and History Classes)",
+  "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND ( ( ( CRS.DC = E ) AND STU.GR = 11) OR ( ( CRS.DC = H ) AND ( STU.GR = 11 OR STU.GR = 12 ) )",
+  "language": "testing queries",
+  "tags": [
+    "Testing - CAASPP"
+  ],
+  "createdAt": "2025-01-31T01:44:28Z",
+  "path": "snippets/testing queries/eahs_student_list_for_tracking_sheet_.json"
+}
