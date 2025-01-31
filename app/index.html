@@ -183,6 +183,23 @@
             color: #6b7280;
             padding: 2rem;
         }
+        .snippet-card .bookmark-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #6b7280;
+        }
+
+        .snippet-card .bookmark-btn.bookmarked {
+            color: #ffaa00;
+        }
+
+        .bookmarks-section {
+            margin-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+        }
     </style>
 </head>
 
@@ -190,7 +207,6 @@
     <div class="container">
         <div class="header">
             <h1>Code Snippets Library</h1>
-            <button onclick="showAddSnippetModal()">Add New Snippet</button>
         </div>
 
         <div class="search-container">
@@ -201,24 +217,10 @@
         <div id="snippetsContainer" class="empty">
             Start searching to view code snippets
         </div>
-    </div>
 
-    <div id="addSnippetModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="hideAddSnippetModal()">&times;</span>
-            <h2>Add New Snippet</h2>
-            <form id="addForm" onsubmit="handleSnippetSubmit(event)">
-                <div class="path-input">
-                    <input type="text" id="folderPath" placeholder="Folder path (e.g., javascript/react)" required>
-                    <input type="text" id="filename" placeholder="Filename (without .json)" required>
-                </div>
-                <input type="text" id="title" placeholder="Title" required>
-                <textarea id="description" placeholder="Description" required></textarea>
-                <textarea id="code" placeholder="Code" required></textarea>
-                <input type="text" id="language" placeholder="Language (e.g., javascript, python)" required>
-                <input type="text" id="tags" placeholder="Tags (comma-separated)">
-                <button type="submit">Download Snippet JSON</button>
-            </form>
+        <div id="bookmarksContainer" class="bookmarks-section" style="display:none;">
+            <h2>Bookmarked Snippets</h2>
+            <div id="bookmarkedSnippets"></div>
         </div>
     </div>
 
@@ -400,9 +402,57 @@
             }
         }
 
-        // Modify displaySnippets to properly escape button attributes
-        function displaySnippets(snippets) {
-            const container = document.getElementById('snippetsContainer');
+        // New function to toggle bookmarks
+        function toggleBookmark(snippetId) {
+            const bookmarks = JSON.parse(localStorage.getItem('codeSnippetBookmarks') || '[]');
+            const bookmarkIndex = bookmarks.indexOf(snippetId);
+
+            if (bookmarkIndex > -1) {
+                // Remove bookmark
+                bookmarks.splice(bookmarkIndex, 1);
+            } else {
+                // Add bookmark
+                bookmarks.push(snippetId);
+            }
+
+            localStorage.setItem('codeSnippetBookmarks', JSON.stringify(bookmarks));
+            
+            // Refresh the display to update bookmark states
+            searchSnippets();
+            displayBookmarks();
+        }
+
+        // Function to display bookmarked snippets
+        async function displayBookmarks() {
+            const bookmarks = JSON.parse(localStorage.getItem('codeSnippetBookmarks') || '[]');
+            const bookmarksContainer = document.getElementById('bookmarksContainer');
+            const bookmarkedSnippetsContainer = document.getElementById('bookmarkedSnippets');
+
+            if (bookmarks.length === 0) {
+                bookmarksContainer.style.display = 'none';
+                return;
+            }
+
+            try {
+                const snippets = await loadSnippets();
+                const bookmarkedSnippets = snippets.filter(snippet => bookmarks.includes(snippet.id));
+
+                if (bookmarkedSnippets.length > 0) {
+                    bookmarksContainer.style.display = 'block';
+                    displaySnippets(bookmarkedSnippets, true);
+                } else {
+                    bookmarksContainer.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Failed to load bookmarks:', error);
+            }
+        }
+
+        // Modify displaySnippets to include bookmark functionality
+        function displaySnippets(snippets, isBookmarkView = false) {
+            const container = document.getElementById(isBookmarkView ? 'bookmarkedSnippets' : 'snippetsContainer');
+            const bookmarks = JSON.parse(localStorage.getItem('codeSnippetBookmarks') || '[]');
+
             container.innerHTML = snippets.map(snippet => {
                 // Escape special characters in code for safe attribute insertion
                 const escapedCode = snippet.code
@@ -412,11 +462,20 @@
                     .replace(/"/g, '&quot;')
                     .replace(/'/g, '&#039;');
 
+                const isBookmarked = bookmarks.includes(snippet.id);
+
                 return `
                 <div class="snippet-card">
                     <div class="snippet-header">
                         <h3 class="snippet-title">${snippet.title}</h3>
-                        <button onclick="copyCode('${escapedCode}')">Copy Code</button>
+                        <div>
+                            <button onclick="copyCode('${escapedCode}')">Copy Code</button>
+                            <button 
+                                class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" 
+                                onclick="toggleBookmark('${snippet.id}')">
+                                ${isBookmarked ? '★' : '☆'}
+                            </button>
+                        </div>
                     </div>
                     <div class="snippet-metadata">
                         Created on ${new Date(snippet.createdAt).toLocaleDateString()}
@@ -432,58 +491,23 @@
             Prism.highlightAll();
         }
 
-        function handleSnippetSubmit(event) {
-            event.preventDefault();
-
-            const snippet = {
-                id: Date.now().toString(),
-                title: document.getElementById('title').value,
-                description: document.getElementById('description').value,
-                code: document.getElementById('code').value,
-                language: document.getElementById('language').value,
-                tags: document.getElementById('tags').value.split(',').map(tag => tag.trim()),
-                createdAt: new Date().toISOString()
-            };
-
-            // Generate snippet JSON
-            const snippetJsonContent = JSON.stringify(snippet, null, 2);
-            const snippetBlob = new Blob([snippetJsonContent], { type: 'application/json' });
-            const snippetUrl = URL.createObjectURL(snippetBlob);
-            const snippetA = document.createElement('a');
-            snippetA.href = snippetUrl;
-            snippetA.download = `${snippet.id}.json`;
-            document.body.appendChild(snippetA);
-            snippetA.click();
-            document.body.removeChild(snippetA);
-            URL.revokeObjectURL(snippetUrl);
-
-            // Modify index generation to include full snippet
-            const indexEntry = {
-                snippets: [snippet]
-            };
-
-            const indexJsonContent = JSON.stringify(indexEntry, null, 2);
-            const indexBlob = new Blob([indexJsonContent], { type: 'application/json' });
-            const indexUrl = URL.createObjectURL(indexBlob);
-            const indexA = document.createElement('a');
-            indexA.href = indexUrl;
-            indexA.download = 'snippets.json';
-            document.body.appendChild(indexA);
-            indexA.click();
-            document.body.removeChild(indexA);
-            URL.revokeObjectURL(indexUrl);
-
-            hideAddSnippetModal();
-            event.target.reset();
+        // Modify existing search function to call displayBookmarks
+        const originalSearchSnippets = searchSnippets;
+        searchSnippets = async function() {
+            await originalSearchSnippets();
+            displayBookmarks();
         }
 
-        // Remove automatic loading of snippets on page load
+        // Add event listener to show bookmarks when page loads
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('searchInput').addEventListener('keyup', (event) => {
                 if (event.key === 'Enter') {
                     searchSnippets();
                 }
             });
+
+            // Display bookmarks on initial load
+            displayBookmarks();
         });
     </script>
 </body>
