@@ -183,6 +183,7 @@
             color: #6b7280;
             padding: 2rem;
         }
+
         .snippet-card .bookmark-btn {
             background: none;
             border: none;
@@ -200,13 +201,25 @@
             border-top: 1px solid #e5e7eb;
             padding-top: 1rem;
         }
+
+        .share-btn {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 0.5rem;
+        }
+
+        .share-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
-            <h1>Code Snippets Library</h1>
+            <h1>Santa Rosa City Schools - Code Snippets Library</h1>
         </div>
 
         <div class="search-container">
@@ -416,7 +429,7 @@
             }
 
             localStorage.setItem('codeSnippetBookmarks', JSON.stringify(bookmarks));
-            
+
             // Refresh the display to update bookmark states
             searchSnippets();
             displayBookmarks();
@@ -465,40 +478,97 @@
                 const isBookmarked = bookmarks.includes(snippet.id);
 
                 return `
-                <div class="snippet-card">
-                    <div class="snippet-header">
-                        <h3 class="snippet-title">${snippet.title}</h3>
-                        <div>
-                            <button onclick="copyCode('${escapedCode}')">Copy Code</button>
-                            <button 
-                                class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" 
-                                onclick="toggleBookmark('${snippet.id}')">
-                                ${isBookmarked ? '★' : '☆'}
-                            </button>
-                        </div>
-                    </div>
-                    <div class="snippet-metadata">
-                        Created on ${new Date(snippet.createdAt).toLocaleDateString()}
-                    </div>
-                    <div>${marked.parse(snippet.description)}</div>
-                    <pre><code class="language-${snippet.language}">${snippet.code}</code></pre>
-                    <div class="tags">
-                        ${snippet.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
+        <div class="snippet-card">
+            <div class="snippet-header">
+                <h3 class="snippet-title">${snippet.title}</h3>
+                <div>
+                    <button onclick="copyCode('${escapedCode}')">Copy Code</button>
+                    <button class="share-btn" onclick="shareSnippet('${snippet.id}')">Share</button>
+                    <button 
+                        class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" 
+                        onclick="toggleBookmark('${snippet.id}')">
+                        ${isBookmarked ? '★' : '☆'}
+                    </button>
                 </div>
-            `}).join('');
+            </div>
+            <div class="snippet-metadata">
+                Created on ${new Date(snippet.createdAt).toLocaleDateString()}
+            </div>
+            <div>${marked.parse(snippet.description)}</div>
+            <pre><code class="language-${snippet.language}">${snippet.code}</code></pre>
+            <div class="tags">
+                ${snippet.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `}).join('');
 
             Prism.highlightAll();
         }
 
         // Modify existing search function to call displayBookmarks
         const originalSearchSnippets = searchSnippets;
-        searchSnippets = async function() {
+        searchSnippets = async function () {
             await originalSearchSnippets();
             displayBookmarks();
         }
 
-        // Add event listener to show bookmarks when page loads
+        // Function to generate a shareable link for a snippet
+        function shareSnippet(snippetId) {
+            const shareUrl = new URL(window.location.href);
+            shareUrl.searchParams.set('snippet', snippetId);
+
+            try {
+                // Create a temporary textarea to copy the link
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = shareUrl.toString();
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempTextArea);
+
+                // Provide visual feedback on the share button
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Link Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy share link:', err);
+            }
+        }
+
+        // Add function to handle loading a shared snippet when page loads
+        async function loadSharedSnippet() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sharedSnippetId = urlParams.get('snippet');
+
+            if (sharedSnippetId) {
+                try {
+                    // Hide bookmarks container when a shared link is accessed
+                    document.getElementById('bookmarksContainer').style.display = 'none';
+
+                    const snippets = await loadSnippets();
+                    const sharedSnippet = snippets.find(snippet => snippet.id === sharedSnippetId);
+
+                    if (sharedSnippet) {
+                        // Update the snippets container to show only the shared snippet
+                        const snippetsContainer = document.getElementById('snippetsContainer');
+                        snippetsContainer.classList.remove('empty');
+
+                        // Display the shared snippet using the existing displaySnippets function
+                        displaySnippets([sharedSnippet]);
+                    }
+                } catch (error) {
+                    console.error('Failed to load shared snippet:', error);
+                }
+            }
+        }
+
+        // Modify the DOMContentLoaded event listener to call loadSharedSnippet
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('searchInput').addEventListener('keyup', (event) => {
                 if (event.key === 'Enter') {
@@ -508,6 +578,9 @@
 
             // Display bookmarks on initial load
             displayBookmarks();
+
+            // Check for shared snippet
+            loadSharedSnippet();
         });
     </script>
 </body>
