@@ -608,13 +608,11 @@
     {
       "id": "1738287868535",
       "title": "Ellevation Letters",
-      "description": "",
+      "description": "List students taking the ELPAC test and who become EL after a given date with their correspondence language",
       "code": "LIST STU LAC STU.ID STU.NM STU.SC? STU.LF STU.CL? IF ( LAC.EIT = \"ELPAC\" AND LAC.EID >= 2/1/2023 ) ",
-      "language": "test score queries",
-      "tags": [
-        "Testing - PFT"
-      ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "language": "aeries-query",
+      "tags": [],
+      "createdAt": 1738362450709
     },
     {
       "id": "1738287868522",
@@ -2680,14 +2678,14 @@
     },
     {
       "id": "1738287868584",
-      "title": "PFT: List of students w/Teachers",
-      "description": "PFT: Flex Scheduling list of students - Run to identify students that do not have any PFT scores for administration year",
+      "title": "List of students w/Teachers missing PFT scores",
+      "description": "Flex Scheduling list of students - Run to identify students that do not have any PFT scores for the administration year",
       "code": "LIST STU SEC MST FTF SSE STF PFT STU.ID STU.LN STU.FN STU.GR STU.SC? STF.FN STF.LN FTF.STI CRS.DC? PFT.TA BY STU.ID IF ( ( SSE.PR = 1 AND CRS.DC = G ) AND ( STU.GR = 7 OR STU.GR = 9 ) AND PFT.TA = NULL ) OR ( STU.GR = 5 AND STU.SC < 90 AND PFT.TA = NULL AND STF.PSC = STU.SC )    ",
-      "language": "testing queries",
+      "language": "aeries-query",
       "tags": [
         "Testing - PFT"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738362500604
     },
     {
       "id": "1738287868600",
@@ -3092,7 +3090,11 @@
       "code": "LIST STU STU.ID STU.LN STU.FN STU.GR STU.LF? STU.U13? IF STU.LF = L AND ( STU.U13 = 5 OR STU.U13 = I OR STU.U13 = B )",
       "language": "student queries",
       "tags": [
-        "Student", "Assessment", "504", "IEP", "English Learners"
+        "Student",
+        "Assessment",
+        "504",
+        "IEP",
+        "English Learners"
       ],
       "createdAt": "2025-01-31T01:44:28Z"
     }

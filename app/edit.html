@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets Editor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #431A69;
+            --background-color: #f3f4f6;
+            --text-color: #1f2937;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .editor-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        textarea {
+            min-height: 150px;
+            font-family: monospace;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .secondary-button {
+            background: #6b7280;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: #e5e7eb;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tag button {
+            background: none;
+            border: none;
+            color: #374151;
+            padding: 0;
+            margin: 0;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .snippet-list {
+            margin-top: 2rem;
+        }
+
+        .snippet-list-item {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        .snippet-list-item:hover {
+            background: #f9fafb;
+        }
+
+        .export-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+
+        #exportOutput {
+            width: 100%;
+            height: 200px;
+            margin-top: 1rem;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Code Snippets Editor</h1>
+            <div>
+                <button onclick="clearForm()">New Snippet</button>
+                <button onclick="window.location.href='index.html'" class="secondary-button">Back to Library</button>
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <form id="snippetForm">
+                <input type="hidden" id="snippetId">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description (Markdown supported)</label>
+                    <textarea id="description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="code">Code</label>
+                    <textarea id="code" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Language</label>
+                    <select id="language" required>
+                        <option value="aeries-query">Aeries Query</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="newTag">Tags</label>
+                    <div class="tag-input-container">
+                        <input type="text" id="newTag" placeholder="Add a tag and press Enter">
+                        <div id="tagContainer" class="tag-container"></div>
+                    </div>
+                </div>
+
+                <button type="submit">Save Snippet</button>
+            </form>
+        </div>
+
+        <div class="snippet-list">
+            <h2>Existing Snippets</h2>
+            <div id="snippetList"></div>
+        </div>
+
+        <div class="export-section">
+            <h2>Export JSON</h2>
+            <button onclick="exportJson()">Generate Export</button>
+            <textarea id="exportOutput" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        let snippets = [];
+        let currentTags = [];
+
+        // Load existing snippets
+        async function loadSnippets() {
+            try {
+                const baseUrl = window.location.origin + 
+                    (window.location.hostname === 'localhost' ? '' : window.location.pathname.split('/').slice(0, -1).join('/'));
+                
+                const response = await fetch(`${baseUrl}/snippets.json`);
+                const data = await response.json();
+                snippets = data.snippets || [];
+                displaySnippetList();
+            } catch (error) {
+                console.error('Failed to load snippets:', error);
+            }
+        }
+
+        // Display snippet list
+        function displaySnippetList() {
+            const container = document.getElementById('snippetList');
+            container.innerHTML = snippets.map(snippet => `
+                <div class="snippet-list-item" onclick="editSnippet('${snippet.id}')">
+                    <h3>${snippet.title}</h3>
+                    <div>${snippet.tags.join(', ')}</div>
+                </div>
+            `).join('');
+        }
+
+        // Edit existing snippet
+        function editSnippet(id) {
+            const snippet = snippets.find(s => s.id === id);
+            if (snippet) {
+                document.getElementById('snippetId').value = snippet.id;
+                document.getElementById('title').value = snippet.title;
+                document.getElementById('description').value = snippet.description;
+                document.getElementById('code').value = snippet.code;
+                document.getElementById('language').value = snippet.language;
+                currentTags = [...snippet.tags];
+                displayTags();
+            }
+        }
+
+        // Clear form for new snippet
+        function clearForm() {
+            document.getElementById('snippetForm').reset();
+            document.getElementById('snippetId').value = '';
+            currentTags = [];
+            displayTags();
+        }
+
+        // Handle tag input
+        document.getElementById('newTag').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const tag = this.value.trim();
+                if (tag && !currentTags.includes(tag)) {
+                    currentTags.push(tag);
+                    displayTags();
+                }
+                this.value = '';
+            }
+        });
+
+        // Display tags
+        function displayTags() {
+            const container = document.getElementById('tagContainer');
+            container.innerHTML = currentTags.map(tag => `
+                <span class="tag">
+                    ${tag}
+                    <button type="button" onclick="removeTag('${tag}')">&times;</button>
+                </span>
+            `).join('');
+        }
+
+        // Remove tag
+        function removeTag(tag) {
+            currentTags = currentTags.filter(t => t !== tag);
+            displayTags();
+        }
+
+        // Handle form submission
+        document.getElementById('snippetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const snippetId = document.getElementById('snippetId').value || `snippet-${Date.now()}`;
+            const newSnippet = {
+                id: snippetId,
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                code: document.getElementById('code').value,
+                language: document.getElementById('language').value,
+                tags: currentTags,
+                createdAt: Date.now()
+            };
+
+            const existingIndex = snippets.findIndex(s => s.id === snippetId);
+            if (existingIndex >= 0) {
+                snippets[existingIndex] = newSnippet;
+            } else {
+                snippets.push(newSnippet);
+            }
+
+            displaySnippetList();
+            clearForm();
+        });
+
+        // Export JSON
+        function exportJson() {
+            const exportData = {
+                snippets: snippets
+            };
+            document.getElementById('exportOutput').value = JSON.stringify(exportData, null, 2);
+        }
+
+        // Initialize
+        loadSnippets();
+    </script>
+</body>
+</html>
