@@ -269,57 +269,27 @@
         }
         async function loadSnippets() {
             try {
-                // Determine base path for GitHub Pages or local development
                 const baseUrl = window.location.origin +
                     (window.location.hostname === 'localhost' ? '' : window.location.pathname.split('/').slice(0, -1).join('/'));
 
-                // Construct full index path with full URL
-                const indexPath = `${baseUrl}/snippets/index.json`;
-
-                console.log('Attempting to load index from:', indexPath);
+                const indexPath = `${baseUrl}/snippets/snippets.json`;
 
                 const response = await fetch(indexPath, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        // Add cache-busting to prevent potential caching issues
                         'Cache-Control': 'no-cache'
                     }
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}, url: ${indexPath}`);
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 const index = await response.json();
-                const snippets = [];
-
-                // Fetch each snippet using full URL
-                for (const entry of index.snippets) {
-                    const snippetPath = `${baseUrl}/${entry.path}`;
-                    console.log('Loading snippet from:', snippetPath);
-
-                    const snippetResponse = await fetch(snippetPath, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Cache-Control': 'no-cache'
-                        }
-                    });
-
-                    if (!snippetResponse.ok) {
-                        console.error(`Failed to load snippet: ${snippetPath}, status: ${snippetResponse.status}`);
-                        continue;
-                    }
-
-                    const snippet = await snippetResponse.json();
-                    snippets.push(snippet);
-                }
-
-                console.log(`Loaded ${snippets.length} snippets`);
-                return snippets;
+                return index.snippets || [];
             } catch (error) {
-                console.error('Comprehensive Snippet Loading Error:', error);
+                console.error('Snippet Loading Error:', error);
                 return [];
             }
         }
@@ -375,13 +345,11 @@
                 const snippets = await loadSnippets();
 
                 if (snippets.length === 0) {
-                    console.error('No snippets could be loaded');
-                    snippetsContainer.innerHTML = 'Error loading snippets. Please check your configuration.';
+                    snippetsContainer.innerHTML = 'No snippets could be loaded';
                     snippetsContainer.classList.add('empty');
                     return;
                 }
 
-                // Rest of the existing search logic remains the same
                 const searchTerms = query.split(/\s+/).filter(term => term.length > 1);
 
                 const results = snippets
@@ -462,6 +430,51 @@
             `}).join('');
 
             Prism.highlightAll();
+        }
+
+        function handleSnippetSubmit(event) {
+            event.preventDefault();
+
+            const snippet = {
+                id: Date.now().toString(),
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                code: document.getElementById('code').value,
+                language: document.getElementById('language').value,
+                tags: document.getElementById('tags').value.split(',').map(tag => tag.trim()),
+                createdAt: new Date().toISOString()
+            };
+
+            // Generate snippet JSON
+            const snippetJsonContent = JSON.stringify(snippet, null, 2);
+            const snippetBlob = new Blob([snippetJsonContent], { type: 'application/json' });
+            const snippetUrl = URL.createObjectURL(snippetBlob);
+            const snippetA = document.createElement('a');
+            snippetA.href = snippetUrl;
+            snippetA.download = `${snippet.id}.json`;
+            document.body.appendChild(snippetA);
+            snippetA.click();
+            document.body.removeChild(snippetA);
+            URL.revokeObjectURL(snippetUrl);
+
+            // Modify index generation to include full snippet
+            const indexEntry = {
+                snippets: [snippet]
+            };
+
+            const indexJsonContent = JSON.stringify(indexEntry, null, 2);
+            const indexBlob = new Blob([indexJsonContent], { type: 'application/json' });
+            const indexUrl = URL.createObjectURL(indexBlob);
+            const indexA = document.createElement('a');
+            indexA.href = indexUrl;
+            indexA.download = 'snippets.json';
+            document.body.appendChild(indexA);
+            indexA.click();
+            document.body.removeChild(indexA);
+            URL.revokeObjectURL(indexUrl);
+
+            hideAddSnippetModal();
+            event.target.reset();
         }
 
         // Remove automatic loading of snippets on page load

@@ -1,0 +1,3380 @@
+{
+  "snippets": [
+    {
+      "id": "1738287868625",
+      "title": "Chage ISP Attendance Class MST.AU 2nd Query",
+      "description": "Chage ISP Attendance Class MST.AU 2nd Query - Will update any master schedule class Attendance Ruleset with Flex Period of ISP to ISP. Run Chage ISP Attendance Class MST.AU 1st Query first.",
+      "code": "CHANGE MST FTF MST.AU TO \"ISP\" IF FTF.STI = \"ISP\"",
+      "language": "change queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/chage_isp_attendance_class_mst_au_2nd_query.json"
+    },
+    {
+      "id": "1738287868666",
+      "title": "Change Hearing date and value entry 2nd Query",
+      "description": "Change Hearing date and value entry 2nd Query - You must run Change Hearing/Vision date and value entry 1st Query and then 2nd Query",
+      "code": "CHANGE STU HRN HRN.TD TO \" \" IF STU.GR # 2 AND HRN.TD = 11/17/2021",
+      "language": "change queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change_hearing_date_and_value_entry_2nd_query.json"
+    },
+    {
+      "id": "1738287868674",
+      "title": "Change  Vision date and value entry 2nd Query",
+      "description": "Change  Vision date and value entry 2nd Query - ",
+      "code": "CHANGE STU VSN VSN.TD TO \" \" IF STU.GR # 2 AND VSN.TD = 11/17/2021",
+      "language": "change queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change__vision_date_and_value_entry_2nd_query.json"
+    },
+    {
+      "id": "1738287868679",
+      "title": "No Name Change Query",
+      "description": "No Name Change Query - ",
+      "code": "CHANGE STU ADS DSP DSP.AA TO \"10\" IF DSP.AA = \"\" AND DSP.DS : SUS",
+      "language": "change queries",
+      "tags": [],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/no_name_change_query.json"
+    },
+    {
+      "id": "1738287868644",
+      "title": "Update STU.LF to EL 2nd Query",
+      "description": "Update STU.LF to EL 2nd Query - This will update the STU.LF to EL based on the Initial ELPAC test results once those are imported. Run Update STU.LF to EL 1st Query first.",
+      "code": "CHANGE STU LAC STU.LF TO \"L\"  IF STU.LF = \"T\" AND LAC.ITF = \"EL\"",
+      "language": "change queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_stu_lf_to_el_2nd_query.json"
+    },
+    {
+      "id": "1738287868636",
+      "title": "Change ISP Subject Class MST.ST 2nd Query",
+      "description": "Change ISP Subject Class MST.ST 2nd Query - Will update any master schedule class Exclude with Flex Period of ISP to X (Do not show on grade/progress). Run Change ISP Subject Class MST.ST 1st Query First",
+      "code": "CHANGE MST FTF MST.ST TO \"Y\"  IF MST.RM = \"ISP\" AND MST.CN ; \"KEI%\" AND FTF.STI # \"ISP\"",
+      "language": "change queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change_isp_subject_class_mst_st_2nd_query.json"
+    },
+    {
+      "id": "1738287868628",
+      "title": "Chage ISP Attendance Class MST.AU (Elementary) 1st Query",
+      "description": "Chage ISP Attendance Class MST.AU (Elementary) 1st Query - ",
+      "code": "LIST MST CRS CRS.CO MST.RM MST.ISI MST.AU IF MST.RM = \"ISP\" AND CRS.CO : \"ISP\"",
+      "language": "change queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/chage_isp_attendance_class_mst_au__elementary__1st_query.json"
+    },
+    {
+      "id": "1738287868656",
+      "title": "Next Year Program 1st Query",
+      "description": "Next Year Program 1st Query - ",
+      "code": "LIST STU NM ID NSP IF NSP = I",
+      "language": "change queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/next_year_program_1st_query.json"
+    },
+    {
+      "id": "1738287868638",
+      "title": "Update STU.LF to IFEP 1st Query",
+      "description": "Update STU.LF to IFEP 1st Query - ",
+      "code": "LIST STU LAC STU.ID STU.LF LAC.ITF IF STU.LF = \"T\" AND LAC.ITF = \"IFEP\"",
+      "language": "change queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_stu_lf_to_ifep_1st_query.json"
+    },
+    {
+      "id": "1738287868647",
+      "title": "Update Teachers Electronic tags to all 1st Query",
+      "description": "Update Teachers Electronic tags to all 1st Query - ",
+      "code": "LIST TCH TCH.TE TCH.TG TCH.ET IF TCH.ET = \"\"",
+      "language": "change queries",
+      "tags": [
+        "Teacher"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_teachers_electronic_tags_to_all_1st_query.json"
+    },
+    {
+      "id": "1738287868677",
+      "title": "Change Discipline Action Authority",
+      "description": "Change Discipline Action Authority - ",
+      "code": "LIST STU ADS DSP STU.CID STU.NM ADS.DT ADS.IID DSP.DS DSP.AA IF DSP.AA = \"\" AND DSP.DS : SUS",
+      "language": "change queries",
+      "tags": [
+        "Discipline"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change_discipline_action_authority.json"
+    },
+    {
+      "id": "1738287868650",
+      "title": "Update Teachers Electronic tags to all 2nd Query",
+      "description": "Update Teachers Electronic tags to all 2nd Query - This will update tag XXX to Tag YYY. Run Update Teachers Electronic tags to all 1st Query first.",
+      "code": "CHANGE TCH TCH.ET TO \"G\" IF TCH.ET = \"\"",
+      "language": "change queries",
+      "tags": [
+        "Teacher"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_teachers_electronic_tags_to_all_2nd_query.json"
+    },
+    {
+      "id": "1738287868658",
+      "title": "Next Year Program 2nd Query",
+      "description": "Next Year Program 2nd Query - This will update the Next Program from Indep. Study to Regular Program for the following year. Run Next Year Program 1st Query first",
+      "code": "CHANGE STU NSP TO \" \" IF NSP = \"I\"",
+      "language": "change queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/next_year_program_2nd_query.json"
+    },
+    {
+      "id": "1738287868640",
+      "title": "Update STU.LF to IFEP 2nd Query",
+      "description": "Update STU.LF to IFEP 2nd Query - This will update the STU.LF to IFEP based on the Initial ELPAC test results once those are imported. Run Update STU.LF to IFEP 1st Query first.",
+      "code": "CHANGE STU LAC STU.LF TO \"I\"   IF STU.LF = \"T\" AND LAC.ITF = \"IFEP\"",
+      "language": "change queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_stu_lf_to_ifep_2nd_query.json"
+    },
+    {
+      "id": "1738287868633",
+      "title": "Change ISP Subject Class MST.ST 1st Query",
+      "description": "Change ISP Subject Class MST.ST 1st Query - ",
+      "code": "LIST MST FTF MST.SC MST.SCL MST.FSQ MST.CSQ FTF.STI MST.CN MST.RM MST.ST MST.AU IF FTF.STI = \"ISP\"",
+      "language": "change queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change_isp_subject_class_mst_st_1st_query.json"
+    },
+    {
+      "id": "1738287868654",
+      "title": "Update ISP AB130 from Not Applicable to Eligible/Participating 1st Query",
+      "description": "Update ISP AB130 from Not Applicable to Eligible/Participating 1st Query - Will change PGM.ST for students who are not listed correctly. Run Update ISP AB130 from Not Applicable to Eligible/Participating 1st Query first.",
+      "code": "CHANGE PGM PGM.ST TO \"2\" IF PGM.CD = ISP AND PGM.ST = \"\"",
+      "language": "change queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_isp_ab130_from_not_applicable_to_eligible_participating_1st_query.json"
+    },
+    {
+      "id": "1738287868631",
+      "title": "Chage ISP Attendance Class MST.AU (Elementary) 2nd Query",
+      "description": "Chage ISP Attendance Class MST.AU (Elementary) 2nd Query - Will update any master schedule class Attendance Ruleset with Flex Period of ISP to ISP . Run Chage ISP Attendance Class MST.AU (Elementary) 1st Query first",
+      "code": "CHANGE MST CRS MST.AU TO \"ISP IF MST.RM = \"ISP\" AND CRS.CO : \"ISP\"",
+      "language": "change queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/chage_isp_attendance_class_mst_au__elementary__2nd_query.json"
+    },
+    {
+      "id": "1738287868642",
+      "title": "Update STU.LF to EL 1st Query",
+      "description": "Update STU.LF to EL 1st Query - ",
+      "code": "LIST STU LAC STU.ID STU.LF LAC.ITF IF STU.LF = \"T\" AND LAC.ITF = \"EL\"",
+      "language": "change queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/update_stu_lf_to_el_1st_query.json"
+    },
+    {
+      "id": "1738287868681",
+      "title": "Change Accop Youth indicator to N ",
+      "description": "Change Accop Youth indicator to N for all homeless students missing this indicator",
+      "code": "CHANGE STU PGM PGM.UY TO \"N\" IF PGM.CD = 191 AND PGM.UY = \" \"",
+      "language": "change queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change_accop_youth_indicator_to_n_.json"
+    },
+    {
+      "id": "1738287868671",
+      "title": "Change  Vision date and value entry 1st Query",
+      "description": "Change  Vision date and value entry 1st Query - ",
+      "code": "CHANGE STU VSN  VSN.PF TO \" \" IF STU.GR # 2 AND VSN.TD = 11/17/2021 AND VSN.PF = \"P\"",
+      "language": "change queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change__vision_date_and_value_entry_1st_query.json"
+    },
+    {
+      "id": "1738287868664",
+      "title": "Change Hearing date and value entry 1st Query",
+      "description": "Change Hearing date and value entry 1st Query - ",
+      "code": "LIST STU HRN STU.NM STU.GR HRN.TD HRN.PF IF STU.GR # 2 AND HRN.TD = 11/17/2021",
+      "language": "change queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/change_hearing_date_and_value_entry_1st_query.json"
+    },
+    {
+      "id": "1738287868623",
+      "title": "Chage ISP Attendance Class MST.AU 1st Query",
+      "description": "Chage ISP Attendance Class MST.AU 1st Query - ",
+      "code": "LIST MST FTF MST.SC MST.SCL MST.FSQ MST.CSQ FTF.STI MST.CN MST.RM MST.ST MST.AU IF FTF.STI = \"ISP\"",
+      "language": "change queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/change queries/chage_isp_attendance_class_mst_au_1st_query.json"
+    },
+    {
+      "id": "1738287868214",
+      "title": "Student and Contacts with Red Flags",
+      "description": "Student and Contacts with Red Flags (ex: restraining order, important notes, etc)",
+      "code": "LIST STU CON STU.ID STU.LN STU.FN STU.GR CON.NM CON.RF CON.RL? CON.ME IF CON.RF > 0",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/student_and_contacts_with_red_flags.json"
+    },
+    {
+      "id": "1738287868199",
+      "title": "Student Contact Info",
+      "description": "Student Contact Info",
+      "code": "LIST STU ID FN MN LN AD CY ST ZC TL GR",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/student_contact_info.json"
+    },
+    {
+      "id": "1738287868202",
+      "title": "Students NOT Atttending School of Residence",
+      "description": "Students NOT Atttending School of Residence",
+      "code": "LIST STU ID NM GR? SC? IT IF IT # \" \"",
+      "language": "contact queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/students_not_atttending_school_of_residence.json"
+    },
+    {
+      "id": "1738287868210",
+      "title": "Parent Portal Log in Activity",
+      "description": "Provides a list of all Parent Portal log-in activity by specific date. ",
+      "code": "LIST PWA PWS STU STU.ID STU.LN STU.FN STU.SC? STU.GR PWA.EM PWA.TY PWA.LC PWA.LDT PWA.CD IF PWA.TY = \"P\" AND PWA.LDT > MM/DD/YYYY",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/parent_portal_log_in_activity.json"
+    },
+    {
+      "id": "1738287868213",
+      "title": "Student, Parent, Email, and Address Info",
+      "description": "Student, Parent, Email and Address Info",
+      "code": "LIST STU CON STU.NM STU.GR STU.PG STU.AD STU.CY STU.ST STU.ZC STU.TL CON.EM STU.HL? IF CON.NM = STU.PG  ",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/student__parent__email__and_address_info.json"
+    },
+    {
+      "id": "1738287868212",
+      "title": "Parent Portal-Not Accessed",
+      "description": "Provides a list of all parents who have not accessed the Aeries Parent Portal",
+      "code": "LIST PWA PWS STU CON STU.ID STU.LN STU.FN STU.SC? STU.GR CON.PID CON.NM CON.PC CON.ERH CON.AP PWA.PID PWA.EM PWA.AST PWA.TY PWA.LC PWA.LDT PWA.CD IF PWA.TY = \"P\" AND PWA.LC = 0 AND CON.ERH = \"Y\"",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/parent_portal_not_accessed.json"
+    },
+    {
+      "id": "1738287868200",
+      "title": "Students Atttending School of Residence",
+      "description": "Students Atttending School of Residence",
+      "code": "LIST STU ID NM GR? SC? IT IF IT = \" \"",
+      "language": "contact queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/students_atttending_school_of_residence.json"
+    },
+    {
+      "id": "1738287868209",
+      "title": "Parent Portal Activity-All ",
+      "description": "Provides a list of all Aeries Parent Portal activity with date created and number of times accessed",
+      "code": "LIST PWA PWS STU.ID STU.LN STU.FN STU.SC? STU.GR PWA.EM PWA.TY PWA.LC PWA.LDT PWA.CD IF PWA.TY = \"P\"",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/parent_portal_activity_all_.json"
+    },
+    {
+      "id": "1738287868205",
+      "title": "Contacts: ERH-Portal Access w/o Email",
+      "description": "Contacts: ERH-Portal Access w/o Email - Contacts that have Ed Rights and Portal Activiated, but no Email",
+      "code": "LIST STU CON STU.ID STU.NM STU.SC? STU.GR? CON.NM CON.EM CON.ERH CON.AP IF CON.AP = Y AND CON.EM = \"\" AND CON.ERH = Y",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/contacts__erh_portal_access_w_o_email.json"
+    },
+    {
+      "id": "1738287868206",
+      "title": "Student Info, Parent Name, Number, and Address if Contact is Ed Rights Holder",
+      "description": "Student Info- Parent Name, Number, and Address if Contact is Ed-Rights Holder(make sure you are at specific site)",
+      "code": "LIST STU CON STU.NM STU.GR? CON.NM CON.AD CON.CY CON.ST CON.ZC CON.CP CON.WP CON.EM STU.LF? IF CON.ERH = Y ",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/student_info__parent_name__number__and_address_if_contact_is_ed_rights_holder.json"
+    },
+    {
+      "id": "1738287868207",
+      "title": "Student w/ Parent Email if contact is Ed-Rights Holder",
+      "description": "Student w/ Parent Email if contact is Ed-Rights Holder",
+      "code": "LIST STU CON STU.LN STU.FN STU.MN STU.ID STU.BD STU.GR CON.EM IF CON.ERH = Y \n",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/student_w__parent_email_if_contact_is_ed_rights_holder.json"
+    },
+    {
+      "id": "1738287868203",
+      "title": "Students whos contact address does not match demographic address",
+      "description": "Students whos contact address does not match demographic address",
+      "code": "LIST STU CON STU.ID STU.LN STU.FN STU.SC? STU.RAD CON.RL? CON.AD CON.SQ IF CON.AD # STU.RAD AND CON.AD # \" \" AND CON.ERH = Y",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/students_whos_contact_address_does_not_match_demographic_address.json"
+    },
+    {
+      "id": "1738287868198",
+      "title": "",
+      "description": "",
+      "code": "LIST STU CON STU.LN STU.FN CON.NM CON.TL CON.CP CON.RL CON.PC CON.ERH IF CON.RL = \"F\" OR CON.RL = \"M\" OR CON.RL = \"CG\" OR CON.RL = \"AR\" OR CON.RL = \"FF\" OR CON.RL = \"FM\" OR CON.RL = \"C\"",
+      "language": "contact queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/contact queries/.json"
+    },
+    {
+      "id": "1738287868224",
+      "title": "Students who had/have a CTE course",
+      "description": "Students who had/have a CTE course ",
+      "code": "LIST STU HIS CRS STU.ID CRS.CO IF CRS.CN : \"CH\" AND STU.GR = 12",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/students_who_had_have_a_cte_course.json"
+    },
+    {
+      "id": "1738287868216",
+      "title": "Course Listing by Department",
+      "description": "Course Listing by Department - List course code and title by department (C=CTE, E=English, etc)",
+      "code": "LIST CRS CN CO DC IF CRS.DC = \"C\"",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/course_listing_by_department.json"
+    },
+    {
+      "id": "1738287868221",
+      "title": "List of Students in AP Courses",
+      "description": "List of Students in AP Courses",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CO : \"AP \" ",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/list_of_students_in_ap_courses.json"
+    },
+    {
+      "id": "1738287868228",
+      "title": "Students in CTE Courses",
+      "description": "Students in CTE Courses",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CN : \"CH\" OR CRS.CN = \"BH010P\" OR CRS.CN = \"PH012\" OR CRS.CN = \"PH015P\" OR CRS.CN = \"VH044P\" OR CRS.CN = \"PH012P\" ",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/students_in_cte_courses.json"
+    },
+    {
+      "id": "1738287868223",
+      "title": "Demographic information of student's in specific course",
+      "description": "Demographic information of student's in specific course",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR? STU.LF? STU.HL? STU.ETH? STU.RC1? STU.GN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CN = MH034  ",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/demographic_information_of_student_s_in_specific_course.json"
+    },
+    {
+      "id": "1738287868219",
+      "title": "Finding Newcomers by Course",
+      "description": "Finding Newcomers by Course - This query will find all Newcomers. Change IF to alter focus.",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN SEC.SC CRS  CRS.CO CRS.CN IF CRS.CO ; \"Kitchen NC\" AND ( CRS.CO : \"NC \" OR CRS.CO : \" NC\" )",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/finding_newcomers_by_course.json"
+    },
+    {
+      "id": "1738287868231",
+      "title": "This query will show you which grades in your GRD table are also missing credits",
+      "description": "This query will show you which grades in your GRD table are also missing credits",
+      "code": "LIST STU GRD CRS STU.ID STU.NM STU.GR? GRD.PD GRD.CN CRS.CO GRD.TN GRD.MK GRD.M1 GRD.M2 GRD.M3 GRD.CR GRD.TM GRD.SE IF GRD.CR = 0 ",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/this_query_will_show_you_which_grades_in_your_grd_table_are_also_missing_credits.json"
+    },
+    {
+      "id": "1738287868235",
+      "title": "Elementary students with associated teacher (CCLA and SRFACS)",
+      "description": "Elementary students with associated teacher (CCLA SRFACS)",
+      "code": "LIST STU SEC MST SSE STF STU.ID STU.LN STU.FN STU.BD STU.GR STU.SC STF.LN STF.FN STU.PG STU.PEM BY STU.GR STF.LN IF STU.GR < 7  ",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/elementary_students_with_associated_teacher__ccla_and_srfacs_.json"
+    },
+    {
+      "id": "1738287868237",
+      "title": "Student who are not in a Science Course (2 Step)",
+      "description": "11th Grades who are not in a Science Course for specific grade levelSTEP 1",
+      "code": "SKIP STU SEC CRS IF ( CRS.DC = P OR CRS.DC = B )",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/student_who_are_not_in_a_science_course__2_step_.json"
+    },
+    {
+      "id": "1738287868230",
+      "title": "Courses with \"0\" Credits",
+      "description": "Courses with \"0\" Credits",
+      "code": "LIST MST CRS MST.SE MST.PD MST.SM MST.CN CRS.CO MST.TN MST.CR MST.TS  IF MST.CR = 0 AND MST.TS > 0    ",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/courses_with__0__credits.json"
+    },
+    {
+      "id": "1738287868220",
+      "title": "List of Students by Course",
+      "description": "List of Students by Course",
+      "code": "LIST STU SSS CRS STU.ID STU.LN STU.FN STU.GR STU.SC SSS.CN CRS.CO BY CRS.CO  ",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/list_of_students_by_course.json"
+    },
+    {
+      "id": "1738287868232",
+      "title": "SPED students and their current Math, English, and (if applicable) ALD courses",
+      "description": "SPED students and their current Math, English, and (if applicable) ALD courses. Includes language fluency and course information",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR SEC.SC CRS CRS.CO CRS.CN STF.LN STU.LF? STU.U13? BY STF.LN IF ( STU.U13 = 5 OR STU.U13 = B OR STU.U13 = I )  AND ( CRS.DC = M OR CRS.DC = E OR CRS.CO : \"AC LANG\" )  ",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/sped_students_and_their_current_math__english__and__if_applicable__ald_courses.json"
+    },
+    {
+      "id": "1738287868227",
+      "title": "Demographic, Grade, and Attendance information of student's in specific course",
+      "description": "Demographic, Grade, and Attendance information of student's in specific course  -- Replace \"GRD.M2\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period)\n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
+      "code": "LIST STU GRD CRS ABSTF STU.ID STU.NM STU.GR STU.LF? STU.HL? STU.ETH? STU.RC1? GRD.SC GRD.SN GRD.PD GRD.CN CRS.CO GRD.M2 GRD.EN GRD.PR GRD.AB GRD.TD IF CRS.CN = MH034  ",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/demographic__grade__and_attendance_information_of_student_s_in_specific_course.json"
+    },
+    {
+      "id": "1738287868234",
+      "title": "Skip students with ALD course",
+      "description": "Skip students with ALD course",
+      "code": "SKIP STU SEC MST IF MST.CN = NM107 OR MST.CN = NM108 ",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/skip_students_with_ald_course.json"
+    },
+    {
+      "id": "1738287868217",
+      "title": "Finds all students in a specific course",
+      "description": "Finds all students in a specific course - Will find all students in course NH098. Change number to change course",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CN = NH098",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/finds_all_students_in_a_specific_course.json"
+    },
+    {
+      "id": "1738287868226",
+      "title": "Students in a ",
+      "description": "Change the exits to a course code and specific teacher last name.\nThis will give you a list of students in an specific course with a specific teacher. It will work for students at multiple sites with the same teacher",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CN = XXXXX AND STF.LN = XXXXXXXXX",
+      "language": "cousre queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/students_in_a_.json"
+    },
+    {
+      "id": "1738287868238",
+      "title": "Students who are not in a Science Course (2 Step)",
+      "description": "11th Grades who are not in a Science Course for specific grade level STEP 2 (Replace GR = 11 with desired Grade level)",
+      "code": "LIST STU ID LN FN GR IF GR = 11",
+      "language": "cousre queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/cousre queries/students_who_are_not_in_a_science_course__2_step_.json"
+    },
+    {
+      "id": "1738287868528",
+      "title": "Electronic Score Report - Undelivered",
+      "description": "Electronic Score Report - Undelivered - Overall view of all Electronic Score Report deliveries. Add specific start date",
+      "code": "LIST STU CON IDN ERL STU.ID STU.NM STU.GR STU.PEM ERL.AY ERL.TT ERL.PE ERL.DE ERL.PN ERL.NC ERL.DN ERL.PV ERL.DF ERL.DTS IF ERL.DF >= XX/XX/XXXX AND ERL.DE = NULL",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/electronic_score_report___undelivered.json"
+    },
+    {
+      "id": "1738287868505",
+      "title": "CAST Scores w/Language Fluency",
+      "description": "CAST for EL/IFEP Students. Change school year as needed for data.",
+      "code": "LIST STU TST STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR STU.LF TST.ID TST.TA TST.TD TST.SS TST.PL IF TST.TA = SPRG24 AND ( TST.ID = \"CAST\" AND TST.TD >= 4/1/2024 ) AND STU.LF = L OR STU.LF = I",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/cast_scores_w_language_fluency.json"
+    },
+    {
+      "id": "1738287868536",
+      "title": "Scores 4 or 3",
+      "description": "",
+      "code": "LIST STU TST STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.PT TST.TD TST.SS TST.PL IF (  TST.ID = \"ELPAC\" OR TST.ID = \"AELPAC\" ) AND TST.PT = \"0\" AND TST.TD >= 2/1/2024 ) )",
+      "language": "test score queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/scores_4_or_3.json"
+    },
+    {
+      "id": "1738287868535",
+      "title": "Ellevation Letters",
+      "description": "",
+      "code": "LIST STU LAC STU.ID STU.NM STU.SC? STU.LF STU.CL? IF ( LAC.EIT = \"ELPAC\" AND LAC.EID >= 2/1/2023 ) ",
+      "language": "test score queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/ellevation_letters.json"
+    },
+    {
+      "id": "1738287868522",
+      "title": "Test Score Import Confirmation",
+      "description": "Test Score Import Confirmation - If confirmation email is not received from Aeries, run to verify test score imports were successful. Change the name in the quotes to the scores that were uploaded. This does not generate in \"real-time\".",
+      "code": "LIST EML BY DTS ^ IF SUB : \"ELPAC Test Results\"",
+      "language": "test score queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/test_score_import_confirmation.json"
+    },
+    {
+      "id": "1738287868517",
+      "title": "CAST Test Scores - All Students",
+      "description": "student scores ",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRGXX AND TST.ID = \"CAST\"",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/cast_test_scores___all_students.json"
+    },
+    {
+      "id": "1738287868520",
+      "title": "CAST Test Scores by Grade",
+      "description": "CAST scores for students by grade level. Science in given in 5th, 8th and 11th grades. Replace the X with the grade level the assessment was given (5th graders tested in 2023-24 are now 6th graders, etc.).",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRGXX AND TST.ID = \"CAST\" AND STU.GR = X",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/cast_test_scores_by_grade.json"
+    },
+    {
+      "id": "1738287868506",
+      "title": "CAASPP Scores w/Language Fluency",
+      "description": "CAASPP for EL/IFEP Students. Change school year as needed for data.",
+      "code": "LIST STU TST STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR STU.LF TST.ID TST.TA TST.TD TST.SS TST.PL IF TST.TA = SPRG24 AND TST.ID = \"SBAC\" AND ( TST.ID # \"ELPAC\" OR TST.ID # \"IELPAC\" OR TST.ID # CAST ) AND TST.TD >= 4/1/2024  AND STU.LF = L OR STU.LF = I",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/caaspp_scores_w_language_fluency.json"
+    },
+    {
+      "id": "1738287868530",
+      "title": "No CAASPP Test Scores Showing in Aeries",
+      "description": "To verify why a student's test scores are not showing in Aeries Test Scores page after import. To see why a students test scores were excluded from import in the Testing Exclusions (TEX) table.\n\nEnter specific testing window",
+      "code": "LIST STU TEX STU.ID STU.NM TEX.ID TEX.TD TEX.PT TEX.SPC TEX.TA IF TEX.ID = \"SBAC\" AND TEX.TA = \"SPRGXX\"",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/no_caaspp_test_scores_showing_in_aeries.json"
+    },
+    {
+      "id": "1738287868500",
+      "title": "ELPAC Test Score Results",
+      "description": "ELPAC Test Score Results - Summative ELPAC Scores for SY 2023-24. Change date in query for any previous year.",
+      "code": "LIST STU LAC STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR LAC.EID LAC.EIT LAC.ECL LAC.ECS LAC.EOL LAC.EOS LAC.EVL LAC.EVS LAC.ELL LAC.ESL LAC.ERL LAC.EWL LAC.ELF IF ( ( LAC.EIT = \"ELPAC\" AND LAC.EIT # \"IELPAC\" ) AND LAC.EID >= 2/1/2023 )",
+      "language": "test score queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/elpac_test_score_results.json"
+    },
+    {
+      "id": "1738287868508",
+      "title": "CAA/CAASPP/CAST - Test Scores All Subjects",
+      "description": "CAASPP Scores - All students for ELA, Math and Science ",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRG24 AND TST.ID = \"SBAC\" OR TST.ID = \"CAST\" OR TST.ID = \"CAA\"",
+      "language": "test score queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/test score queries/caa_caaspp_cast___test_scores_all_subjects.json"
+    },
+    {
+      "id": "1738287868255",
+      "title": "Course Request Only Special Ed",
+      "description": "Course Request Only Special Ed - ",
+      "code": "LIST STU CSE SSS CRS SSS CRS STU.ID STU.LN STU.FN STU.NG STU.SC SSS.CN CRS.CO CSE.PL IF CSE.PL > \" \"",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/course_request_only_special_ed.json"
+    },
+    {
+      "id": "1738287868251",
+      "title": "Student Requests - SPED and Language included",
+      "description": "Student Requests - SPED and Language included - Run at the district level. Will give you all students for next year with their requests. You must replace XX with your school number",
+      "code": "LIST STU CSE SSS CRS STU.ID STU.LN STU.FN STU.NG STU.SC STU.NS SSS.CN CRS.CO CSE.PL STU.LF? IF STU.NG # \"13\" AND ( STU.NS = XX OR ( STU.TG = \"*\" AND STU.NS = XX )  )",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/student_requests___sped_and_language_included.json"
+    },
+    {
+      "id": "1738287868248",
+      "title": "Find students with course requests includes subject 1 area and department",
+      "description": "Find students with course requests includes subject 1 area and department - Run at your school. Will show all students who have 1 or more requests, one line per request, course number, and course name. Additionally, this will show subject area 1 and deparment",
+      "code": "LIST STU SSS CRS STU.ID STU.LN STU.FN STU.NG STU.SC STU.NS SSS.CN CRS.CO CRS.S1? CRS.DC? IF ( STU.TG = \"*\" OR STU.TG = \"\" )",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/find_students_with_course_requests_includes_subject_1_area_and_department.json"
+    },
+    {
+      "id": "1738287868256",
+      "title": "List of students for next year",
+      "description": "List of students for next year - Run at the district level. Will give you all students for next year. You must replace XX with your school number",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.NG? STU.SC? STU.NS? IF STU.NG # \"13\" AND ( STU.NS = 12 OR ( STU.TG = \"*\" AND STU.NS = 12 )  )",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/list_of_students_for_next_year.json"
+    },
+    {
+      "id": "1738287868258",
+      "title": "List of requests for summer school",
+      "description": "List of requests for summer school - Run at the district level.",
+      "code": "LIST STU IDN SSR SSC CRS STU.ID STU.LN STU.FN SSR.SSC STU.SC SSR.CN CRS.CO SSR.TM SSR.SE SSR.TG SSR.PF BY SSR.SSC STU.SC SSR.TM IF SSR.CN > ' '",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/list_of_requests_for_summer_school.json"
+    },
+    {
+      "id": "1738287868249",
+      "title": "Find students with course requests includes subject 1 area, department, and counselor name",
+      "description": "Find students with course requests includes subject 1 area, department, and counselor name - Run at your school. Will show all students who have 1 or more requests, one line per request, course number, and course name. Additionally, this will show subject area 1, deparment, and counselor name.",
+      "code": "LIST TCH STU SSS CRS STU.ID STU.LN STU.FN STU.NG? STU.SC? TCH.TE SSS.CN CRS.CO CRS.S1? CRS.DC? IF ( STU.TG = \"*\" OR STU.TG = \"\" )",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/find_students_with_course_requests_includes_subject_1_area__department__and_counselor_name.json"
+    },
+    {
+      "id": "1738287868252",
+      "title": "Course Request",
+      "description": "Course Request - ",
+      "code": "0",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/course_request.json"
+    },
+    {
+      "id": "1738287868253",
+      "title": "Course Tally Report including Special Ed",
+      "description": "Course Tally Report including Special Ed - ",
+      "code": "LIST STU CSE SSS CRS STU.ID STU.LN STU.FN STU.NG STU.SC SSS.CN CR S.CO CSE.PL",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/course_tally_report_including_special_ed.json"
+    },
+    {
+      "id": "1738287868246",
+      "title": "Find students with course requests",
+      "description": "Find students with course requests - Run at your school. Will show all students who have 1 or more requests, one line per request, course number, and course name",
+      "code": "LIST STU SSS CRS STU.ID STU.LN STU.FN STU.NG STU.SC STU.NS SSS.CN CRS.CO IF ( STU.TG = \"*\" OR STU.TG = \"\" )",
+      "language": "scheduling - course request queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - course request queries/find_students_with_course_requests.json"
+    },
+    {
+      "id": "1738287868292",
+      "title": "English Language Learners (EL) Grade 8 (Next Year)",
+      "description": "English Language Learners (EL) Grade 8 (Next Year) - ",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.LF? IF STU.LF = L AND STU.NG = 8",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_8__next_year_.json"
+    },
+    {
+      "id": "1738287868263",
+      "title": "Grade 10 (Next Year)",
+      "description": "Grade 10 (Next Year) - ",
+      "code": "LIST STU SC? LN FN ID NG? TG IF NG = 10",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868314",
+      "title": "Early College Magnet - Grade 12 (Next Year)",
+      "description": "Early College Magnet - Grade 12 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? PGM.CD? PGM.CD IF PGM.CD = \"ECM\" AND STU.NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/early_college_magnet___grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868261",
+      "title": "Grade 8 (Next Year)",
+      "description": "Grade 8 (Next Year) - ",
+      "code": "LIST STU SC? LN FN ID NG? TG IF NG = 8",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/grade_8__next_year_.json"
+    },
+    {
+      "id": "1738287868282",
+      "title": "SDC Students Grade 9 (Next Year)",
+      "description": "SDC Students Grade 9 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 9  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students_grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868322",
+      "title": "Preenrolled Students",
+      "description": "Preenrolled Students - Run at a site to get the list of preenrolled for the site. Includes student email address.",
+      "code": "LIST STU ID LN FN SEM GR? NS? TG IF TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/preenrolled_students.json"
+    },
+    {
+      "id": "1738287868321",
+      "title": "University Center - Grade 12 (Next Year)",
+      "description": "University Center - Grade 12 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF PGM.CD = \"UC\" AND STU.NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/university_center___grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868308",
+      "title": "Early College Magnet - All Students",
+      "description": "Early College Magnet - All Students - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF STU.NG # 13 AND PGM.CD = \"ECM\"",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/early_college_magnet___all_students.json"
+    },
+    {
+      "id": "1738287868291",
+      "title": "English Language Learners (EL) Grade 7 (Next Year)",
+      "description": "English Language Learners (EL) Grade 7 (Next Year) - Change the the XX at the end to your school number. You must run this at the district level",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NS STU.LF? IF STU.SC =  XX AND ( STU.LF = L AND STU.NG = 7 )",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_7__next_year_.json"
+    },
+    {
+      "id": "1738287868259",
+      "title": "Grade 7 (Next Year)",
+      "description": "Grade 7 (Next Year) - ",
+      "code": "LIST STU SC? LN FN ID NG? TG IF NG = 7",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/grade_7__next_year_.json"
+    },
+    {
+      "id": "1738287868278",
+      "title": "SDC Students - All Incoming",
+      "description": "SDC Students - All Incoming - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students___all_incoming.json"
+    },
+    {
+      "id": "1738287868276",
+      "title": "Special Ed Students Grade 12 (Next Year)",
+      "description": "Special Ed Students Grade 12 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students_grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868305",
+      "title": "ArtQuest - Grade 11 (Next Year)",
+      "description": "ArtQuest - Grade 11 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD IF PGM.CD = \"ART\" AND STU.NG = 11",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/artquest___grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868285",
+      "title": "SDC Students Grade 11 (Next Year)",
+      "description": "SDC Students Grade 11 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 11",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students_grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868279",
+      "title": "SDC Students Grade 7 (Next Year)",
+      "description": "SDC Students Grade 7 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 7  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students_grade_7__next_year_.json"
+    },
+    {
+      "id": "1738287868265",
+      "title": "Grade 11 (Next Year)",
+      "description": "Grade 11 (Next Year) - ",
+      "code": "LIST STU SC? LN FN ID NG? TG IF NG = 11",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868295",
+      "title": "English Language Learners (EL) Grade 9 (Next Year)",
+      "description": "English Language Learners (EL) Grade 9 (Next Year) - Change the the XX at the end to your school number. You must run this at the district level",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NS STU.LF? IF STU.NS = XX AND ( STU.LF = L AND STU.NG = 9 )",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868262",
+      "title": "Grade 9 (Next Year)",
+      "description": "Grade 9 (Next Year) - ",
+      "code": "LIST STU SC? LN FN ID NG? TG IF NG = 9",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868299",
+      "title": "English Language Learners (EL) Grade 12 (Next Year)",
+      "description": "English Language Learners (EL) Grade 12 (Next Year) - ",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.LF? IF STU.LF = L AND STU.NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868281",
+      "title": "SDC Students Grade 8 (Next Year)",
+      "description": "SDC Students Grade 8 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 8 ",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students_grade_8__next_year_.json"
+    },
+    {
+      "id": "1738287868284",
+      "title": "SDC Students Grade 10 (Next Year)",
+      "description": "SDC Students Grade 10 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 10 ",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students_grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868303",
+      "title": "ArtQuest - Grade 10 (Next Year)",
+      "description": "ArtQuest - Grade 10 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD IF PGM.CD = \"ART\" AND STU.NG = 10",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/artquest___grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868302",
+      "title": "ArtQuest - Grade 9 (Next Year)",
+      "description": "ArtQuest - Grade 9 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD IF PGM.CD = \"ART\" AND STU.NG = 9  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/artquest___grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868297",
+      "title": "English Language Learners (EL) Grade 11 (Next Year)",
+      "description": "English Language Learners (EL) Grade 11 (Next Year) - ",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.LF? IF STU.LF = L AND STU.NG = 11",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868311",
+      "title": "Early College Magnet - Grade 10 (Next Year)",
+      "description": "Early College Magnet - Grade 10 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? PGM.CD? PGM.CD IF PGM.CD = \"ECM\" AND STU.NG = 10",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/early_college_magnet___grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868266",
+      "title": "Grade 12 (Next Year)",
+      "description": "Grade 12 (Next Year) - ",
+      "code": "LIST STU SC? LN FN ID NG? TG IF NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868272",
+      "title": "Special Ed Students Grade 9 (Next Year)",
+      "description": "Special Ed Students Grade 9 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 9  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students_grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868273",
+      "title": "Special Ed Students Grade 10 (Next Year)",
+      "description": "Special Ed Students Grade 10 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 10  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students_grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868318",
+      "title": "University Center - Grade 10 (Next Year)",
+      "description": "University Center - Grade 10 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF PGM.CD = \"UC\" AND STU.NG = 10",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/university_center___grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868268",
+      "title": "Special Ed Students - All",
+      "description": "Special Ed Students - All - ",
+      "code": "LIST STU CSE SC? STU.LN STU.FN STU.ID STU.NG? CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students___all.json"
+    },
+    {
+      "id": "1738287868309",
+      "title": "Early College Magnet - Grade 9 (Next Year)",
+      "description": "Early College Magnet - Grade 9 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? PGM.CD? PGM.CD IF PGM.CD = \"ECM\" AND STU.NG = 09  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/early_college_magnet___grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868300",
+      "title": "ArtQuest - All",
+      "description": "ArtQuest - All - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD IF PGM.CD = \"ART\" AND STU.NG # 13",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/artquest___all.json"
+    },
+    {
+      "id": "1738287868312",
+      "title": "Early College Magnet - Grade 11 (Next Year)",
+      "description": "Early College Magnet - Grade 11 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? PGM.CD? PGM.CD IF PGM.CD = \"ECM\" AND STU.NG = 11",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/early_college_magnet___grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868269",
+      "title": "Special Ed Students Grade 7 (Next Year)",
+      "description": "Special Ed Students Grade 7 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 7  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students_grade_7__next_year_.json"
+    },
+    {
+      "id": "1738287868296",
+      "title": "English Language Learners (EL) Grade 10 (Next Year)",
+      "description": "English Language Learners (EL) Grade 10 (Next Year) - ",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.LF? IF STU.LF = L AND STU.NG = 10",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el__grade_10__next_year_.json"
+    },
+    {
+      "id": "1738287868275",
+      "title": "Special Ed Students Grade 11 (Next Year)",
+      "description": "Special Ed Students Grade 11 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 11  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students_grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868315",
+      "title": "University Center - All Students",
+      "description": "University Center - All Students - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF STU.NG # 13 AND PGM.CD = \"UC\"",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/university_center___all_students.json"
+    },
+    {
+      "id": "1738287868286",
+      "title": "SDC Students Grade 12 (Next Year)",
+      "description": "SDC Students Grade 12 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI? CSE.ED CSE.XD IF CSE.DI = 210 AND CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/sdc_students_grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868306",
+      "title": "ArtQuest - Grade 12 (Next Year)",
+      "description": "ArtQuest - Grade 12 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD IF PGM.CD = \"ART\" AND STU.NG = 12",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/artquest___grade_12__next_year_.json"
+    },
+    {
+      "id": "1738287868270",
+      "title": "Special Ed Students Grade 8 (Next Year)",
+      "description": "Special Ed Students Grade 8 (Next Year) - ",
+      "code": "LIST STU CSE STU.SC? STU.LN STU.FN STU.ID STU.NG? CSE.DI CSE.ED CSE.XD IF CSE.XD = 'NULL' AND CSE.ED # NULL AND STU.NG = 8  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/special_ed_students_grade_8__next_year_.json"
+    },
+    {
+      "id": "1738287868316",
+      "title": "University Center - Grade 9 (Next Year)",
+      "description": "University Center - Grade 9 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF PGM.CD = \"UC\" AND STU.NG = 9  AND TG = *",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/university_center___grade_9__next_year_.json"
+    },
+    {
+      "id": "1738287868319",
+      "title": "University Center - Grade 11 (Next Year)",
+      "description": "University Center - Grade 11 (Next Year) - ",
+      "code": "LIST STU PGM STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.NG PGM.CD? PGM.CD IF PGM.CD = \"UC\" AND STU.NG = 11",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/university_center___grade_11__next_year_.json"
+    },
+    {
+      "id": "1738287868288",
+      "title": "English Language Learners (EL) - All",
+      "description": "English Language Learners (EL) - All - ",
+      "code": "LIST STU STU.SC? STU.LN STU.FN STU.ID STU.NG? STU.LF? IF STU.LF = L",
+      "language": "scheduling - finding groups of students",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/scheduling - finding groups of students/english_language_learners__el____all.json"
+    },
+    {
+      "id": "1738287868245",
+      "title": "Log of all activity for a student in Aeries and who made the change",
+      "description": "ID at the end will need to be changed to the student you are researching. When we need to research a change of a student's record. Provided through the lserv and I tested it for a student.",
+      "code": "LIST LOG USR (( CAST(DT AS VARCHAR(100)) )) SC ID RCD CD OD ND IP OB CD IF ID = 22049",
+      "language": "data department use only",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/data department use only/log_of_all_activity_for_a_student_in_aeries_and_who_made_the_change.json"
+    },
+    {
+      "id": "1738287868239",
+      "title": "Grade Change Log",
+      "description": "Grade Change Log - Change dates and student ID to reveiw grade history change log.",
+      "code": "LIST LOG OB DT USR SC ID CO OD ND IF DT > 8/11/2023 AND DT < 8/13/2023 AND CD = HISCHG AND ID = XXXXXX",
+      "language": "data department use only",
+      "tags": [],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/data department use only/grade_change_log.json"
+    },
+    {
+      "id": "1738287868241",
+      "title": "Searching Logs",
+      "description": "Searching Logs - Searching the Logs. Replace YYY with the table you want to view changes in and XXXXXX with the student IDSearching Logs - ",
+      "code": "LIST LOG IF OB = YYY AND ID = XXXXXX",
+      "language": "data department use only",
+      "tags": [],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/data department use only/searching_logs.json"
+    },
+    {
+      "id": "1738287868244",
+      "title": "School Site Information",
+      "description": "School site information with principal email and phone numbers",
+      "code": "LIST LOC CD NM AD CY ST PR PEM AC TL BY NM IF PR # ' ' AND NM ; 'SUMMER'",
+      "language": "data department use only",
+      "tags": [],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/data department use only/school_site_information.json"
+    },
+    {
+      "id": "1738287868242",
+      "title": "Cal Grant extract Keep",
+      "description": "Used for Aeries Cal Grant Extract",
+      "code": "KEEP STU IF GR = 12 AND SC < 70 AND ( TG = \"\" OR ( TG # \"\" AND DG # NULL ) )",
+      "language": "data department use only",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/data department use only/cal_grant_extract_keep.json"
+    },
+    {
+      "id": "1738287868618",
+      "title": "To see what students had their demographic pages updated",
+      "description": "",
+      "code": "",
+      "language": "",
+      "tags": [
+        "SSID import"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//to_see_what_students_had_their_demographic_pages_updated.json"
+    },
+    {
+      "id": "1738287868513",
+      "title": "CAASPP - English Language Arts/Literacy and Math all students",
+      "description": "",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.PT CTL.NM TST.TD  TST.SS TST.PL IF TST.ID = SBAC AND ( TST.PT = 1 OR TST.PT = 2 ) AND TST.TD > 4/1/XX",
+      "language": "",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//caaspp___english_language_arts_literacy_and_math_all_students.json"
+    },
+    {
+      "id": "1738287868503",
+      "title": "ELPAC Overal Score Results",
+      "description": "Using Test Table: ",
+      "code": "LIST STU TST STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.PT TST.TD TST.SS TST.PL IF (  TST.ID = \"ELPAC\" AND AND TST.PT = \"0\" AND TST.TD >= 2/1/2024 ) ",
+      "language": "",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//elpac_overal_score_results.json"
+    },
+    {
+      "id": "1738287868621",
+      "title": "When importing new SSIDs all students are  updated with a Yes or No in SPED per CALPADS information.",
+      "description": "",
+      "code": "",
+      "language": "",
+      "tags": [
+        "SSID import"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//when_importing_new_ssids_all_students_are__updated_with_a_yes_or_no_in_sped_per_calpads_information_.json"
+    },
+    {
+      "id": "1738287868514",
+      "title": "CAASPP - English Language Arts/Literacy Test Scores by Grade",
+      "description": "ELA scores by grade level. Replace the X with the grade level the assessment was given (3rd graders tested in 2023-24 are now 4th graders, etc.).",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRGXX AND TST.ID = \"SBAC\" AND TST.PT = 1 AND STU.GR = X",
+      "language": "",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//caaspp___english_language_arts_literacy_test_scores_by_grade.json"
+    },
+    {
+      "id": "1738287868511",
+      "title": "CAASPP - English Language Arts/Literacy and Math by Grade",
+      "description": "ELA and Math scores by grade level. Replace the X with the grade level the assessment was given (3rd graders tested in 2023-24 are now 4th graders, etc.).",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRG24 AND TST.ID = \"SBAC\" AND STU.GR = X",
+      "language": "",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//caaspp___english_language_arts_literacy_and_math_by_grade.json"
+    },
+    {
+      "id": "1738287868620",
+      "title": "To see what students had their language page updated",
+      "description": "",
+      "code": "",
+      "language": "",
+      "tags": [
+        "SSID import"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//to_see_what_students_had_their_language_page_updated.json"
+    },
+    {
+      "id": "1738287868509",
+      "title": "CAA, CAASPP, CAST scores by Grade All Subjects",
+      "description": "CAASPP and CAST Scores by grade level. Replace the X with the grade level the assessment was given (3rd graders tested in 2023-24 are now 4th graders, etc.).",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRG24 AND ( TST.ID = \"SBAC\" OR TST.ID = \"CAST\" OR TST.ID = \"CAA\" ) AND STU.GR = X",
+      "language": "",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//caa__caaspp__cast_scores_by_grade_all_subjects.json"
+    },
+    {
+      "id": "1738287868616",
+      "title": "Notes",
+      "description": "",
+      "code": "",
+      "language": "",
+      "tags": [
+        "Tag"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//notes.json"
+    },
+    {
+      "id": "1738287868516",
+      "title": "CAASPP - Mathematics Test Scores by Grade",
+      "description": "Math scores by grade level. Replace the X with the grade level the assessment was given (3rd graders tested in 2023-24 are now 4th graders, etc.).",
+      "code": "LIST STU TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF TST.TA = SPRG22 AND TST.ID = \"SBAC\" AND TST.PT = 2 AND STU.GR = X",
+      "language": "",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets//caaspp___mathematics_test_scores_by_grade.json"
+    },
+    {
+      "id": "1738287868326",
+      "title": "Media Opt Out - Do Not Release",
+      "description": "Media Opt Out - Do Not Release - ",
+      "code": "LIST STU AUT STU.ID STU.NM STU.SEM AUT.CD? AUT.ST? \"DO NOT RELEASE\" IF AUT.CD = MRO AND AUT.ST = 2",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/media_opt_out___do_not_release.json"
+    },
+    {
+      "id": "1738287868477",
+      "title": "Student Birthdays by Month",
+      "description": "Student Birthdays by Month",
+      "code": "LIST STU ID LN FN GR BD.MONTH BD BY BD.MONTH GR LN  ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_birthdays_by_month.json"
+    },
+    {
+      "id": "1738287868329",
+      "title": "Change  Hearing date and value entry 2nd Query",
+      "description": "Change  Hearing date and value entry 2nd Query - You must run Change  Hearing/Vision date and value entry 1st Query and then 2nd Query",
+      "code": "CHANGE STU HRN HRN.TD TO \" \" IF STU.GR # 2 AND HRN.TD = 11/17/2021",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/change__hearing_date_and_value_entry_2nd_query.json"
+    },
+    {
+      "id": "1738287868455",
+      "title": "Homeroom Teacher for Specific Grade Level",
+      "description": "Homeroom Teacher for Specific Grade Level\nReplace XX in \"NHHXX\" with desired Grade Level (ie: NHH09 will give you all freshmen)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR CRS CRS.CO CRS.CN STF.LN STF.FN BY STF.LN IF MST.CN = NHHXX",
+      "language": "student queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/homeroom_teacher_for_specific_grade_level.json"
+    },
+    {
+      "id": "1738287868323",
+      "title": "Media Opt Out - May Release Info - 1st Query",
+      "description": "Media Opt Out - May Release Info - 1st Query - You must run the SKIP query first to eliminate the parents have denied permisson. This will capture all parents who have completed their authorizations as well as those who have not (a blank is also considered permission granted.",
+      "code": "SKIP STU AUT IF AUT.CD = MRO AND AUT.ST = 2",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/media_opt_out___may_release_info___1st_query.json"
+    },
+    {
+      "id": "1738287868383",
+      "title": "Students without SUP.BG values",
+      "description": "Students without SUP.BG values - Find Students without SUP.BG values. WORKING QUERY. STILL NEEDS REFINING.This will find students who do not have a value in the Birth Gender supplemental field.",
+      "code": "LIST STU SUP STU.SC? STU.ID STU.LN STU.FN STU.GR? STU.SX SUP.BG BY STU.SC STU.GR IF SUP.BG = \"\"",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_without_sup_bg_values.json"
+    },
+    {
+      "id": "1738287868435",
+      "title": "Feeder Schools from outside ",
+      "description": "Feeder Schools from outside [Replace STU.SC (current site) and STU.GR (current grade) as needed]",
+      "code": "LIST STU ODE STU.ID STU.LN STU FN ODE.SNM BY ODE.SNM IF STU.SC = 31 AND STU.GR = 7 AND ODE.SNM # NULL AND ODE.SQ = 1    ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/feeder_schools_from_outside_.json"
+    },
+    {
+      "id": "1738287868444",
+      "title": "Pre-Enrolled / incoming students for next year including last school, school of enrollment, grade, next grade and SPED status limited by next grade",
+      "description": "Pre-Enrolled / incoming students for next year including last school, school of enrollment, grade, next grade and SPED status-- Replace \"X\" in 'NG = X' with desired incoming grade. Replace \"XX\" in 'SC = XX' with desired incoming school",
+      "code": "LIST STU ID LN FN LS? SC? GR? NG? U13? BY LS IF NG = X AND TG = \"*\" AND SC = XX",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/pre_enrolled___incoming_students_for_next_year_including_last_school__school_of_enrollment__grade__next_grade_and_sped_status_limited_by_next_grade.json"
+    },
+    {
+      "id": "1738287868401",
+      "title": "Current Class Rank - By GPA and Grade",
+      "description": "This report will provide the class rank sorted roughly by rank. Be sure and change the grade level at the end of the query to match the grade you are looking for.",
+      "code": "LIST STU SUP ENR STU.ID STU.LN STU.FN SUP.RNK BY STU.TP ^ IF STU.GR = 12 AND ENR.YR = 2023 AND ENR.PR # C ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/current_class_rank___by_gpa_and_grade.json"
+    },
+    {
+      "id": "1738287868347",
+      "title": "Students who left section",
+      "description": "Students who left section - Run this query to find students that are no longer in Section. Change XXX to the section #",
+      "code": "LIST STU CAR STU.ED STU.GR STU.ID CAR.SE CAR.DS CAR.DE IF CAR.SE = XXX",
+      "language": "student queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_who_left_section.json"
+    },
+    {
+      "id": "1738287868359",
+      "title": "InterDistrict Students",
+      "description": "InterDistrict Students - Provides a list of current students on InterDistrict (Code stars with O), the school they attend, and the district or school they come from.",
+      "code": "LIST STU ENR STU.ID STU.LN STU.FN STU.SC? STU.IT? STU.ITD ENR.ED ENR.LD IF STU.IT : O AND ENR.ED >= 08/11/2023 AND ENR.LD = NULL ",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/interdistrict_students.json"
+    },
+    {
+      "id": "1738287868414",
+      "title": "Report of Students with Truancy Letters",
+      "description": "Report of Students with Truancy Letters",
+      "code": "LIST LTL STU STU.ID STU.LN STU.FN LTL.DT LTL.ID",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/report_of_students_with_truancy_letters.json"
+    },
+    {
+      "id": "1738287868459",
+      "title": "Elementary Only Attendance - Unexcused Absenses and Tardys with Percentages (for All-Day Codes) ",
+      "description": "Elementary Only Attendance - Unexcused Absenses and Tardys with Percentages (for All-Day Codes) ** must be run at site level. Replace year (\"20XX-20XX\") with desired school year ",
+      "code": "LIST STU AHS ID LN FN GR? EN PR AE AU TD (( 1.0 * AHS.AU/AHS.EN * 100 )) (( 1.0 * AHS.TD/AHS.EN * 100 )) IF YR = 20XX-20XX",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/elementary_only_attendance___unexcused_absenses_and_tardys_with_percentages__for_all_day_codes__.json"
+    },
+    {
+      "id": "1738287868408",
+      "title": "Students with a 504 by teacher",
+      "description": "Students with a 504 by teacher",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN STU.U13? BY STF.LN IF STU.U13 = 5 OR STU.U13 = B",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_a_504_by_teacher.json"
+    },
+    {
+      "id": "1738287868334",
+      "title": "Students with 14 or more Absences",
+      "description": "Students with 14 or more Absences - Gives you absences greater than 14 and also give you the attendance percentage. Change year ( AHS.YR = \"202X-202X\" ) as needed",
+      "code": "LIST STU TCH AHS STU.ID STU.SC STU.NM STU.GR TCH.TE AHS.SP AHS.EN AHS.AB AHS.PR (( 1.0 * AHS.PR/AHS.EN * 100 )) BY AHS.SCL IF AHS.EN # 0 AND AHS.YR = \"202X-202X\" AND AHS.SCL = STU.SC AND LOC.U = 0 AND AHS.AB > 14",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_14_or_more_absences.json"
+    },
+    {
+      "id": "1738287868373",
+      "title": "Foster and Homeless Students",
+      "description": "Updated version of the query above using Eligibility dates and not  participation dates.",
+      "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.RAD STU.RCY STU.RST STU.RZC PGM.CD? PGM.ESD PGM.EED IF PGM.EED = NULL AND ( PGM.CD = 190 OR PGM.CD = 191 )",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/foster_and_homeless_students.json"
+    },
+    {
+      "id": "1738287868368",
+      "title": "Next Year Students Leaving",
+      "description": "Next Year Students Leaving - Run at your site. Next school is listed if the student is leaving your school.",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.NG? STU.SC? STU.NS? IF STU.SC # STU.NS AND STU.NS # '' AND ( STU.NG # \"13\"  OR  STU.TG = \"*\" )",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/next_year_students_leaving.json"
+    },
+    {
+      "id": "1738287868417",
+      "title": "Students who received an F (Demographic and course information)",
+      "description": "Students who received a D or F - Demographic and course information -- Replace \"GRD.M2\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period). Replace year (\"20XX-20XX\") with current school year \n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
+      "code": "LIST GRD STU SEC MST CRS FTF STU.ID STU.NM STU.GR STU.RC1? STU.ETH? STU.LF? STU.PED? STU.U13? FTF.STI CRS.CO GRD.M6 BY STU.NM FTF.STI IF GRD.SE = MST.SE AND SSE.PR = 1 AND STU.GR = 9 AND FTF.YR =  \"20XX-20XX\" AND GRD.M6 # \" \" AND  ( GRD.M6 = F  OR GRD.M6 : D )   ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_who_received_an_f__demographic_and_course_information_.json"
+    },
+    {
+      "id": "1738287868365",
+      "title": "List of D and F grades for Spring Semester",
+      "description": "List of D and F grades for Spring Semester - 21. Change the 21 for other years.\n\n*In Aeries, the year is the start of the school year, not the end.",
+      "code": "LIST STU HIS STU.ID STU.LN STU.FN STU.GR? HIS.YR HIS.TE HIS.MK CRS.CO IF HIS.YR = \"21\" AND ( HIS.TE = \"3\" OR HIS.TE = \"4\" ) AND ( HIS.MK = \"F\" OR HIS.MK : \"D\" )",
+      "language": "student queries",
+      "tags": [
+        "Grades"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_d_and_f_grades_for_spring_semester.json"
+    },
+    {
+      "id": "1738287868379",
+      "title": "List of Students in AB 130",
+      "description": "List of Students in AB 130 - ",
+      "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.GR? STU.SC? PGM.CD IF PGM.CD = ISP",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_students_in_ab_130.json"
+    },
+    {
+      "id": "1738287868335",
+      "title": "Grade is 5th or below and Next School to Middle Site",
+      "description": "Grade is 5th or below and Next School to Middle Site - ",
+      "code": "LIST STU ID LN FN NG GR NS IF NS # 7 AND NG <= 5",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/grade_is_5th_or_below_and_next_school_to_middle_site.json"
+    },
+    {
+      "id": "1738287868462",
+      "title": "Student Locator by Period",
+      "description": "Student Locator by Period \nReplace X in FTF.STI = X with desired period ",
+      "code": "LIST STU GRD MST SSE STF CRS FTF STU.ID STU.NM STU.GR FTF.STI MST.RM CRS.CO BY MST.RM IF SSE.PR = 1 AND FTF.STI = X ",
+      "language": "student queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_locator_by_period.json"
+    },
+    {
+      "id": "1738287868349",
+      "title": "Students with Discipline",
+      "description": "Students with Discipline - Run this query to find students that have had a discipline record for the current school year. Change XX to the school and change the 07/01/2021 to the first day of school",
+      "code": "LIST STU DIS DIS.SN STU.LN STU.FN STU.GR DIS.DT DIS.CD DIS.CD? DIS.SCL DIS.SID DIS.UN IF DIS.SCL = XX AND DIS.DT > 07/01/2021",
+      "language": "student queries",
+      "tags": [
+        "Discipline"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_discipline.json"
+    },
+    {
+      "id": "1738287868450",
+      "title": "Program Look-Up at site including Pre-Enrolled ",
+      "description": "Special Program Look-Up at site including Pre-Enrolled \nReplace STU.SC = XX with desired school\nReplace PGM.CD = XXX with desired program\n**Common Programs include: 301 - Dual Immersion \n303 - Newcomers     305 - English Learner LIP\n190 - Foster   191- Homeless   135- Migrant   127 - GATE",
+      "code": "LIST STU PGM STU STU.ID STU.LS? STU.SC? STU.LN STU.FN STU.NG? PGM.CD? PGM.ESD PGM.EED IF ( STU.TG = \"*\"  AND STU.SC = XX AND PGM.CD = XXX AND PGM.EED = NULL ) OR PGM.CD = XXX AND PGM.EED = NULL ",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/program_look_up_at_site_including_pre_enrolled_.json"
+    },
+    {
+      "id": "1738287868489",
+      "title": "Student and Contact Info for famillies who have not filled out PDC or Alternaite Income (Step Two)",
+      "description": "Student and Contact Info for famillies who have not filled out PDC or Alternaite Income (Step Two)",
+      "code": "LIST STU ID NM GR SC? PG CL? TL PEM",
+      "language": "student queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_and_contact_info_for_famillies_who_have_not_filled_out_pdc_or_alternaite_income__step_two_.json"
+    },
+    {
+      "id": "1738287868380",
+      "title": "Credits Completed Current Ceniors",
+      "description": "Credits Completed Current Ceniors - Lists credits completed for current seniors. Change grade level to get other grade levels.",
+      "code": "LIST STU ID LN FN GR? SC? CC IF GR = 12",
+      "language": "student queries",
+      "tags": [
+        "Credits"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/credits_completed_current_ceniors.json"
+    },
+    {
+      "id": "1738287868429",
+      "title": "All students in grades TK - 6 who have a LIP program",
+      "description": "this was created to support Multilingual Services with FMP audit. It is useful for gathering all LIP programs for students.",
+      "code": "LIST STU PGM STU.SC? STU.ID STU.FN PGM.CD PGM.CD? PGM.ESD IF STU.SC < 26 AND PGM.CD > 299 AND PGM.CD < 308",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/all_students_in_grades_tk___6_who_have_a_lip_program.json"
+    },
+    {
+      "id": "1738287868385",
+      "title": "Students new to CA this year",
+      "description": "Students new to CA this year - For nurses to do tests (hearing,vision)",
+      "code": "LIST STU LAC STU.ID STU.NM STU.GR LAC.STS IF LAC.STS > 07/01/2023",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_new_to_ca_this_year.json"
+    },
+    {
+      "id": "1738287868430",
+      "title": "Free or Reduced programs with Parent Confirmation and Direct Cert",
+      "description": "Free or Reduced programs with Parent Confirmation and Direct Cert",
+      "code": "LIST STU FRE STU.ID STU.LN STU.FN FRE.CD FRE.ESD FRE.EED FRE.SRC IF FRE.CD # N AND ( FRE.SRC = PDC AND FRE.EED = NULL ) OR ( ( FRE.SRC = T OR FRE.SRC = M OR FRE.SRC = S ) AND FRE.EED > 7/1/2023 )     ",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/free_or_reduced_programs_with_parent_confirmation_and_direct_cert.json"
+    },
+    {
+      "id": "1738287868358",
+      "title": "Next Year School Miss-Match",
+      "description": "Next Year School Miss-Match - Will give a list of student who's next year school does not match this year's school",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.GR? STU.NG? STU.SC? STU.NS? IF STU.SC # STU.NS",
+      "language": "student queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/next_year_school_miss_match.json"
+    },
+    {
+      "id": "1738287868353",
+      "title": "10 or more All Day absences",
+      "description": "10 or more All Day absences - Gives all students with 10 or more All Day absences of any sort.",
+      "code": "LIST STU CSE AHS STU.ID STU.LN STU.FN STU.SC? STU.GR 504_PLAN  SPECIALED AHS.AB IF ( 504_PLAN = YES OR SPECIALED = YES ) AND AHS.AB >= 10",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/10_or_more_all_day_absences.json"
+    },
+    {
+      "id": "1738287868410",
+      "title": "Report of my 504 students",
+      "description": "Report of my 504 students (Teacher can run this as needed for an overview of their 504 students)",
+      "code": "LIST STU ID LN FN GR U13? IF STU.U13 = 5 OR STU.U13 = B",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/report_of_my_504_students.json"
+    },
+    {
+      "id": "1738287868454",
+      "title": "Student and Parent/Guardian Contact info",
+      "description": "Student and Parent/Guardian Contact info",
+      "code": "LIST STU STU.NM PG RAD RCY RST RZC TL PEM HL?  ",
+      "language": "student queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_and_parent_guardian_contact_info.json"
+    },
+    {
+      "id": "1738287868424",
+      "title": "Students that were LTEL at one time and have been redesignated",
+      "description": "So that sites and departments can easily locate a list of their former LTEL students",
+      "code": "LIST STU LAC STU.SC STU.ID STU.NM STU.GR LAC.EAC LAC.RD1 LAC.LT LAC.YEL IF LAC.EAC = \"RFEP\" AND LAC.LT = \"L\"",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_that_were_ltel_at_one_time_and_have_been_redesignated.json"
+    },
+    {
+      "id": "1738287868449",
+      "title": "Pre-Enrolled / incoming students for next year including last school, school of enrollment, grade, next grade and SPED status",
+      "description": "Pre-Enrolled / incoming students for next year including last school, school of enrollment, grade, next grade and SPED status",
+      "code": "LIST STU ID LS? SC? LN FN NG? U13? TG BY LS IF TG = \"*\" ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/pre_enrolled___incoming_students_for_next_year_including_last_school__school_of_enrollment__grade__next_grade_and_sped_status.json"
+    },
+    {
+      "id": "1738287868438",
+      "title": "Semester GPA for students in a Program limited by GPA",
+      "description": "Semester GPA for students in a Program limited by GPA (Replace XXX with program code and STU.GT (<, >, = ) desired GPA",
+      "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.GT IF PGM.CD = XXX AND PGM.EED = NULL AND STU.GT < 2.5",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/semester_gpa_for_students_in_a_program_limited_by_gpa.json"
+    },
+    {
+      "id": "1738287868447",
+      "title": "Students with student flags and flag comments",
+      "description": "Students with student flags and flag comments",
+      "code": "LIST STU FLG STU.NM STU.GR STU.ID FLG.TC FLG.CO BY STU.NM IF FLG.TC # \" \" \u000bAND FLG.CO # \" \" ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_student_flags_and_flag_comments.json"
+    },
+    {
+      "id": "1738287868474",
+      "title": "In Progress DTP Vaccine",
+      "description": "In Progress DTP Vaccine",
+      "code": "LIST STU IMM STU.ID STU.LN STU.FN STU.GR STU.SC? IMM.DE? IMM.DC IF IMM.DE = I   ",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/in_progress_dtp_vaccine.json"
+    },
+    {
+      "id": "1738287868389",
+      "title": "Students in Program(s) ordered by program",
+      "description": "Students in Program(s) ordered by program -- for parent contact info, upload csv of program group into parentsquare",
+      "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.SC? STU.GR PGM.CD? PGM.EED BY PGM.CD IF PGM.CD # \"\" AND ( PGM.EED = NULL OR PGM.EED > 08/11/2023 ) ",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_in_program_s__ordered_by_program.json"
+    },
+    {
+      "id": "1738287868370",
+      "title": "Incoming Students at Given Site",
+      "description": "Incoming Students at Given Site - Gives a list of students enrolled at a given site. You must replace XX with your site number. ",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.NG? STU.SC? STU.NS? IF STU.NS = XX AND STU.NS # '' AND STU.NG # \"13\"  OR  STU.TG = \"*\"",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/incoming_students_at_given_site.json"
+    },
+    {
+      "id": "1738287868468",
+      "title": "SARB Intervention after date",
+      "description": "SARB Intervention after date",
+      "code": "LIST STU INV STU.ID STU.LN STU.FN STU.GR STU.SC? INV.CD? INV.DT IF INV.DT > XX/XX/20XX AND INV.CD = \"SB\"",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/sarb_intervention_after_date.json"
+    },
+    {
+      "id": "1738287868432",
+      "title": "Students in Given Group",
+      "description": "Replace GroupNameHere with the exact name of the group.",
+      "code": "LIST STU SGM SGD STU.ID SGD.GN SGD.GN IF SGD.GN = GroupNameHere",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_in_given_group.json"
+    },
+    {
+      "id": "1738287868457",
+      "title": "Current ALD Students ",
+      "description": "Current ALD Students, Replace STU.SC = XX with desired site number",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR IF SSE.PR = 1 AND CRS.CO : \"AC LANG\" AND STU.SC = XX",
+      "language": "student queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/current_ald_students_.json"
+    },
+    {
+      "id": "1738287868486",
+      "title": "Elementary Students with Parent email and Teacher name",
+      "description": "Student with Parent email and Teacher name (Elementary Only)",
+      "code": "LIST STU ID NM GR PEM PRIMARYTEACHERNAME BY PRIMARYTEACHERNAME ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/elementary_students_with_parent_email_and_teacher_name.json"
+    },
+    {
+      "id": "1738287868465",
+      "title": "All icoming students at a site by next grade and last name",
+      "description": "All icoming students at a site by next grade and last name",
+      "code": "LIST STU ID LN FN MN NG? BY NG LN IF TG = \"*\"    ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/all_icoming_students_at_a_site_by_next_grade_and_last_name.json"
+    },
+    {
+      "id": "1738287868443",
+      "title": "Demographics, Semester Grades, and Attendance by Subject and/or Period",
+      "description": "Demographics, Semester Grades, and Attendance by Subject and/or Period -- Replace the \"X\" in FTF.STI = X with desired period --Replace the \"X\" in CRS.DC : \"X\" with desired department (ie \"M\" = Math, \"E\" = English)  -- Replace \"GRD.M6\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period)\n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
+      "code": "LIST STU GRD MST SSE STF CRS FTF STU.ID STU.NM STU.GR STU.LF? STU.HL? STU.ETH? STU.RC1? FTF.STI GRD.CN CRS.CO GRD.M6 GRD.EN GRD.PR GRD.AB GRD.TD IF GRD.SE = MST.SE AND SSE.PR = 1 AND ( STU.GR = 10 OR STU.GR = 11 ) AND ( CRS.DC : \"X\" OR FTF.STI = X ) AND GRD.SN = STU.SN AND GRD.SC = STU.SC AND GRD.CN = MST.CN AND GRD.M6 # \" \"",
+      "language": "student queries",
+      "tags": [
+        "Courses"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/demographics__semester_grades__and_attendance_by_subject_and_or_period.json"
+    },
+    {
+      "id": "1738287868352",
+      "title": "Retained Students",
+      "description": "Retained Students - Remove the IF GR = 0 for all students that were retained or change 0 to grade you want.",
+      "code": "LIST STU STU.ID STU.NM STU.BD LOC.NM RET.AY CD TG GR CO STU.GR IF GR = 0",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/retained_students.json"
+    },
+    {
+      "id": "1738287868491",
+      "title": "Student and Parent Contact Data with # of Days Absent, Present, and Enrolled",
+      "description": "Student and Parent Contact Data with # of Days Absent",
+      "code": "LIST STU CON STU.ID STU.NM STU.GR CON.CL? CON.NM CON.AD CON.CY CON.ST CON.ZC STU.DA STU.DP STU.DE BY STU.DA ^ IF CON.ERH = Y       ",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_and_parent_contact_data_with___of_days_absent__present__and_enrolled.json"
+    },
+    {
+      "id": "1738287868346",
+      "title": "Totals for Attendance Codes T and R",
+      "description": "Totals for Attendance Codes T and R - This query will give you the totals by grade, then period, for those with Attendance Codes T and R. You can adjust the dates as needed.",
+      "code": "TOTAL STU CAT SEC MST FTF STU.GR FTF.STI CAT.AC BY STU.GR FTF.STI CAT.AC IF CAT.AC = T OR CAT.AC = R AND CAT.DT > MM/DD/YYYY AND CAT.DT < MM/DD/YYYY",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/totals_for_attendance_codes_t_and_r.json"
+    },
+    {
+      "id": "1738287868342",
+      "title": "Aeries/SEIS Data Comparison 3",
+      "description": "Aeries/SEIS Data Comparison 3 - Aeries/SEIS Data Comparison 3 - This allows us to combing STU, CSE & STF tables and combine a first & last name of a staff member. We are using this query to compare data between Aeries and SEIS.",
+      "code": "LIST STU CSE STF STU.LN STU.FN STU.CID STU.ID STU.BD STU.GR STU.SC? STU.RS? (( STF.LN + \", \" + STF.FN )) CSE.ED CSE.LI CSE.LA CSE.PT CSE.DI CSE.DI2 CSE.XD STU.SP IF CSE.DI > 0 AND CSE.XD = NULL AND STU.SP # C AND ( STU.LD = NULL )",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/aeries_seis_data_comparison_3.json"
+    },
+    {
+      "id": "1738287868393",
+      "title": "No 504 Plan and has a 504 Program",
+      "description": "No 504 Plan and has a 504 Program - This query will give you all the students who do NOT have a 504 Plan but do HAVE a 504 Program. They need a Plan and then remove the Program.",
+      "code": "LIST STU SC? ID LN FN 504_PLAN 504_PRG BY STU.SC IF 504_PLAN = NO AND 504_PRG = YES",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/no_504_plan_and_has_a_504_program.json"
+    },
+    {
+      "id": "1738287868441",
+      "title": "Special-Ed students with placement and course data",
+      "description": "Special-Ed students with placement and course data",
+      "code": "LIST STU CSE SSS CRS SSS CRS STU.ID STU.LN STU.FN STU.GR SSS.CN CRS.CO CSE.PL? CSE.SWD IF CSE.SWD = Y   ",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/special_ed_students_with_placement_and_course_data.json"
+    },
+    {
+      "id": "1738287868395",
+      "title": "Has 504 Plan or 504 Program",
+      "description": "Has 504 Plan or 504 Program - This query will give you any student with a 504 Plan or a 504 Program. Review as needed.",
+      "code": "LIST STU SC? ID LN FN 504_PLAN 504_PRG BY STU.SC IF 504_PLAN =YES OR 504_PRG = YES",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/has_504_plan_or_504_program.json"
+    },
+    {
+      "id": "1738287868332",
+      "title": "Next Grade = Current Grade",
+      "description": "Next Grade = Current Grade - This is an enrollment anomoly query. These items must be fixed.",
+      "code": "LIST STU ID LN FN NG GR IF NG = GR",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/next_grade___current_grade.json"
+    },
+    {
+      "id": "1738287868376",
+      "title": "List of Special Ed Students",
+      "description": "List of Special Ed Students - ",
+      "code": "LIST STU CSE STU.ID STU.LN STU.FN STU.SC? STU.GR? CSE.SWD IF CSE.SWD = Y",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_special_ed_students.json"
+    },
+    {
+      "id": "1738287868388",
+      "title": "Race code - Indian Education",
+      "description": "Race code - Indian Education (If Race marked 100 and Ethncity Indicator not 'Y')",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.SC? STU.GR? STU.RC1? STU.RC2? STU.RC3? STU.RC4? STU.RC5? IF STU.ETH = N AND ( STU.RC1 = 100 OR STU.RC2 = 100 OR STU.RC3 = 100 OR STU.RC4 = 100 OR STU.RC5 = 100  )  ",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/race_code___indian_education.json"
+    },
+    {
+      "id": "1738287868367",
+      "title": "Open Enrollment Students",
+      "description": "Open Enrollment Students - ",
+      "code": "LIST STU CHI STU.ID STU.LN STU.FN STU.SC? IT? STU.ITD CHI.NM CHI.SCH CHI.U1? IF STU.IT : I AND CHI.U1 # \" \"",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/open_enrollment_students.json"
+    },
+    {
+      "id": "1738287868362",
+      "title": "Next Year Students at Site",
+      "description": "Next Year Students at Site - Run at the the school level. Will give you all students for next year. You must replace XX with your school number",
+      "code": "LIST STU ID LN FN NS? NG? IF NS = XX AND TG # I AND TG # N AND NG # 13",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/next_year_students_at_site.json"
+    },
+    {
+      "id": "1738287868437",
+      "title": "Special-Ed students with Next School info",
+      "description": "Special-Ed students with Next School info (Replace GR = 8 with desired current grade)",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.SC? STU.GR? U13? NS? BY NS IF GR = 8 AND ( U13 = I OR U13 = B OR U13 = 5  )  ",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/special_ed_students_with_next_school_info.json"
+    },
+    {
+      "id": "1738287868407",
+      "title": "Students with a 504 by school and grade",
+      "description": "Students with a 504 by school and grade",
+      "code": "LIST STU ID LN FN GR GN SC? U13? BY SC GR IF U13 = B OR U13 = 5     ",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_a_504_by_school_and_grade.json"
+    },
+    {
+      "id": "1738287868472",
+      "title": "In Progress Polio Vaccine",
+      "description": "In progress Polio Vaccine with comments",
+      "code": "LIST STU IMM STU.ID STU.LN STU.FN STU.GR STU.SC? IMM.PE? IMM.PC IF IMM.PE = I ",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/in_progress_polio_vaccine.json"
+    },
+    {
+      "id": "1738287868412",
+      "title": "Report of my 504 and/or IEP students",
+      "description": "Report of my 504 and/or IEP students (Teacher can run this as needed for an overview of their 504 and/ or IEP students)",
+      "code": "LIST STU ID LN FN GR U13? IF STU.U13 > 0",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/report_of_my_504_and_or_iep_students.json"
+    },
+    {
+      "id": "1738287868337",
+      "title": "Current Students and where are they going to next year",
+      "description": "Current Students and where are they going to next year - Delete IF GR = 8 to see all students.",
+      "code": "LIST STU ID LN FN SEM GR? NS? IF GR = 8",
+      "language": "student queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/current_students_and_where_are_they_going_to_next_year.json"
+    },
+    {
+      "id": "1738287868452",
+      "title": "Next years ALD Students ",
+      "description": "Next years ALD Students ",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.NG? IF SSE.PR = 1 AND CRS.CO : \"AC LANG\" AND STU.NS = XX  AND STU.GR # 12       ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/next_years_ald_students_.json"
+    },
+    {
+      "id": "1738287868475",
+      "title": "Student Attendance Percentage with Special-Ed Status, Parent Contact Info, and Atttendance Summary data",
+      "description": "Student Attendance Percentage with Special-Ed Status, Parent Contact Info, and Atttendance Summary data",
+      "code": "LIST STU AHS STU.ID STU.NM STU.GR STU.PG STU.TL STU.PEM STU.CL? STU.U13? AHS.EN AHS.AB AHS.PR (( 1.0 * AHS.PR/AHS.EN * 100 )) IF AHS.EN # 0 AND AHS.YR = \"2023-2024\" AND AHS.SCL = STU.SC   ",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_attendance_percentage_with_special_ed_status__parent_contact_info__and_atttendance_summary_data.json"
+    },
+    {
+      "id": "1738287868420",
+      "title": "Students who received an F (Demographic, attendance, and course information)",
+      "description": "Students who received an F (Demographic, attendance, and course information)  -- Replace \"GRD.M2\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period)\n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
+      "code": "LIST STU GRD CRS ABSTF STU.ID STU.NM STU.GR STU.ETH? STU.RC1? STU.LF? GRD.PD GRD.CN CRS.CO GRD.SID STF.LN STF.FN GRD.M2 GRD.EN GRD.PR GRD.AB GRD.TD IF GRD.M2 = \"F\"   ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_who_received_an_f__demographic__attendance__and_course_information_.json"
+    },
+    {
+      "id": "1738287868485",
+      "title": "504 with Accomodations",
+      "description": "504 with Accomodations",
+      "code": "LIST STU FOF FAP STU.ID STU.LN STU.FN STU.GR FOF.SD FAP.AD? FAP.AC IF FOF.ED = NULL AND FOF.SD # NULL ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/504_with_accomodations.json"
+    },
+    {
+      "id": "1738287868382",
+      "title": "Early College Managment Students",
+      "description": "Early College Managment Students - Early College Managment Students by Grade.",
+      "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.GR STU.SEM PGM.CD BY STU.GR IF PGM.CD = ECM  ",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/early_college_managment_students.json"
+    },
+    {
+      "id": "1738287868331",
+      "title": "End of year students not returning",
+      "description": "End of year students not returning - To use in case we need to mass update Attendance enrollment",
+      "code": "LIST STU ENR STU.ID STU.NM STU.EOY STU.ENS ENR.LD IF ENR.LD = 06/02/2023",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/end_of_year_students_not_returning.json"
+    },
+    {
+      "id": "1738287868446",
+      "title": "Attendance Percentage (Days enrolled, present, days absent)",
+      "description": "Attendance Percentage (Days enrolled, present, days absent)",
+      "code": "LIST STU NM GR SC? DE DA DP (( LEFT (1.0 * DP / DE * 100 , 5 ) + \"%\" )) BY (( DP / DE )) REV IF DE # 0",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/attendance_percentage__days_enrolled__present__days_absent_.json"
+    },
+    {
+      "id": "1738287868418",
+      "title": "EL Students by teacher (Elementary only)",
+      "description": "EL Students by teacher (Elementary only) -- English Learners ",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.GR STU.LF? PRIMARYTEACHERNAME BY PRIMARYTEACHERNAME IF STU.LF = L ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/el_students_by_teacher__elementary_only_.json"
+    },
+    {
+      "id": "1738287868415",
+      "title": "Students Quarter or IPR Grades for all of courses",
+      "description": "Student's Quarter / IPR Grades for all of their courses -- Replace \"GRD.M2\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period). Replace year (\"20XX-20XX\") with current school year \n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
+      "code": "LIST GRD STU SEC MST CRS FTF STU.ID STU.NM STU.GR FTF.STI CRS.CO GRD.M2 BY STU.NM FTF.STI IF GRD.SE = MST.SE AND SSE.PR = 1 AND FTF.YR =  \"20XX-20XX\" AND GRD.M2 # \" \"  ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_quarter_or_ipr_grades_for_all_of_courses.json"
+    },
+    {
+      "id": "1738287868483",
+      "title": "Honor Roll Students With 3rd Period Teacher (Based on Semester 1 GPA)",
+      "description": "Honor Roll Students With 3rd Period Teacher (Based on Semester 1 GPA)",
+      "code": "LIST STU SEC MST FTF SSE STF GRG STU.ID STU.LN STU.FN STU.GR GRG.T6 STF.LN MST.RM BY STU.LN STF.LN IF SSE.PR = 1 AND FTF.STI = 3 AND GRG.T6 >= 4  AND GRG.YR = 2023   ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/honor_roll_students_with_3rd_period_teacher__based_on_semester_1_gpa_.json"
+    },
+    {
+      "id": "1738287868361",
+      "title": "IntraDistrict Students",
+      "description": "IntraDistrict Students - Something about Intradistrict transfers",
+      "code": "LIST STU ENR STU.ID STU.LN STU.FN STU.SC? STU.IT? ENR.ED ENR.LD IF STU.IT : I AND ENR.ED >= 08/01/2023 AND ENR.LD = NULL",
+      "language": "student queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/intradistrict_students.json"
+    },
+    {
+      "id": "1738287868423",
+      "title": "Students that are LTEL and EL",
+      "description": "So that sites and departments can easily locate a list of their LTEL students",
+      "code": "LIST STU LAC STU.SC STU.ID STU.NM STU.GR LAC.LT LAC.YEL IF LAC.EAC = \"EL\" AND LAC.LT = \"L\"",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_that_are_ltel_and_el.json"
+    },
+    {
+      "id": "1738287868421",
+      "title": "Demographic, Grade, and Attendance information of student's in specific course",
+      "description": "Demographic, Grade, and Attendance information of student's in specific course  -- Replace \"GRD.M2\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period)\n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
+      "code": "LIST STU GRD CRS ABSTF STU.ID STU.NM STU.GR STU.LF? STU.HL? STU.ETH? STU.RC1? GRD.SC GRD.SN GRD.PD GRD.CN CRS.CO GRD.M2 GRD.EN GRD.PR GRD.AB GRD.TD IF CRS.CN = XXXXX ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/demographic__grade__and_attendance_information_of_student_s_in_specific_course.json"
+    },
+    {
+      "id": "1738287868411",
+      "title": "Report of my IEP students",
+      "description": "Report of my IEP students (Teacher can run this as needed for an overview of  their IEP students)",
+      "code": "LIST STU ID LN FN GR U13? IF STU.U13 = I OR STU.U13 = B",
+      "language": "student queries",
+      "tags": [
+        "Special Ed"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/report_of_my_iep_students.json"
+    },
+    {
+      "id": "1738287868478",
+      "title": "Elementary Students New to District By Teacher (Part 1)",
+      "description": "Students New to District By Teacher (Part 1)",
+      "code": "SKIP STU ENR IF ENR.YR < 2023",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/elementary_students_new_to_district_by_teacher__part_1_.json"
+    },
+    {
+      "id": "1738287868343",
+      "title": "Tracking 504 student under the FOF",
+      "description": "Tracking 504 student under the FOF - Gives a list of students with a 504 plan and includes counseor last name.",
+      "code": "LIST STU FOF TCH STU.ID STU.LN STU.FN STU.GR TCH.TE FOF.SD FOF.RD BY TCH.TE IF ( 504_PLAN = YES OR 504_PRG = YES ) AND STU.TG = \" \"",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/tracking_504_student_under_the_fof.json"
+    },
+    {
+      "id": "1738287868398",
+      "title": "Homeless Students missing Unaccop Youth indicator",
+      "description": "This query will provide a list of current & past homeless students who are missing the Unaccop Youth indicator. This is a required field by CALPADS. Without htis field the student's program will not import to CALPADS",
+      "code": "LIST STU PGM STU.CID STU.ID STU.NM STU.GR STU.SC? PGM.CD PGM.ESD PGM.EED PGM.UY IF PGM.CD = 191 AND PGM.UY = \" \"",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/homeless_students_missing_unaccop_youth_indicator.json"
+    },
+    {
+      "id": "1738287868440",
+      "title": "Daily Medical Log Overview for Health Techs",
+      "description": "Daily Medical Log Overview for Health Techs",
+      "code": "LIST STU MED MED.SC STU.ID STU.LN STU.FN MED.CD? MED.ST MED.ET MED.DT MED.RE? MED.BC? MED.CO  ",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/daily_medical_log_overview_for_health_techs.json"
+    },
+    {
+      "id": "1738287868405",
+      "title": "Student Demographics and Grades for the chosen course.",
+      "description": "Student Demographics and Grades for the chosen course. Change XXXXXX to desired course number.",
+      "code": "LIST STU HIS STU.ID STU.LN STU.FN STU.GR STU.GN STU.U13? STU.LF? STU.HL? STU.ETH? STU.RC1? CRS.CO HIS.TE? HIS.YR? HIS.MK IF CRS.CN = XXXXXX",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_demographics_and_grades_for_the_chosen_course_.json"
+    },
+    {
+      "id": "1738287868390",
+      "title": "List of Demographics -- Specific Course by Section #",
+      "description": "List of Demographics -- Specific Course by Section #",
+      "code": "LIST STU SSS CRS STU.ID STU.LN STU.FN STU.GR STU.GN STU.LF? STU.HL? STU.ETH? STU.RC1? SSS.CN CRS.CO SSS.SE BY SSS.SE IF CRS.CN = MH034 ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_demographics____specific_course_by_section__.json"
+    },
+    {
+      "id": "1738287868471",
+      "title": "Percentage Present by Teacher (Elementary, run at site level).",
+      "description": "Percentage Present by Teacher (Elementary, run at site level). Extract  and create a pivot table by teacher with avg ",
+      "code": "LIST STU APDR PRIMARYTEACHERNAME APDR.APR",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/percentage_present_by_teacher__elementary__run_at_site_level__.json"
+    },
+    {
+      "id": "1738287868374",
+      "title": "List of Students < 3 years in district",
+      "description": "List of Students < 3 years in district - ",
+      "code": "LIST STU SSD STU.SC STU.ID STU.LN STU.FN IF SSD.SUS = 'Y'",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_students___3_years_in_district.json"
+    },
+    {
+      "id": "1738287868355",
+      "title": "GATE/ALPS Students",
+      "description": "GATE/ALPS Students - Will return students with a GATE/ALPS program. GATE/ALPS is not in Student Special Programs.",
+      "code": "LIST STU GTE STU.ID STU.LN STU.FN STU.SC? GTE.ESD GTE.PSD IF GTE.ESD # NULL",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/gate_alps_students.json"
+    },
+    {
+      "id": "1738287868434",
+      "title": "Feeder Schools from within ",
+      "description": "Feeder Schools from within [Replace ENR.YR (enrollment year), STU.SC(current site), and STU.GR(current grade) as needed]",
+      "code": "LIST STU ENR STU.ID STU.LN STU.FN STU.GR ENR.SC ENR.YR IF ENR.YR = 2021 AND STU.SC = 31  AND STU.GR = 7 AND ENR.SC < 100  ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/feeder_schools_from_within_.json"
+    },
+    {
+      "id": "1738287868377",
+      "title": "List of Students in Indian Education",
+      "description": "List of Students in Indian Education - ",
+      "code": "LIST STU PGM STU.ID STU.NM STU.RC1? STU.RC2? STU.ETH? PGM.CD? IF ( STU.RC1 = 100 OR STU.RC2 = 100 OR STU.RC3 = 100 OR STU.RC4 = 100 OR STU.RC5 = 100 ) AND ( PGM.CD = 132 OR PGM.CD = NULL )   ",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_students_in_indian_education.json"
+    },
+    {
+      "id": "1738287868469",
+      "title": "Absence Percentage with atleast 31 days of Enrollment ",
+      "description": "Absence Percentage with atleast 31 days of Enrollment (Days enrolled, present, days absent)",
+      "code": "LIST STU AHS STU.ID STU.SC? STU.GR STU.NM AHS.SP AHS.EN AHS.AB AHS.PR (( 1.0 * AHS.AB/AHS.EN * 100 )) BY AHS.SCL STU.GR IF AHS.EN >= 31 AND AHS.YR = \"2023-2024\" AND AHS.SCL = STU.SC AND LOC.U = 0",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/absence_percentage_with_atleast_31_days_of_enrollment_.json"
+    },
+    {
+      "id": "1738287868340",
+      "title": "Display immunization exemption values",
+      "description": "Display immunization exemption values - It would be easier to run it as Excel so that you can filter for IMM.E1, IMM.E2 and IMM.E3. Remember that E1 is Permanent Exemption, E2 is Temporary Exemption and E3 is Personal Belief Exemption. A value will also display under any Immunization missing if there is a exemption reason. - ",
+      "code": "LIST STU IMM STU.NM STU.ID LOC.NM STU.GR IMM.PE IMM.DE IMM.AE IMM.YE IMM.IE IMM.HAE IMM.VE IMM.TE IMM.TBE IMM.MCE IMM.PCE IMM.CVE IMM.CVD IMM.CVC IMM.E1 IMM.E2 IMM.E3",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/display_immunization_exemption_values.json"
+    },
+    {
+      "id": "1738287868426",
+      "title": "Hearing and Vision Results",
+      "description": "Hearing and Vision Results",
+      "code": "LIST STU HRN VSN STU.ID STU.LN STU.FN STU.GR STU.SC? HRN.TD HRN.SR HRN.SL HRN.PR HRN.PL HRN.PF VSN.TD VSN.RG VSN.LG VSN.BG VSN.RN VSN.LN VSN.BN VSN.CT VSN.MU VSN.SCN VSN.PF VSN.RGF VSN.LGF VSN.BGF VSN.RNF VSN.LNF VSN.BNF VSN.MUF IF HRN.TD > 8/10/2023 AND VSN.TD > 8/10/2023 ",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/hearing_and_vision_results.json"
+    },
+    {
+      "id": "1738287868402",
+      "title": "Current Class Rank - By Counselor",
+      "description": "This report will provide the class rank sorted by last name. Be sure and change the number at the end of the query to match the counselor number you are looking for.",
+      "code": "LIST STU SUP STU.ID STU.LN STU.FN SUP.RNK IF STU.CU = 106",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/current_class_rank___by_counselor.json"
+    },
+    {
+      "id": "1738287868386",
+      "title": "Scores on CAASP - Migrant Ed",
+      "description": "Scores on CAASP - Migrant Ed",
+      "code": "LIST STU PGM TST CTL STU.ID STU.LN STU.FN STU.MN STU.SC? STU.GR STU.LF PGM.CD? PGM.EED TST.ID TST.TA TST.TD CTL.NM TST.SS TST.PL IF ( TST.ID = \"SBAC\" OR TST.ID = \"CAST\" OR TST.ID = \"CAA\" ) AND PGM.CD = 135 AND ( PGM.EED = NULL OR PGM.EED > 08/11/2023 )",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/scores_on_caasp___migrant_ed.json"
+    },
+    {
+      "id": "1738287868466",
+      "title": "SART Intervention after date",
+      "description": "SART Intervention after date",
+      "code": "LIST STU INV STU.ID STU.LN STU.FN STU.GR STU.SC? INV.CD? INV.DT IF INV.DT > XX/XX/20XX AND INV.CD = \"ST\"",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/sart_intervention_after_date.json"
+    },
+    {
+      "id": "1738287868482",
+      "title": "Grades for EL & Sped with Case Manager",
+      "description": "Grades for EL & Sped with Case Manager",
+      "code": "LIST GRD STU SEC MST CRS FTF SGM SGD STU.ID STU.NM STU.GR STU.LF? STU.U13? SGD.GN FTF.STI CRS.CO GRD.M6 BY STU.NM FTF.STI IF GRD.SE = MST.SE AND SSE.PR = 1 AND STU.LF = L AND STU.U13 > 0 AND SGD.GN : \"CASE\" AND FTF.YR =  \"2023-2024\" AND GRD.M6 # \" \"     ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/grades_for_el___sped_with_case_manager.json"
+    },
+    {
+      "id": "1738287868404",
+      "title": "Current Class Rank - Individual Student",
+      "description": "This report will provide the class rank for an individual student. Change XXXXXX to the student ID. ",
+      "code": "LIST STU SUP STU.ID STU.LN STU.FN SUP.RNK IF STU.ID = XXXXXX",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/current_class_rank___individual_student.json"
+    },
+    {
+      "id": "1738287868460",
+      "title": "Look up students in a specific section from the Master Schedule (make sure to run at site level in Aeries)",
+      "description": "Look up students in a specific section from the Master Schedule (make sure to run at site level in Aeries) \nReplace XXX with section number",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.GR MST.SC IF MST.SC = XXX",
+      "language": "student queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/look_up_students_in_a_specific_section_from_the_master_schedule__make_sure_to_run_at_site_level_in_aeries_.json"
+    },
+    {
+      "id": "1738287868364",
+      "title": "List of D and F grades for Fall Semester",
+      "description": "List of D and F grades for Fall Semester - 21. Change the 21 for other years.\n\n*In Aeries, the year is the start of the school year, not the end.",
+      "code": "LIST STU HIS STU.ID STU.LN STU.FN STU.GR? HIS.YR HIS.TE HIS.MK CRS.CO IF HIS.YR = \"21\" AND ( HIS.TE = \"1\" OR HIS.TE = \"2\" ) AND ( HIS.MK = \"F\" OR HIS.MK : \"D\" )",
+      "language": "student queries",
+      "tags": [
+        "Grades"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/list_of_d_and_f_grades_for_fall_semester.json"
+    },
+    {
+      "id": "1738287868344",
+      "title": "Totals of tardies (T) and tardy>30 min (R) by grade level",
+      "description": "Totals of tardies (T) and tardy>30 min (R) by grade level - You can adjust the dates as needed.",
+      "code": "TOTAL STU CAT STU.GR CAT.AC BY STU.GR CAT.AC IF CAT.AC = T OR CAT.AC = R AND CAT.DT > MM/DD/YYYY AND CAT.DT < MM/DD/YYYY",
+      "language": "student queries",
+      "tags": [
+        "Attendance"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/totals_of_tardies__t__and_tardy_30_min__r__by_grade_level.json"
+    },
+    {
+      "id": "1738287868350",
+      "title": "Credit deficient based on grade",
+      "description": "Credit deficient based on grade - Run this query to find students who are credit deficient based on their grade and number of credit earned. Change the XX to the grade and the < YYYY for the number of credits",
+      "code": "LIST STU SC? ID LN FN CC IF GR = XX AND CC < YYYY",
+      "language": "student queries",
+      "tags": [
+        "Credits"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/credit_deficient_based_on_grade.json"
+    },
+    {
+      "id": "1738287868325",
+      "title": "Media Opt Out - May Release Info - 2nd Query",
+      "description": "Media Opt Out - May Release Info - 2nd Query - Run this one ONLY after you have run the SKIP query in 1st Query (Media Opt Out - May Release Info - 1st Query)",
+      "code": "LIST STU STU.ID STU.NM STU.SEM \"MAY RELEASE\"",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/media_opt_out___may_release_info___2nd_query.json"
+    },
+    {
+      "id": "1738287868427",
+      "title": "",
+      "description": "",
+      "code": "LIST STU LAC PGM STU.CID STU.ID STU.NM STU.GR STU.SC? LAC.EAC PGM.CD IF PGM.CD = 301 AND PGM.ESD >= 8/12/2023 AND LAC.EAC = EL",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/.json"
+    },
+    {
+      "id": "1738287868356",
+      "title": "GATE/ALPS Students Limited Grade",
+      "description": "GATE/ALPS Students Limited Grade - Will return students with a GATE/ALPS program limited by grade level. GATE/ALPS is not in Student Special Programs.",
+      "code": "LIST STU GTE STU.ID STU.LN STU.FN STU.GR? STU.SC? GTE.ESD GTE.PSD IF GTE.ESD # NULL AND ( STU.GR = 3 OR STU.GR = 4 OR STU.GR = 5 OR STU.GR = 6 )",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/gate_alps_students_limited_grade.json"
+    },
+    {
+      "id": "1738287868328",
+      "title": "Change  Hearing date and value entry 1st Query",
+      "description": "Change  Hearing date and value entry 1st Query - You must run Change  Hearing/Vision date and value entry 1st Query and then 2nd Query ",
+      "code": "CHANGE STU HRN  HRN.PF TO \" \" IF STU.GR # 2 AND HRN.TD = 11/17/2021 AND HRN.PF = \"P\"",
+      "language": "student queries",
+      "tags": [
+        "Health"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/change__hearing_date_and_value_entry_1st_query.json"
+    },
+    {
+      "id": "1738287868480",
+      "title": "Elementary Students New to District By Teacher (Part 2)",
+      "description": "Students New to District By Teacher (Part 2) Limited by grade levels 4 5 and 6",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.BD STU.GR STU.SC? STF.LN BY STU.SC STF.LN IF SSE.PR = 1 AND CRS.CO : \"ELEMENTARY\" AND ( STU.GR = 4 OR STU.GR = 5 OR STU.GR = 6 )",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/elementary_students_new_to_district_by_teacher__part_2_.json"
+    },
+    {
+      "id": "1738287868488",
+      "title": "Student and Contact Info for famillies who have not filled out PDC or Alternaite Income (Step One)",
+      "description": "Student and Contact Info for famillies who have not filled out PDC or Alternaite Income (Step One)",
+      "code": "SKIP STU ICL AIDC  IF ( ICL.TC : \"FINALDATACONF\" AND ICL.DTS >= 07/01/2024  ) OR AIDC.DT >= 07/01/2024",
+      "language": "student queries",
+      "tags": [
+        "Contacts"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/student_and_contact_info_for_famillies_who_have_not_filled_out_pdc_or_alternaite_income__step_one_.json"
+    },
+    {
+      "id": "1738287868396",
+      "title": "Migrant Students",
+      "description": "This query will provide a list of current migrant students with contact information. Migrant Students",
+      "code": "LIST STU PGM STU.ID STU.LN STU.FN STU.RAD STU.RCY STU.RST STU.RZC PGM.CD? PGM.PED IF PGM.PED = NULL AND ( PGM.CD = 135 )",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/migrant_students.json"
+    },
+    {
+      "id": "1738287868492",
+      "title": "Students with 504 or IEP",
+      "description": "Students with 504 or IEP",
+      "code": "LIST STU ID LN FN BD SEM U13? IF U13 > 0 ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_504_or_iep.json"
+    },
+    {
+      "id": "1738287868399",
+      "title": "Students Granted Access on MediCal Billing",
+      "description": "Students Granted Access on MediCal Billing",
+      "code": "LIST STU AUT STU.ID STU.LN STU.FN STU.SC? AUT.CD? AUT.ST? IF AUT.CD = MCB AND AUT.ST = 1 ",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_granted_access_on_medical_billing.json"
+    },
+    {
+      "id": "1738287868338",
+      "title": "Students with specific teacher name, period, and room number.",
+      "description": "Students with specific teacher name, period, and room number. - ",
+      "code": "LIST STU SEC MST FTF SSE STF LOC STU.ID STU.LN STU.FN STF.LN STF.FN MST.RM FTF.STI LOC.SNM IF SSE.PR = 1 AND ( SSE.ED > 1/19/2023 OR SSE.ED = NULL ) AND ( ( MST.SC = 21 AND FTF.STI = WIN ) OR ( MST.SC = 23 AND FTF.STI = Advis ) OR ( MST.SC = 34 AND FTF.STI = 2 ) OR ( MST.SC = 31 AND FTF.STI = 2 ) OR ( MST.SC = 32 AND FTF.STI = 3 ) OR ( MST.SC = 33 AND FTF.STI = 7 OR FTF.STI = 8 ) OR ( MST.SC = 53 AND FTF.STI = 4 ) OR ( MST.SC = 54 AND FTF.STI = ADV ) OR ( MST.SC = 50 AND FTF.STI = 4 ) OR ( MST.SC = 51 AND FTF.STI = 3 ) OR ( MST.SC = 52 AND FTF.STI = 3 ) OR ( MST.SC = 60 AND FTF.STI = Advo ) )",
+      "language": "student queries",
+      "tags": [
+        "Scheduling"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/students_with_specific_teacher_name__period__and_room_number_.json"
+    },
+    {
+      "id": "1738287868463",
+      "title": "Next Year 504 Students moving into middle or high school",
+      "description": "Next Year 504 Students moving into middle or high school",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.GR? STU.SC? STU.NG? STU.NS? STU.U13? BY STU.NS IF ( STU.GR = 6 OR STU.GR = 8 ) AND ( STU.U13 = 5 OR STU.U13 = B ) AND STU.SC # STU.NS",
+      "language": "student queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/next_year_504_students_moving_into_middle_or_high_school.json"
+    },
+    {
+      "id": "1738287868392",
+      "title": "Both 504 Plan and 504 Program",
+      "description": "Both 504 Plan and 504 Program - This query will give you all the students who have an entry for a 504 Plan and a 504 Program. Verify they actually have a plan. Some may not. After the Plan is created, the Program needs to be removed.",
+      "code": "LIST STU SC? ID LN FN 504_PLAN 504_PRG BY STU.SC IF 504_PLAN = YES AND 504_PRG = YES",
+      "language": "student queries",
+      "tags": [
+        "Student"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/student queries/both_504_plan_and_504_program.json"
+    },
+    {
+      "id": "1738287868609",
+      "title": "DHH STudents",
+      "description": "",
+      "code": "LIST STU STU.CID STU.ID STU.LN STU.FN STU.GR LAC.EAC CSE.SS? CSE.DI IF CSE.DI = 230",
+      "language": "testing queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/dhh_students.json"
+    },
+    {
+      "id": "1738287868547",
+      "title": "Secondary Summative ELPAC: EL SWD Students",
+      "description": "SWD Students with ALD courses with IEP or 504 or both.",
+      "code": "LIST STU SEC MST CRS SSE STF FTF LAC STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STU.LF? STF.LN STU.U13? CRS.CO IF LAC.EAC = \"EL\" AND ( FTF.STI # \"1-6\" AND FTF.STI # \"1-5\" AND FTF.STI # \"TK-K\" ) AND SSE.PR = 1 AND ( CRS.CN = NH031 OR CRS.CN = NH032 OR CRS.CN = NHALD OR CRS.CN = NHR30 OR CRS.CN = NM101 OR CRS.CN = NM107 OR CRS.CN = NM108 ) AND ( STU.U13 = 5 OR STU.U13 = I OR STU.U13 = B )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/secondary_summative_elpac__el_swd_students.json"
+    },
+    {
+      "id": "1738287868571",
+      "title": "PHS Student List for Tracking Sheet",
+      "description": "PHS Student List for Tracking Sheet - Run at the site level for a full list of eligible students for CAASPP testing in the specific classes the site is testing\n (Testing in English and History Classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND ( ( ( CRS.DC = E ) AND STU.GR = 11) OR ( ( CRS.DC = H ) AND ( STU.GR = 11 OR STU.GR = 12 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/phs_student_list_for_tracking_sheet.json"
+    },
+    {
+      "id": "1738287868584",
+      "title": "PFT: List of students w/Teachers",
+      "description": "PFT: Flex Scheduling list of students - Run to identify students that do not have any PFT scores for administration year",
+      "code": "LIST STU SEC MST FTF SSE STF PFT STU.ID STU.LN STU.FN STU.GR STU.SC? STF.FN STF.LN FTF.STI CRS.DC? PFT.TA BY STU.ID IF ( ( SSE.PR = 1 AND CRS.DC = G ) AND ( STU.GR = 7 OR STU.GR = 9 ) AND PFT.TA = NULL ) OR ( STU.GR = 5 AND STU.SC < 90 AND PFT.TA = NULL AND STF.PSC = STU.SC )    ",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/pft__list_of_students_w_teachers.json"
+    },
+    {
+      "id": "1738287868600",
+      "title": "CAA for Science: 12th grade",
+      "description": "Then run your information query for 12th graders who did not take the CAA Part 3 (Science) SPRG22",
+      "code": "Step 3: LIST STU STU.ID STU.CID STU.LN STU.FN STU.MN STU.SC? STU.GR ",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CA Alternate"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/caa_for_science__12th_grade.json"
+    },
+    {
+      "id": "1738287868556",
+      "title": "Students w/o Courses for Testing - Secondary (Two Step Process) 2nd Query",
+      "description": "Students w/o Courses for Testing - Secondary (Two Step Process) 2nd Query - 2nd Query: Run a Query for student that do not have an English class in their current schedule\n",
+      "code": "LIST STU ID LN FN MN CID BD GN SC? GR",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/students_w_o_courses_for_testing___secondary__two_step_process__2nd_query.json"
+    },
+    {
+      "id": "1738287868538",
+      "title": "Elementary Teacher List by Grade",
+      "description": "Elementary Teacher List",
+      "code": "LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM MST.CN CRS.DC? IF  ( MST.CN = KE003 OR MST.CN = KE004 OR MST.CN = KE005 OR MST.CN = KE006 OR MST.CN = SESD3 OR MST.CN = SESD4 OR MST.CN = SESD5 OR MST.CN = SESD6 )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP Interim"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/elementary_teacher_list_by_grade.json"
+    },
+    {
+      "id": "1738287868544",
+      "title": "Elementary Summative ELPAC: EL Students",
+      "description": "Summative ELPAC: EL Students - Run for a list of Elementary students who have been classified as an English Learner through their Initial assessment with Teacher name",
+      "code": "LIST STU SEC MST CRS SSE STF FTF LAC STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STU.LF? STF.LN FTF.STI IF LAC.EAC = \"EL\" AND ( FTF.STI = \"1-6\" OR FTF.STI = \"1-5\" OR  FTF.STI = \"TK-K\" ) AND SSE.PR = 1",
+      "language": "testing queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/elementary_summative_elpac__el_students.json"
+    },
+    {
+      "id": "1738287868582",
+      "title": "PFT: Elementary Students with Teachers",
+      "description": "List of 5th grade students with teacher name",
+      "code": "LIST STU SEC MST FTF SSE STF PFT STU.ID STU.LN STU.FN STU.GR STU.SC? STF.FN STF.LN FTF.STI CRS.DC? PFT.TA BY STU.ID IF ( ( SSE.PR = 1  AND ( MST.CN = KE005 OR MST.CN = SESD5 OR MST.CN = SEDH5 ) AND PFT.TA = NULL ) ",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/pft__elementary_students_with_teachers.json"
+    },
+    {
+      "id": "1738287868540",
+      "title": "Secondary Teacher List by Department",
+      "description": "Secondary Teacher List  - Used for creating TOMS accounts for testing\n",
+      "code": "LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM MST.CN CRS.DC? IF CRS.DC = \"E\" OR CRS.DC = \"M\" OR CRS.DC = \"K\"",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP Interim"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/secondary_teacher_list_by_department.json"
+    },
+    {
+      "id": "1738287868551",
+      "title": "Secondary Primary Teacher List",
+      "description": "Secondary Primary Teacher List - Run to provide a list of current teachers by department at each site for the TSC to identify which ones will be Test Administrators",
+      "code": "LIST STU SEC MST FTF SSE STF SSE.PR STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND ( ( ( CRS.DC = E OR CRS.DC = M ) AND STU.GR = 11) OR ( ( CRS.DC = P OR CRS.DC = B ) AND ( STU.GR = 11 OR STU.GR = 12 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/secondary_primary_teacher_list.json"
+    },
+    {
+      "id": "1738287868567",
+      "title": "MHS Student List for Tracking Sheet",
+      "description": "MHS Student List for Tracking Sheet - Run at the site level for a full list of eligible students for CAASPP testing in the specific classes the site is testing\n (Testing in English History and Science Classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND  ( ( ( CRS.DC = E OR CRS.DC = H ) AND STU.GR = 11)  OR  ( ( CRS.DC = P OR CRS.DC = B ) AND ( STU.GR = 11 OR STU.GR = 12 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/mhs_student_list_for_tracking_sheet.json"
+    },
+    {
+      "id": "1738287868558",
+      "title": "Elementary Student List for Tracking Sheet",
+      "description": "Elementary Student List for Tracking Sheet - Needs to be updated for Flex Scheduling",
+      "code": "LIST STU SEC MST TCH STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR TCH.TF TCH.TLN IF ( MST.CN = KE003 OR MST.CN = KE004 OR MST.CN = KE005 OR MST.CN = KE006 OR MST.CN = SESD3 OR MST.CN = SESD4 OR MST.CN = SESD5 OR MST.CN = SESD6 OR MST.CN = SEDH4 OR MST.CN = SEDH4 OR MST.CN = SEDH5 OR MST.CN = SEDH6 )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/elementary_student_list_for_tracking_sheet.json"
+    },
+    {
+      "id": "1738287868541",
+      "title": "Initial ELPAC: TBD Students",
+      "description": "Initial ELPAC: TBD Students - Run to identify TBD students upon enrollment",
+      "code": "LIST STU LAC STU.ID STU.CID STU.LN STU.FN STU.SC? STU.GR? STU.ED STU.LF LAC.EAC IF LAC.EAC = TBD",
+      "language": "testing queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/initial_elpac__tbd_students.json"
+    },
+    {
+      "id": "1738287868563",
+      "title": "Secondary Summative ELPAC: EL Students",
+      "description": "Summative ELPAC: EL Students - Run for a list of Secondary students who have been classified as an English Learner through their Initial assessment w/ALD or Newcomer Teacher\n\n=IFERROR(query('Raw Data Secondary'!$A$5:$L, \"Select K,L where \"\"\"&A5&\"\"\" matches A and L contains 'Ac Lang' \"), )",
+      "code": "LIST STU SEC MST CRS SSE STF FTF LAC STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STU.LF? STF.LN CRS.CO IF LAC.EAC = \"EL\" AND ( FTF.STI # \"1-6\" AND FTF.STI # \"1-5\" AND FTF.STI # \"TK-K\" ) AND SSE.PR = 1 AND CRS.CO : \"LANG\"",
+      "language": "testing queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/secondary_summative_elpac__el_students.json"
+    },
+    {
+      "id": "1738287868549",
+      "title": "Elementary Unique Teacher List",
+      "description": "Elementary Unique Teacher List - Run to  solve duplicate students for combination classes",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN IF ( MST.CN = KE003 OR MST.CN = KE004 OR MST.CN = KE005 OR MST.CN = KE006 OR MST.CN = SESD3 OR MST.CN = SESD4 OR MST.CN = SESD5 OR MST.CN = SESD6 OR MST.CN = SEDH4 OR MST.CN = SEDH4 OR MST.CN = SEDH5 OR MST.CN = SEDH6 ) AND SSE.PR = 1",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/elementary_unique_teacher_list.json"
+    },
+    {
+      "id": "1738287868575",
+      "title": "Middle/Charter Schools Student List for Tracking Sheet",
+      "description": "Middle/Charter Schools Student List for Tracking Sheet - Run at the site level for a full list of eligible students for CAASPP testing in each subject area\n (Testing in English, Math and Science Classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND  ( ( ( CRS.DC = E OR CRS.DC = M )  OR  ( ( CRS.DC = P OR CRS.DC = B ) AND ( STU.GR = 8 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/middle_charter_schools_student_list_for_tracking_sheet.json"
+    },
+    {
+      "id": "1738287868560",
+      "title": "EAHS Student List for Tracking Sheet ",
+      "description": "EAHS Student List for Tracking Sheet  - Run at the site level for a full list of eligible students for CAASPP testing in the specific classes the site is testing \n(Testing in English and History Classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND ( ( ( CRS.DC = E ) AND STU.GR = 11) OR ( ( CRS.DC = H ) AND ( STU.GR = 11 OR STU.GR = 12 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/eahs_student_list_for_tracking_sheet_.json"
+    },
+    {
+      "id": "1738287868607",
+      "title": "CAST: 12th grade",
+      "description": "Then run your information query for 12th graders who did not take the CAST in Spring 2023",
+      "code": "LIST STU STU.ID STU.CID STU.LN STU.FN STU.MN STU.SC? STU.GR",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CA Alternate"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/cast__12th_grade.json"
+    },
+    {
+      "id": "1738287868612",
+      "title": "Students w/o P.E. Class",
+      "description": "Step 1: Skip 9th grade students with PE",
+      "code": "SKIP STU SEC CRS IF CRS.DC = G AND GR = 9",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/students_w_o_p_e__class.json"
+    },
+    {
+      "id": "1738287868594",
+      "title": "NPS Students Testing",
+      "description": "NPS Students Testing - Run to identify students and the sites where they are enrolled for contacting NPS Partners regarding state testing information.",
+      "code": "LIST STU STU.CID STU.ID STU.LN STU.FN STU.GR CSE.DR CSE.SS CSE.SS? IF STU.SC = 80 OR STU.SC = 81",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CA Alternate"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/nps_students_testing.json"
+    },
+    {
+      "id": "1738287868573",
+      "title": "SRHS Student List for Tracking Sheet",
+      "description": "SRHS Student List for Tracking Sheet - Run at the site level for a full list of eligible students for CAASPP testing in each subject area\n (Testing in English, Math and Science Classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND  ( ( ( CRS.DC = E OR CRS.DC = M )  OR  ( ( CRS.DC = P OR CRS.DC = B ) AND ( STU.GR = 8 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/srhs_student_list_for_tracking_sheet.json"
+    },
+    {
+      "id": "1738287868565",
+      "title": "MCHS Student List for Tracking Sheet",
+      "description": "MCHS Student List for Tracking Sheet - Run at the site level for a full list of eligible students for CAASPP testing in the specific classes the site is testing\n (Testing in English in English; Science in Science and Math in History classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF SSE.PR = 1 AND  ( ( ( CRS.DC = E OR CRS.DC = H ) AND STU.GR = 11)  OR  ( ( CRS.DC = P OR CRS.DC = B ) AND ( STU.GR = 11 OR STU.GR = 12 ) )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/mchs_student_list_for_tracking_sheet.json"
+    },
+    {
+      "id": "1738287868532",
+      "title": "PFT: Scores and Status",
+      "description": "PFT: Scores and Status - Run for a list of all five components of PFT with scores and status",
+      "code": "LIST STU PFT STU.ID STU.LN STU.FN STU.GR STU.SC? PFT.TA PFT.DT PFT.PC PFT.SP PFT.NT PFT.PA PFT.MI PFT.WA PFT.HR PFT.VO PFT.PF1 PFT.PU PFT.AH PFT.MP PFT.PF5 PFT.RL PFT.RR PFT.SL PFT.SR PFT.PF6 PFT.CU PFT.PF3 PFT.TL PFT.PF4 PFT.PF IF STU.GR = 5 OR STU.GR = 7 OR STU.GR = 9",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/pft__scores_and_status.json"
+    },
+    {
+      "id": "1738287868587",
+      "title": "PFT: No entries ",
+      "description": "PFT: No entries  - Run to identify students without an entry for the current test administration window",
+      "code": "LIST STU PFT STU.CID STU.ID STU.LN STU.FN STU.SC? STU.GR PFT.TA IF PFT.TA = NULL AND ( STU.GR = 5 OR STU.GR = 7 OR STU.GR = 9 )",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/pft__no_entries_.json"
+    },
+    {
+      "id": "1738287868614",
+      "title": "9th Graders without PE Class",
+      "description": "Step 2: 9th grade students without PE class",
+      "code": "LIST STU ID LN FN MN CID BD GN SC? GR IF STU.GR = 9",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/.json"
+    },
+    {
+      "id": "1738287868589",
+      "title": "PFT: Components not taken",
+      "description": "PFT: Components not taken - Run for a list of components without any score",
+      "code": "LIST STU PFT STU.ID STU.NM STU.SC PFT.MI PFT.PA PFT.CU PFT.TL PFT.PU PFT.MP PFT.PL PFT.AH PFT.RL PFT.RR PFT.SL PFT.SR PFT.WA PFT.GR IF AC = 0 AND AS = 0 AND TS = 0 AND UB = 0 AND FL = 0 ",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/pft__components_not_taken.json"
+    },
+    {
+      "id": "1738287868580",
+      "title": "PFT: Secondary Students",
+      "description": "List of 7 and 9th students with P.E. teacher name",
+      "code": "LIST STU SEC MST FTF SSE STF PFT STU.ID STU.LN STU.FN STU.GR STU.SC? STF.FN STF.LN FTF.STI CRS.DC? PFT.TA BY STU.ID IF ( ( SSE.PR = 1 AND CRS.DC = G ) AND ( STU.GR = 7 OR STU.GR = 9 ) AND PFT.TA = NULL",
+      "language": "testing queries",
+      "tags": [
+        "Testing - PFT"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/pft__secondary_students.json"
+    },
+    {
+      "id": "1738287868577",
+      "title": "HSMS Student List for Tracking Sheet ",
+      "description": "HSMS Student List for Tracking Sheet  - Run at the site level for a full list of eligible students for CAASPP testing in the specific period and classes the site is testing\n(Testing in 5 Period and Science Classes)",
+      "code": "LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STF.FN STF.LN FTF.STI CRS.DC? BY STF.LN IF STU.GR = 8 AND SSE.PR = 1 AND ( FTF.STI = 5  OR CRS.DC = P OR CRS.DC = B )  ",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/hsms_student_list_for_tracking_sheet_.json"
+    },
+    {
+      "id": "1738287868543",
+      "title": "Initial ELPAC: Pre-enrolled Students",
+      "description": "Initial ELPAC: Pre-enrolled Students - Run to identify all pre-enrolled students whose language proficiency is identified as TBD",
+      "code": "LIST STU LAC STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.NG? STU.ED STU.LF IF STU.LF = T AND STU.TG = \"*\"",
+      "language": "testing queries",
+      "tags": [
+        "Testing - ELPAC Initial"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/initial_elpac__pre_enrolled_students.json"
+    },
+    {
+      "id": "1738287868553",
+      "title": "Students w/o Courses for Testing - Secondary (Two Step Process) 1st Query",
+      "description": "Students w/o Courses for Testing - Secondary (Two Step Process) 1st Query - 1st Query: Run a SKIP Statement for students in the specific CAASPP subjects:\nReplace \"X\" with initial for department, E = English; M = Math; B = Bio Science or P = Phy Science. \n\nFor science will need to be in parentheses ( CRS.DC = B or CRS.DC = P )",
+      "code": "SKIP STU SEC CRS IF CRS.DC =X",
+      "language": "testing queries",
+      "tags": [
+        "Testing - CAASPP"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/testing queries/students_w_o_courses_for_testing___secondary__two_step_process__1st_query.json"
+    },
+    {
+      "id": "1738287868192",
+      "title": "ELPAC Scores",
+      "description": "ELPAC Scores - 19/20 scores I would do something like this and review test administration and filter and delete if necessary.",
+      "code": "LIST STU TST STU.SC STU.ID STU.LN STU.FN STU.GR STU.LF? TST.ID TST.TA TST.GR TST.TD TST.PT TST.SS TST.PL IF TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 0 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 1 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 2 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 3 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 4 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 5 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = ELPAC AND TST.PT = 6 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 0 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 1 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 2 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 3 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 4 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 5 OR TST.TD > 06/30/2019 AND TST.TD < 07/01/2020 AND TST.ID = IELPAC AND TST.PT = 6 AND TST.TD > 06/30/2019 AND TST.TD < 07/01/2020",
+      "language": "calpas queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/calpas queries/elpac_scores.json"
+    },
+    {
+      "id": "1738287868193",
+      "title": "Overall ELPAC scores",
+      "description": "This will give you a list of EL students and their overall ELPAC ScoreOverall ELPAC scores - ",
+      "code": "LIST STU TST LN FN GR TST.ID TST.PT TST.SS TST.OT TST.TD TST.TA IF TST.TD > 8/1/2020 AND TST.PT = 0",
+      "language": "calpas queries",
+      "tags": [
+        "Testing - ELPAC Summative"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/calpas queries/overall_elpac_scores.json"
+    },
+    {
+      "id": "1738287868196",
+      "title": "End of year students not returning",
+      "description": "End of year students not returning - To use in case we need to mass update Attendance enrollment",
+      "code": "LIST STU ENR STU.ID STU.NM STU.EOY STU.ENS ENR.LD IF ENR.LD = 06/02/2023",
+      "language": "calpas queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/calpas queries/end_of_year_students_not_returning.json"
+    },
+    {
+      "id": "1738287868190",
+      "title": "All Programs",
+      "description": "All Programs - Will list all student programs and includes local school ID, program ID, and program name.",
+      "code": "LIST STU PGM LOC STU.SC? STU.ID STU.GR STU.FN STU.LN PGM.PSD PGM.PED PGM.ESD PGM.EED PGM.CD PGM.CD? IF PGM.CD > \"\"",
+      "language": "calpas queries",
+      "tags": [
+        "Student Programs"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/calpas queries/all_programs.json"
+    },
+    {
+      "id": "1738287868195",
+      "title": "Enrollment Numbers",
+      "description": "Enrollment Numbers - Total number of students enrolled for each grade on a specific day",
+      "code": "TOTAL STU ENR STU.GR BY STU.GR IF ( STU.TG = \"\" OR STU.TG = \"I\" ) AND ENR.YR = 2020 AND ENR.ED <= 9/30/2020 AND ( ENR.LD >= 9/30/2020 OR ENR.LD = NULL )",
+      "language": "calpas queries",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/calpas queries/enrollment_numbers.json"
+    },
+    {
+      "id": "1738287868498",
+      "title": "All teachers teaching ALD",
+      "description": "List all ALD teachers 7-12",
+      "code": "LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM CRS.DC? MST.SC? IF MST.SC < 60 AND ( CRS.CN = NM107 OR CRS.CN = NM108 OR CRS.CN = NH032 OR CRS.CN = NHV32 OR CRS.CN = NH031 OR CRS.CN = NHV31 )",
+      "language": "teacher queries",
+      "tags": [
+        "Teacher"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/teacher queries/all_teachers_teaching_ald.json"
+    },
+    {
+      "id": "1738287868497",
+      "title": "List of All Teachers ",
+      "description": "List of All Teachers ",
+      "code": "LIST STF UGN STF.HRID STF.FN STF.LN STF.EM IF UGN.UTY = TEACHER ",
+      "language": "teacher queries",
+      "tags": [
+        "Teacher"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/teacher queries/list_of_all_teachers_.json"
+    },
+    {
+      "id": "1738287868494",
+      "title": "Teachers by Deparment",
+      "description": "Teachers by Deparment - This query will provide teachers in a given department. Change school code and department call as needed.",
+      "code": " LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM CRS.DC? MST.SC? IF MST.SC < 50 AND ( CRS.DC = \"P\" OR CRS.DC = \"M\" )",
+      "language": "teacher queries",
+      "tags": [
+        "Teacher"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/teacher queries/teachers_by_deparment.json"
+    },
+    {
+      "id": "1738287868495",
+      "title": "Teachers - 8th Grade Math and Physical Science",
+      "description": "Teachers - 8th Grade Math and Physical Science - By changing the department code or the list of courses you can get other teachers.",
+      "code": "LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM CRS.DC? MST.SC? IF MST.SC < 50 AND ( CRS.DC = \"P\" OR CRS.CN = MMH05 OR CRS.CN = MMH06 OR CRS.CN = MMH08 OR CRS.CN = MMH0082 OR CRS.CN = MMH083 OR CRS.CN = MM008 OR CRS.CN = MMP08 OR CRS.CN = MMV08 OR CRS.CN = MMV082 OR CRS.CN = MMV083 OR CRS.CN = MM001P )",
+      "language": "teacher queries",
+      "tags": [
+        "Teacher"
+      ],
+      "createdAt": "2025-01-31T01:44:28Z",
+      "path": "snippets/teacher queries/teachers___8th_grade_math_and_physical_science.json"
+    }
+  ]
+}
