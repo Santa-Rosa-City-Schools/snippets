@@ -270,27 +270,45 @@
         async function loadSnippets() {
             try {
                 // Determine base path for GitHub Pages or local development
-                const baseUrl = window.location.hostname === 'localhost'
-                    ? ''
-                    : '/' + window.location.pathname.split('/')[1];
+                const baseUrl = window.location.origin +
+                    (window.location.hostname === 'localhost' ? '' : window.location.pathname.split('/').slice(0, -1).join('/'));
 
-                // Construct full index path
+                // Construct full index path with full URL
                 const indexPath = `${baseUrl}/snippets/index.json`;
 
-                const response = await fetch(indexPath);
+                console.log('Attempting to load index from:', indexPath);
+
+                const response = await fetch(indexPath, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Add cache-busting to prevent potential caching issues
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch index: ${indexPath}`);
+                    throw new Error(`HTTP error! status: ${response.status}, url: ${indexPath}`);
                 }
+
                 const index = await response.json();
                 const snippets = [];
 
-                // Fetch each snippet using relative path
+                // Fetch each snippet using full URL
                 for (const entry of index.snippets) {
                     const snippetPath = `${baseUrl}/${entry.path}`;
-                    const snippetResponse = await fetch(snippetPath);
+                    console.log('Loading snippet from:', snippetPath);
+
+                    const snippetResponse = await fetch(snippetPath, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Cache-Control': 'no-cache'
+                        }
+                    });
 
                     if (!snippetResponse.ok) {
-                        console.error(`Failed to load snippet: ${snippetPath}`);
+                        console.error(`Failed to load snippet: ${snippetPath}, status: ${snippetResponse.status}`);
                         continue;
                     }
 
@@ -298,6 +316,7 @@
                     snippets.push(snippet);
                 }
 
+                console.log(`Loaded ${snippets.length} snippets`);
                 return snippets;
             } catch (error) {
                 console.error('Comprehensive Snippet Loading Error:', error);
@@ -352,30 +371,41 @@
                 return;
             }
 
-            const snippets = await loadSnippets();
+            try {
+                const snippets = await loadSnippets();
 
-            // Split search query into terms
-            const searchTerms = query.split(/\s+/).filter(term => term.length > 1);
+                if (snippets.length === 0) {
+                    console.error('No snippets could be loaded');
+                    snippetsContainer.innerHTML = 'Error loading snippets. Please check your configuration.';
+                    snippetsContainer.classList.add('empty');
+                    return;
+                }
 
-            // Calculate scores and sort results
-            const results = snippets
-                .map(snippet => ({
-                    snippet,
-                    score: calculateSnippetScore(snippet, searchTerms)
-                }))
-                .filter(result => result.score > 1) // Increase threshold for more relevant results
-                .sort((a, b) => b.score - a.score)
-                .slice(0, 10); // Limit to top 10 results
+                // Rest of the existing search logic remains the same
+                const searchTerms = query.split(/\s+/).filter(term => term.length > 1);
 
-            // Remove score from display in production
-            const displayResults = results.map(({ snippet }) => snippet);
+                const results = snippets
+                    .map(snippet => ({
+                        snippet,
+                        score: calculateSnippetScore(snippet, searchTerms)
+                    }))
+                    .filter(result => result.score > 1)
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 10);
 
-            if (displayResults.length === 0) {
-                snippetsContainer.innerHTML = 'No snippets found matching your search';
+                const displayResults = results.map(({ snippet }) => snippet);
+
+                if (displayResults.length === 0) {
+                    snippetsContainer.innerHTML = 'No snippets found matching your search';
+                    snippetsContainer.classList.add('empty');
+                } else {
+                    snippetsContainer.classList.remove('empty');
+                    displaySnippets(displayResults);
+                }
+            } catch (error) {
+                console.error('Search failed:', error);
+                snippetsContainer.innerHTML = 'An error occurred while searching snippets';
                 snippetsContainer.classList.add('empty');
-            } else {
-                snippetsContainer.classList.remove('empty');
-                displaySnippets(displayResults);
             }
         }
 
