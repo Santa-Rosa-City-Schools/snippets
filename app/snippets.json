@@ -1291,20 +1291,25 @@
     {
       "id": "1738287868241",
       "title": "Searching Logs",
-      "description": "Searching Logs - Searching the Logs. Replace YYY with the table you want to view changes in and XXXXXX with the student IDSearching Logs - ",
+      "description": "Searching Logs - Searching the Logs. Replace YYY with the table you want to view changes in and XXXXXX with the student ID",
       "code": "LIST LOG IF OB = YYY AND ID = XXXXXX",
-      "language": "data department use only",
-      "tags": [],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "language": "aeries-query",
+      "tags": [
+        "Aeries Admin",
+        "Logs"
+      ],
+      "createdAt": 1738377318536
     },
     {
       "id": "1738287868244",
       "title": "School Site Information",
       "description": "School site information with principal email and phone numbers",
       "code": "LIST LOC CD NM AD CY ST PR PEM AC TL BY NM IF PR # ' ' AND NM ; 'SUMMER'",
-      "language": "data department use only",
-      "tags": [],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "language": "aeries-query",
+      "tags": [
+        "Schools"
+      ],
+      "createdAt": 1738377339834
     },
     {
       "id": "1738287868242",
@@ -1391,17 +1396,6 @@
       "language": "",
       "tags": [
         "Testing - CAASPP"
-      ],
-      "createdAt": "2025-01-31T01:44:28Z"
-    },
-    {
-      "id": "1738287868616",
-      "title": "Notes",
-      "description": "",
-      "code": "",
-      "language": "",
-      "tags": [
-        "Tag"
       ],
       "createdAt": "2025-01-31T01:44:28Z"
     },
@@ -1529,13 +1523,13 @@
     {
       "id": "1738287868359",
       "title": "InterDistrict Students",
-      "description": "InterDistrict Students - Provides a list of current students on InterDistrict (Code stars with O), the school they attend, and the district or school they come from.",
+      "description": "Provides a list of current students on InterDistrict (Code stars with O), the school they attend, and the district or school they come from.",
       "code": "LIST STU ENR STU.ID STU.LN STU.FN STU.SC? STU.IT? STU.ITD ENR.ED ENR.LD IF STU.IT : O AND ENR.ED >= 08/11/2023 AND ENR.LD = NULL ",
-      "language": "student queries",
+      "language": "aeries-query",
       "tags": [
         "Enrollment"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738377371885
     },
     {
       "id": "1738287868414",
@@ -1650,13 +1644,14 @@
     {
       "id": "1738287868462",
       "title": "Student Locator by Period",
-      "description": "Student Locator by Period \nReplace X in FTF.STI = X with desired period ",
-      "code": "LIST STU GRD MST SSE STF CRS FTF STU.ID STU.NM STU.GR FTF.STI MST.RM CRS.CO BY MST.RM IF SSE.PR = 1 AND FTF.STI = X ",
-      "language": "student queries",
+      "description": "Lists student id, name, grade, period, room number, course. Replace X in FTF.STI = X with the desired period.",
+      "code": "LIST STU GRD MST SSE STF CRS FTF STU.ID STU.NM STU.GR FTF.STI MST.RM CRS.CO STF.LN BY MST.RM IF SSE.PR = 1 AND FTF.STI = X",
+      "language": "aeries-query",
       "tags": [
-        "Scheduling"
+        "Scheduling",
+        "Students"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738377440895
     },
     {
       "id": "1738287868349",
@@ -1716,13 +1711,14 @@
     {
       "id": "1738287868385",
       "title": "Students new to CA this year",
-      "description": "Students new to CA this year - For nurses to do tests (hearing,vision)",
+      "description": "Students new to CA this year - For nurses to do tests (hearing, vision)",
       "code": "LIST STU LAC STU.ID STU.NM STU.GR LAC.STS IF LAC.STS > 07/01/2023",
-      "language": "student queries",
+      "language": "aeries-query",
       "tags": [
-        "Health"
+        "Health",
+        "Screening"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738377469300
     },
     {
       "id": "1738287868430",
@@ -1904,12 +1900,12 @@
       "id": "1738287868465",
       "title": "All icoming students at a site by next grade and last name",
       "description": "All icoming students at a site by next grade and last name",
-      "code": "LIST STU ID LN FN MN NG? BY NG LN IF TG = \"*\"    ",
-      "language": "student queries",
+      "code": "LIST STU ID LN FN MN NG? BY NG LN IF TG = \"*\"",
+      "language": "aeries-query",
       "tags": [
         "Student"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738377486347
     },
     {
       "id": "1738287868443",
@@ -2035,13 +2031,14 @@
     {
       "id": "1738287868367",
       "title": "Open Enrollment Students",
-      "description": "Open Enrollment Students - ",
+      "description": "List of students who are on an inter-district transfer",
       "code": "LIST STU CHI STU.ID STU.LN STU.FN STU.SC? IT? STU.ITD CHI.NM CHI.SCH CHI.U1? IF STU.IT : I AND CHI.U1 # \" \"",
-      "language": "student queries",
+      "language": "aeries-query",
       "tags": [
-        "Enrollment"
+        "Enrollment",
+        "InterDistrict Transfers"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738377525486
     },
     {
       "id": "1738287868362",
@@ -2202,11 +2199,12 @@
       "title": "Students Quarter or IPR Grades for all of courses",
       "description": "Student's Quarter / IPR Grades for all of their courses -- Replace \"GRD.M2\" with needed Quarter/IPR and change year as needed (use URL for a guide on \"GRD\" codes and corresponding grading period). Replace year (\"20XX-20XX\") with current school year \n\nhttps://docs.google.com/document/d/124tVpkMDBnGRy5D37NPWkEEpB2I0LIp4EVSUhb41k4w/preview",
       "code": "LIST GRD STU SEC MST CRS FTF STU.ID STU.NM STU.GR FTF.STI CRS.CO GRD.M2 BY STU.NM FTF.STI IF GRD.SE = MST.SE AND SSE.PR = 1 AND FTF.YR =  \"20XX-20XX\" AND GRD.M2 # \" \"  ",
-      "language": "student queries",
+      "language": "aeries-query",
       "tags": [
-        "Student"
+        "Student",
+        "Grades"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1738377551755
     },
     {
       "id": "1738287868483",
