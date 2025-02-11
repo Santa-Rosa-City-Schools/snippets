@@ -3100,6 +3100,18 @@
         "English Learners"
       ],
       "createdAt": "2025-01-31T01:44:28Z"
+    },
+    {
+      "id": "snippet-1739302937089",
+      "title": "Student Schedules with Period, Teacher, and Room Information",
+      "description": "Student schedules with period, teacher, and room information",
+      "code": "LIST STU SEC MST FTF SSE STF LOC STU.ID STU.LN STU.FN STF.LN STF.FN MST.RM FTF.STI IF SSE.PR = 1 AND ( SSE.ED > 2/11/2025 OR SSE.ED = NULL ) ",
+      "language": "aeries-query",
+      "tags": [
+        "Students",
+        "Schedules"
+      ],
+      "createdAt": 1739302937089
     }
   ]
 }
