@@ -855,7 +855,7 @@
       "id": "1738287868322",
       "title": "Preenrolled Students",
       "description": "Preenrolled Students - Run at a site to get the list of preenrolled for the site. Includes student email address.",
-      "code": "LIST STU ID LN FN SEM GR? NS? TG IF TG = *",
+      "code": "LIST STU ID LN FN SEM GR? NS? PG TL PEM IF TG = *",
       "language": "scheduling - finding groups of students",
       "tags": [
         "Scheduling"
