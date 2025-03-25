@@ -3113,6 +3113,15 @@
         "Schedules"
       ],
       "createdAt": 1739302937089
+    },
+    {
+      "id": "snippet-1742870719931",
+      "title": "Pre-Enrollment Student Counts by Grade Level",
+      "description": "Reports the total number of students pre-enrolled at a site for next school year. This combines current students promoted to a new grade and pre-enrolled students.",
+      "code": "TOTAL STU STU.NG BY NG IF ( STU.TG = ' ' OR STU.TG = * ) AND STU.NG < 13",
+      "language": "aeries-query",
+      "tags": [],
+      "createdAt": 1742870719931
     }
   ]
 }
