@@ -1536,12 +1536,12 @@
       "id": "1738287868414",
       "title": "Report of Students with Truancy Letters",
       "description": "Report of Students with Truancy Letters",
-      "code": "LIST LTL STU STU.ID STU.LN STU.FN LTL.DT LTL.ID",
-      "language": "student queries",
+      "code": "LIST LTL STU STU.ID STU.LN STU.FN LTL.DT LTL.ID IF LTL.DT > 2024-07-01",
+      "language": "aeries-query",
       "tags": [
         "Attendance"
       ],
-      "createdAt": "2025-01-31T01:44:28Z"
+      "createdAt": 1743107157859
     },
     {
       "id": "1738287868459",
@@ -3125,14 +3125,15 @@
     },
     {
       "id": "snippet-1743106706544",
-      "title": "List specific truancy letters",
+      "title": "List Specific Truancy Letters",
       "description": "This query lists the letters your students have received alongside the date they were issued.\n\nUse one of the following options instead of `Truancy` to filter for a specific letter:\n- Truancy 1\n- Truancy 2\n- Truancy 3\n- Truancy SART\n- Truancy 3\n- Truancy SARB\n- Meeting SART\n- Meeting SARB",
       "code": "LIST STU LTL STU.ID STU.LN STU.FN STU.GR LTL.ID LTL.DT WHERE LTL.DT > '2024-07-01' AND LTL.ID : 'Truancy'",
       "language": "aeries-query",
       "tags": [
-        "Truancy"
+        "Truancy",
+        "Attendance"
       ],
-      "createdAt": 1743106817902
+      "createdAt": 1743107111464
     }
   ]
 }
