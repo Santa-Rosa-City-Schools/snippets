@@ -3134,6 +3134,18 @@
         "Attendance"
       ],
       "createdAt": 1743107111464
+    },
+    {
+      "id": "snippet-1743107413615",
+      "title": "Update Credits Received Based on Grades - Ridgway",
+      "description": "These queries update students credits based on their grades, following the 2024-2025 Ridgway MOU.",
+      "code": "CHANGE GRD CR TO 3.5 IF M6 = A+ OR M6 = A OR M6 = A- OR M6 = F\n\nCHANGE GRD CR TO 3 IF M6 = B+ OR M6 = B OR M6 = B- OR M6 = C+ OR M6 = C OR M6 = C-\n\nCHANGE GRD CR TO 2.5 IF M6 = D+ OR M6 = D OR M6 = D-\n",
+      "language": "aeries-query",
+      "tags": [
+        "Grades",
+        "Ridgway"
+      ],
+      "createdAt": 1743107413615
     }
   ]
 }
