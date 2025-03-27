@@ -3122,6 +3122,17 @@
       "language": "aeries-query",
       "tags": [],
       "createdAt": 1742870719931
+    },
+    {
+      "id": "snippet-1743106706544",
+      "title": "List specific truancy letters",
+      "description": "This query lists the letters your students have received alongside the date they were issued.\n\nUse one of the following options instead of `Truancy` to filter for a specific letter:\n- Truancy 1\n- Truancy 2\n- Truancy 3\n- Truancy SART\n- Truancy 3\n- Truancy SARB\n- Meeting SART\n- Meeting SARB",
+      "code": "LIST STU LTL STU.ID STU.LN STU.FN STU.GR LTL.ID LTL.DT WHERE LTL.ID : 'Truancy'",
+      "language": "aeries-query",
+      "tags": [
+        "truancy"
+      ],
+      "createdAt": 1743106706544
     }
   ]
 }
