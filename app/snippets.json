@@ -3146,6 +3146,15 @@
         "Ridgway"
       ],
       "createdAt": 1743107413615
+    },
+    {
+      "id": "snippet-1747154273243",
+      "title": "Students with Ds or Fs on Report Card",
+      "description": "List of student with D or F on the latest grade report period.\n\nUpdate M9 to match the latest grade report period.",
+      "code": "LIST STU GRD STF CRS STU.ID STU.LN STU.FN STU.GR STF.LN GRD.CN CRS.DE GRD.M8 GRD.M9 WHERE GRD.M9 = 'D' OR GRD.M9 = 'D-' OR GRD.M9 = 'D+' OR GRD.M9 = 'F'",
+      "language": "aeries-query",
+      "tags": [],
+      "createdAt": 1747154273243
     }
   ]
 }
