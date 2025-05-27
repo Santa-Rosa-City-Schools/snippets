@@ -3155,6 +3155,17 @@
       "language": "aeries-query",
       "tags": [],
       "createdAt": 1747154273243
+    },
+    {
+      "id": "snippet-1748360032431",
+      "title": "New Students Incoming to a Site",
+      "description": "This query lists the new students to a site.\n\nChange 8 to your school code.",
+      "code": "LIST STU STU.ID STU.LN STU.FN STU.GR STU.LS? STU.NS? STU.U13 STU.SP? IF STU.TG = * AND STU.NS = 8",
+      "language": "aeries-query",
+      "tags": [
+        "Enrollment"
+      ],
+      "createdAt": 1748360032431
     }
   ]
 }
