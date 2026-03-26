@@ -213,6 +213,20 @@
             background-color: var(--primary-color);
             color: white;
         }
+        .tag-filter-btn {
+            background: #f3f4f6;
+            border: 1px solid #ddd;
+            padding: 0.35rem 0.6rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        .tag-filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
     </style>
 </head>
 
@@ -227,6 +241,8 @@
             <button onclick="searchSnippets()">Search</button>
         </div>
 
+        <div id="tagFilterContainer" style="margin-bottom:1rem;"></div>
+
         <div id="snippetsContainer" class="empty">
             Start searching to view code snippets
         </div>
@@ -238,7 +254,11 @@
     </div>
 
     <script>
-        // Add these functions back to the script
+        // Global state
+        let _allSnippets = [];
+        let _activeTags = new Set();
+
+        // Utilities
         function getWordSimilarity(word1, word2) {
             word1 = word1.toLowerCase();
             word2 = word2.toLowerCase();
@@ -302,7 +322,8 @@
                 }
 
                 const index = await response.json();
-                return index.snippets || [];
+                _allSnippets = index.snippets || [];
+                return _allSnippets;
             } catch (error) {
                 console.error('Snippet Loading Error:', error);
                 return [];
@@ -345,19 +366,13 @@
             return totalScore / searchTerms.length;
         }
 
-        // Modify searchSnippets to limit results and handle empty state
+        // Modify searchSnippets to limit results, handle empty state, and apply tag filters
         async function searchSnippets() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const snippetsContainer = document.getElementById('snippetsContainer');
 
-            if (!query.trim()) {
-                snippetsContainer.innerHTML = 'Start searching to view code snippets';
-                snippetsContainer.classList.add('empty');
-                return;
-            }
-
             try {
-                const snippets = await loadSnippets();
+                const snippets = _allSnippets.length ? _allSnippets : await loadSnippets();
 
                 if (snippets.length === 0) {
                     snippetsContainer.innerHTML = 'No snippets could be loaded';
@@ -365,16 +380,39 @@
                     return;
                 }
 
-                const searchTerms = query.split(/\s+/).filter(term => term.length > 1);
+                // Build search terms
+                const searchTerms = query.trim() ? query.split(/\s+/).filter(term => term.length > 1) : [];
 
-                const results = snippets
+                // Filter by tags first if any active tags (AND semantics)
+                let filtered = snippets;
+                if (_activeTags.size > 0) {
+                    const activeArray = Array.from(_activeTags);
+                    filtered = filtered.filter(s => s.tags && activeArray.every(at => s.tags.includes(at)));
+                }
+
+                // If no query, show top recent snippets (or those filtered by tag)
+                if (searchTerms.length === 0) {
+                    // sort by createdAt desc and show latest 20
+                    const sorted = filtered.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 20);
+                    if (sorted.length === 0) {
+                        snippetsContainer.innerHTML = 'No snippets found';
+                        snippetsContainer.classList.add('empty');
+                    } else {
+                        snippetsContainer.classList.remove('empty');
+                        displaySnippets(sorted);
+                        buildTagFilters(filtered);
+                    }
+                    return;
+                }
+
+                const results = filtered
                     .map(snippet => ({
                         snippet,
                         score: calculateSnippetScore(snippet, searchTerms)
                     }))
                     .filter(result => result.score > 1)
                     .sort((a, b) => b.score - a.score)
-                    .slice(0, 10);
+                    .slice(0, 50);
 
                 const displayResults = results.map(({ snippet }) => snippet);
 
@@ -384,6 +422,8 @@
                 } else {
                     snippetsContainer.classList.remove('empty');
                     displaySnippets(displayResults);
+                    // rebuild related tag filters based on currently filtered results
+                    buildTagFilters(filtered);
                 }
             } catch (error) {
                 console.error('Search failed:', error);
@@ -392,27 +432,28 @@
             }
         }
 
-        // Modify copyCode to properly escape code
-        function copyCode(code) {
-            try {
-                // Create a temporary textarea to handle code copying
-                const tempTextArea = document.createElement('textarea');
-                tempTextArea.value = code;
-                document.body.appendChild(tempTextArea);
-                tempTextArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextArea);
-
-                const button = event.target;
-                button.textContent = 'Copied!';
-                button.classList.add('copied');
-                setTimeout(() => {
-                    button.textContent = 'Copy Code';
-                    button.classList.remove('copied');
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy:', err);
+        // Modern copy helper with fallback
+        async function writeToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
             }
+
+            // Fallback
+            return new Promise((resolve, reject) => {
+                try {
+                    const ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    resolve();
+                } catch (err) {
+                    reject(err);
+                }
+            });
         }
 
         // New function to toggle bookmarks
@@ -421,10 +462,8 @@
             const bookmarkIndex = bookmarks.indexOf(snippetId);
 
             if (bookmarkIndex > -1) {
-                // Remove bookmark
                 bookmarks.splice(bookmarkIndex, 1);
             } else {
-                // Add bookmark
                 bookmarks.push(snippetId);
             }
 
@@ -439,7 +478,6 @@
         async function displayBookmarks() {
             const bookmarks = JSON.parse(localStorage.getItem('codeSnippetBookmarks') || '[]');
             const bookmarksContainer = document.getElementById('bookmarksContainer');
-            const bookmarkedSnippetsContainer = document.getElementById('bookmarkedSnippets');
 
             if (bookmarks.length === 0) {
                 bookmarksContainer.style.display = 'none';
@@ -447,7 +485,7 @@
             }
 
             try {
-                const snippets = await loadSnippets();
+                const snippets = _allSnippets.length ? _allSnippets : await loadSnippets();
                 const bookmarkedSnippets = snippets.filter(snippet => bookmarks.includes(snippet.id));
 
                 if (bookmarkedSnippets.length > 0) {
@@ -461,32 +499,24 @@
             }
         }
 
-        // Modify displaySnippets to include bookmark functionality
+        // Modify displaySnippets to include bookmark functionality; use data- attributes and event delegation
         function displaySnippets(snippets, isBookmarkView = false) {
             const container = document.getElementById(isBookmarkView ? 'bookmarkedSnippets' : 'snippetsContainer');
             const bookmarks = JSON.parse(localStorage.getItem('codeSnippetBookmarks') || '[]');
 
             container.innerHTML = snippets.map(snippet => {
-                // Escape special characters in code for safe attribute insertion
-                const escapedCode = snippet.code
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;')
-                    .replace(/'/g, '&#039;');
-
                 const isBookmarked = bookmarks.includes(snippet.id);
 
                 return `
-        <div class="snippet-card">
+        <div class="snippet-card" data-id="${snippet.id}">
             <div class="snippet-header">
                 <h3 class="snippet-title">${snippet.title}</h3>
                 <div>
-                    <button onclick="copyCode('${escapedCode}')">Copy Code</button>
-                    <button class="share-btn" onclick="shareSnippet('${snippet.id}')">Share</button>
+                    <button class="copy-btn" data-id="${snippet.id}">Copy Code</button>
+                    <button class="share-btn" data-id="${snippet.id}">Share</button>
                     <button 
                         class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" 
-                        onclick="toggleBookmark('${snippet.id}')">
+                        data-id="${snippet.id}" aria-label="Toggle bookmark">
                         ${isBookmarked ? '★' : '☆'}
                     </button>
                 </div>
@@ -495,7 +525,7 @@
                 Created on ${new Date(snippet.createdAt).toLocaleDateString()}
             </div>
             <div>${marked.parse(snippet.description)}</div>
-            <pre><code class="language-${snippet.language}">${snippet.code}</code></pre>
+            <pre><code class="language-${snippet.language}">${escapeHtml(snippet.code)}</code></pre>
             <div class="tags">
                 ${snippet.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
             </div>
@@ -505,6 +535,13 @@
             Prism.highlightAll();
         }
 
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
         // Modify existing search function to call displayBookmarks
         const originalSearchSnippets = searchSnippets;
         searchSnippets = async function () {
@@ -512,33 +549,56 @@
             displayBookmarks();
         }
 
+        // Build tag filter UI from snippets
+        function buildTagFilters(snippets) {
+            const container = document.getElementById('tagFilterContainer');
+            const tagCounts = {};
+            (snippets || []).forEach(s => (s.tags || []).forEach(t => tagCounts[t] = (tagCounts[t] || 0) + 1));
+
+            const tags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
+            container.innerHTML = tags.map(tag => `
+                <button class="tag-filter-btn" data-tag="${tag}" style="margin-right:6px;margin-bottom:6px;">${tag} (${tagCounts[tag]})</button>
+            `).join('');
+
+            // Mark active tags
+            container.querySelectorAll('.tag-filter-btn').forEach(btn => {
+                const t = btn.getAttribute('data-tag');
+                if (_activeTags.has(t)) btn.classList.add('active');
+            });
+
+            // Clear all button
+            const clearBtn = document.createElement('button');
+            clearBtn.textContent = 'Clear Tags';
+            clearBtn.className = 'secondary-button';
+            clearBtn.style.marginLeft = '8px';
+            clearBtn.addEventListener('click', () => {
+                _activeTags.clear();
+                container.querySelectorAll('.tag-filter-btn.active').forEach(b => b.classList.remove('active'));
+                // Rebuild using full snippets when cleared
+                buildTagFilters(_allSnippets);
+                searchSnippets();
+            });
+            container.appendChild(clearBtn);
+        }
+
         // Function to generate a shareable link for a snippet
         function shareSnippet(snippetId) {
             const shareUrl = new URL(window.location.href);
             shareUrl.searchParams.set('snippet', snippetId);
 
-            try {
-                // Create a temporary textarea to copy the link
-                const tempTextArea = document.createElement('textarea');
-                tempTextArea.value = shareUrl.toString();
-                document.body.appendChild(tempTextArea);
-                tempTextArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextArea);
-
-                // Provide visual feedback on the share button
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = 'Link Copied!';
-                button.classList.add('copied');
-
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('copied');
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy share link:', err);
-            }
+            writeToClipboard(shareUrl.toString()).then(() => {
+                // Try to find a visible button for feedback
+                const btn = document.querySelector(`button.share-btn[data-id="${snippetId}"]`);
+                if (btn) {
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Link Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.classList.remove('copied');
+                    }, 2000);
+                }
+            }).catch(err => console.error('Failed to copy share link:', err));
         }
 
         // Add function to handle loading a shared snippet when page loads
@@ -569,12 +629,60 @@
         }
 
         // Modify the DOMContentLoaded event listener to call loadSharedSnippet
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('searchInput').addEventListener('keyup', (event) => {
                 if (event.key === 'Enter') {
                     searchSnippets();
                 }
             });
+
+            // Event delegation for copy/share/bookmark
+            document.body.addEventListener('click', async (e) => {
+                const copyBtn = e.target.closest('button.copy-btn');
+                if (copyBtn) {
+                    const id = copyBtn.getAttribute('data-id');
+                    const snippet = _allSnippets.find(s => s.id === id);
+                    if (snippet) {
+                        try {
+                            await writeToClipboard(snippet.code);
+                            const original = copyBtn.textContent;
+                            copyBtn.textContent = 'Copied!';
+                            copyBtn.classList.add('copied');
+                            setTimeout(() => { copyBtn.textContent = original; copyBtn.classList.remove('copied'); }, 1500);
+                        } catch (err) {
+                            console.error('Copy failed', err);
+                        }
+                    }
+                    return;
+                }
+
+                const shareBtn = e.target.closest('button.share-btn');
+                if (shareBtn) {
+                    const id = shareBtn.getAttribute('data-id');
+                    shareSnippet(id);
+                    return;
+                }
+
+                const bookmarkBtn = e.target.closest('button.bookmark-btn');
+                if (bookmarkBtn) {
+                    const id = bookmarkBtn.getAttribute('data-id');
+                    toggleBookmark(id);
+                    return;
+                }
+
+                const tagFilterBtn = e.target.closest('button.tag-filter-btn');
+                if (tagFilterBtn) {
+                    const tag = tagFilterBtn.getAttribute('data-tag');
+                    const isActive = tagFilterBtn.classList.toggle('active');
+                    if (isActive) _activeTags.add(tag); else _activeTags.delete(tag);
+                    searchSnippets();
+                    return;
+                }
+            });
+
+            // Load snippets and build tags
+            const snippets = await loadSnippets();
+            buildTagFilters(snippets);
 
             // Display bookmarks on initial load
             displayBookmarks();

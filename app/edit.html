@@ -221,7 +221,12 @@
         <div class="export-section">
             <h2>Export JSON</h2>
             <button onclick="exportJson()">Generate Export</button>
+            <button onclick="downloadExport()" style="margin-left:8px;">Download JSON</button>
+            <button onclick="createGithubPR()" style="margin-left:8px;">Create PR on GitHub</button>
             <textarea id="exportOutput" readonly></textarea>
+
+            <h3 style="margin-top:1rem;">Import JSON</h3>
+            <input type="file" id="importInput" accept="application/json">
         </div>
     </div>
 
@@ -426,8 +431,177 @@
             document.getElementById('exportOutput').value = JSON.stringify(exportData, null, 2);
         }
 
+        // Download export as a file
+        function downloadExport() {
+            exportJson();
+            const data = document.getElementById('exportOutput').value;
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const now = new Date();
+            const fname = `snippets-export-${now.toISOString().slice(0,10)}.json`;
+            a.download = fname;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Import JSON from file input
+        document.getElementById('importInput').addEventListener('change', function(e) {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                try {
+                    const parsed = JSON.parse(ev.target.result);
+                    if (!parsed || !Array.isArray(parsed.snippets)) {
+                        alert('Invalid snippets JSON: missing "snippets" array');
+                        return;
+                    }
+
+                    // Basic validation of snippet objects
+                    const valid = parsed.snippets.every(s => s.id && s.title && typeof s.code !== 'undefined');
+                    if (!valid) {
+                        if (!confirm('Imported JSON contains entries with missing fields. Proceed and skip invalid entries?')) return;
+                    }
+
+                    // Merge: replace any snippet with same id, add new ones
+                    const incoming = parsed.snippets.filter(s => s && s.id);
+                    const byId = new Map(snippets.map(s => [s.id, s]));
+                    incoming.forEach(s => byId.set(s.id, s));
+                    snippets = Array.from(byId.values());
+                    displaySnippetList();
+                    alert('Import complete. Remember to Download Export if you want to save the file locally.');
+                } catch (err) {
+                    console.error('Import failed', err);
+                    alert('Failed to import JSON: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        });
+
         // Initialize
         loadSnippets();
+
+        // -----------------------------
+        // GitHub PR helper functions
+        // -----------------------------
+        function unicodeToBase64(str) {
+            // Properly handle Unicode when encoding to base64
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        async function createGithubPR() {
+            if (!snippets || snippets.length === 0) {
+                alert('No snippets to push. Add snippets before creating a PR.');
+                return;
+            }
+
+            if (!confirm('This feature will ask you for a GitHub Personal Access Token (with repo scope) to create a branch, push changes to `app/snippets.json`, and open a pull request. Do NOT use a token you do not trust. Continue?')) {
+                return;
+            }
+
+            const token = prompt('GitHub Personal Access Token (repo scope):');
+            if (!token) return;
+
+            const owner = prompt('GitHub owner/user/org:', window.location.hostname === 'localhost' ? prompt('Owner:','') : 'Santa-Rosa-City-Schools') || '';
+            if (!owner) return;
+            const repo = prompt('Repository name:', 'snippets') || '';
+            if (!repo) return;
+            const base = prompt('Base branch to branch from (base):', 'main') || 'main';
+            const path = prompt('Repository path to snippets.json (relative):', 'app/snippets.json') || 'app/snippets.json';
+            const prTitle = prompt('Pull request title:', 'Update snippets.json from editor') || 'Update snippets.json from editor';
+            const prBody = prompt('Pull request body:', 'Automated update of snippets.json from in-browser editor.') || '';
+
+            const headers = {
+                'Authorization': 'token ' + token,
+                'Accept': 'application/vnd.github+json'
+            };
+
+            try {
+                // 1) Get current file contents (to obtain sha if exists)
+                const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${base}`;
+                let getRes = await fetch(getUrl, { headers });
+                let existingSha = null;
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    existingSha = fileData.sha;
+                } else if (getRes.status === 404) {
+                    // file doesn't exist on base - we'll create it
+                    existingSha = null;
+                } else {
+                    const txt = await getRes.text();
+                    throw new Error('Failed to fetch existing file: ' + getRes.status + ' ' + txt);
+                }
+
+                // 2) Get base branch ref
+                const refUrl = `https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${base}`;
+                const refRes = await fetch(refUrl, { headers });
+                if (!refRes.ok) {
+                    const t = await refRes.text();
+                    throw new Error('Failed to get base branch ref: ' + refRes.status + ' ' + t);
+                }
+                const refData = await refRes.json();
+                const baseCommitSha = refData.object.sha;
+
+                // 3) Create new branch
+                const branchName = `update-snippets-${Date.now().toString(36)}`;
+                const createRefUrl = `https://api.github.com/repos/${owner}/${repo}/git/refs`;
+                const createRefRes = await fetch(createRefUrl, {
+                    method: 'POST',
+                    headers: Object.assign({'Content-Type':'application/json'}, headers),
+                    body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha: baseCommitSha })
+                });
+                if (!createRefRes.ok) {
+                    const t = await createRefRes.text();
+                    throw new Error('Failed to create branch: ' + createRefRes.status + ' ' + t);
+                }
+
+                // 4) Put updated file on new branch
+                const contentObj = { snippets: snippets };
+                const contentStr = JSON.stringify(contentObj, null, 2);
+                const encoded = unicodeToBase64(contentStr);
+
+                const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+                const putBody = {
+                    message: `Update ${path} via editor`,
+                    content: encoded,
+                    branch: branchName
+                };
+                if (existingSha) putBody.sha = existingSha;
+
+                const putRes = await fetch(putUrl, {
+                    method: 'PUT',
+                    headers: Object.assign({'Content-Type':'application/json'}, headers),
+                    body: JSON.stringify(putBody)
+                });
+                if (!putRes.ok) {
+                    const t = await putRes.text();
+                    throw new Error('Failed to update file: ' + putRes.status + ' ' + t);
+                }
+
+                // 5) Create PR
+                const prUrl = `https://api.github.com/repos/${owner}/${repo}/pulls`;
+                const prRes = await fetch(prUrl, {
+                    method: 'POST',
+                    headers: Object.assign({'Content-Type':'application/json'}, headers),
+                    body: JSON.stringify({ title: prTitle, head: branchName, base: base, body: prBody })
+                });
+                if (!prRes.ok) {
+                    const t = await prRes.text();
+                    throw new Error('Failed to create PR: ' + prRes.status + ' ' + t);
+                }
+
+                const prData = await prRes.json();
+                window.open(prData.html_url, '_blank');
+                alert('Pull request created: ' + prData.html_url);
+            } catch (err) {
+                console.error(err);
+                alert('Error during GitHub PR flow: ' + err.message);
+            }
+        }
     </script>
 </body>
 </html>
