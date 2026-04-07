@@ -3463,6 +3463,15 @@
         "Enrollment"
       ],
       "createdAt": 1748360032431
+    },
+    {
+      "id": "snippet-1775585741450",
+      "title": "Students who opted out from yearbook",
+      "description": "Students who opted out from yearbook",
+      "code": "LIST STU AUT STU.ID STU.LN STU.FN AUT.ST? WHERE AUT.CD = 'FRY' AND AUT.EED = NULL AND AUT.ST = 2",
+      "language": "aeries-query",
+      "tags": [],
+      "createdAt": 1775585741450
     }
   ]
 }
