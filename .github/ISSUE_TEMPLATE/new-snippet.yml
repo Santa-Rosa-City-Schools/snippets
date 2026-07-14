@@ -1,13 +1,13 @@
 name: Suggest a Snippet
 description: Submit a new code snippet for the Code Snippets Library
 title: "New snippet: "
-labels: ["snippet-submission"]
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for contributing! Fill out the fields below and submit the issue.
-        A maintainer will review it and, if it looks good, a pull request adding it
+        A maintainer will review it and, if it looks good, apply the
+        `snippet-submission` label to open a pull request adding it
         to `app/snippets.json` will be opened automatically for approval.
   - type: input
     id: snippet-title

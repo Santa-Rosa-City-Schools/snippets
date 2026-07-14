@@ -1,12 +1,13 @@
 name: Open PR from snippet submission
 
-# Triggered by the "Suggest a Snippet" issue form (.github/ISSUE_TEMPLATE/new-snippet.yml).
+# Triggered by a maintainer manually applying the `snippet-submission` label to an issue
+# opened via the "Suggest a Snippet" issue form (.github/ISSUE_TEMPLATE/new-snippet.yml).
 # Parses the issue body, writes a new snippet/<category>/<title>.md file, and opens a
 # PR for review - this is the only path that writes to snippet/ on behalf of a
 # non-maintainer, and it never needs a token in anyone's browser.
 on:
   issues:
-    types: [opened, labeled]
+    types: [labeled]
 
 permissions:
   contents: write
@@ -15,14 +16,9 @@ permissions:
 
 jobs:
   create-pr:
-    # The homepage's "Suggest a Snippet" form deep-links into this issue template, but GitHub
-    # doesn't reliably apply the template's default label when the URL also carries prefilled
-    # field values - so issues can land unlabeled. Also trigger on `labeled` so a maintainer
-    # manually applying the label (after noticing a submission didn't get tagged) still kicks
-    # off the automation, without re-running for unrelated labels added later.
-    if: |
-      contains(github.event.issue.labels.*.name, 'snippet-submission') &&
-      (github.event.action == 'opened' || github.event.label.name == 'snippet-submission')
+    # Only run when the label just applied is `snippet-submission`, so unrelated labels
+    # added later don't re-trigger the automation.
+    if: github.event.label.name == 'snippet-submission'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
