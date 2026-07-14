@@ -127,6 +127,8 @@ jobs:
             Automated PR from #${{ steps.build.outputs.issueNumber }}.
 
             Please review the snippet content before merging.
+
+            Closes #${{ steps.build.outputs.issueNumber }}
           branch: "snippet-submission-${{ steps.build.outputs.issueNumber }}"
           add-paths: snippet/**
           token: ${{ secrets.GH_PAT_PR }}
