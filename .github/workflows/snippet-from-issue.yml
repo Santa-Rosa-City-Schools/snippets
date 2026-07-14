@@ -133,6 +133,7 @@ jobs:
             Please review the snippet content before merging.
           branch: "snippet-submission-${{ steps.build.outputs.issueNumber }}"
           add-paths: snippet/**
+          token: ${{ secrets.GH_PAT_PR }}
 
       - name: Comment on issue with PR link
         if: steps.build.outputs.skip == 'false' && steps.cpr.outputs.pull-request-url != ''
