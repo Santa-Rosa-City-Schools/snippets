@@ -7,6 +7,9 @@ on:
     branches: ["main"]
     paths:
       - app/**
+      - snippet/**
+      - scripts/snippet_md.py
+      - scripts/build_snippets_json.py
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -33,6 +36,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Build snippets.json from snippet/**/*.md
+        run: python3 scripts/build_snippets_json.py --src snippet --out app/snippets.json
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

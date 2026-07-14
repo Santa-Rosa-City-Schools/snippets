@@ -1,0 +1,62 @@
+name: Suggest a Snippet
+description: Submit a new code snippet for the Code Snippets Library
+title: "New snippet: "
+labels: ["snippet-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Fill out the fields below and submit the issue.
+        A maintainer will review it and, if it looks good, a pull request adding it
+        to `app/snippets.json` will be opened automatically for approval.
+  - type: input
+    id: snippet-title
+    attributes:
+      label: Title
+      description: A short, descriptive title for the snippet.
+      placeholder: e.g. Change ISP Attendance Class MST.AU
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does this snippet do? When would someone use it? Markdown is supported.
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: Code
+      description: The full snippet/query, exactly as it should be copy-pasted.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: >
+        Reuse an existing category if one fits: aeries-query, calpas queries,
+        change queries, contact queries, course queries, data department use only,
+        scheduling, scheduling - course request queries,
+        scheduling - finding groups of students, student queries, teacher queries,
+        test score queries, testing queries. Otherwise, describe a new one briefly.
+      placeholder: e.g. student queries
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags (e.g. Student, Attendance).
+      placeholder: Student, Attendance
+    validations:
+      required: false
+  - type: input
+    id: author
+    attributes:
+      label: Your name (optional)
+      description: So people know who to ask about this snippet later.
+    validations:
+      required: false

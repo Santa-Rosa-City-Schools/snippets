@@ -1,0 +1,14 @@
+---
+id: "1738287868226"
+title: "Students in an Specific Course with a Specific Teacher"
+category: "aeries-query"
+tags: ["Course", "Teacher"]
+createdAt: "2025-02-21T20:36:42Z"
+---
+
+Change the exits to a course code and specific teacher last name.
+This will give you a list of students in an specific course with a specific teacher. It will work for students at multiple sites with the same teacher
+
+```text
+LIST STU SEC MST FTF SSE STF STU.ID STU.LN STU.FN SEC.SC CRS CRS.CO CRS.CN STF.LN STF.FN IF CRS.CN = XXXXX AND STF.LN = XXXXXXXXX
+```

@@ -1,0 +1,13 @@
+---
+id: "1738287868532"
+title: "PFT: Scores and Status"
+category: "testing queries"
+tags: ["Testing", "Pft"]
+createdAt: "2025-01-31T01:44:28Z"
+---
+
+PFT: Scores and Status - Run for a list of all five components of PFT with scores and status
+
+```text
+LIST STU PFT STU.ID STU.LN STU.FN STU.GR STU.SC? PFT.TA PFT.DT PFT.PC PFT.SP PFT.NT PFT.PA PFT.MI PFT.WA PFT.HR PFT.VO PFT.PF1 PFT.PU PFT.AH PFT.MP PFT.PF5 PFT.RL PFT.RR PFT.SL PFT.SR PFT.PF6 PFT.CU PFT.PF3 PFT.TL PFT.PF4 PFT.PF IF STU.GR = 5 OR STU.GR = 7 OR STU.GR = 9
+```

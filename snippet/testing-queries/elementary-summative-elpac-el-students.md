@@ -1,0 +1,13 @@
+---
+id: "1738287868544"
+title: "Elementary Summative ELPAC: EL Students"
+category: "testing queries"
+tags: ["Testing", "Elpac", "Summative", "Teacher"]
+createdAt: "2025-01-31T01:44:28Z"
+---
+
+Summative ELPAC: EL Students - Run for a list of Elementary students who have been classified as an English Learner through their Initial assessment with Teacher name
+
+```text
+LIST STU SEC MST CRS SSE STF FTF LAC STU.ID STU.LN STU.FN STU.MN STU.CID STU.BD STU.GN STU.SC? STU.GR STU.LF? STF.LN FTF.STI IF LAC.EAC = "EL" AND ( FTF.STI = "1-6" OR FTF.STI = "1-5" OR  FTF.STI = "TK-K" ) AND SSE.PR = 1
+```

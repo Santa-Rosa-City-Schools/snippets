@@ -220,9 +220,18 @@
 
         <div class="export-section">
             <h2>Export JSON</h2>
+            <p style="color:#6b7280;font-size:0.9rem;max-width:700px;">
+                This editor is a local staging tool only &mdash; it never talks to GitHub directly, and
+                <code>app/snippets.json</code> is no longer the source of truth. Each snippet now lives
+                as its own markdown file under <code>snippet/&lt;category&gt;/</code> (with the id, title,
+                category, tags, and createdAt as frontmatter), and <code>snippets.json</code> is generated
+                from those files at deploy time by <code>scripts/build_snippets_json.py</code>. Use the JSON
+                below as a reference for the data when writing or updating a <code>.md</code> file, then
+                commit that file via git. To request a new snippet without repo access, use
+                <strong>Suggest a Snippet</strong> on the <a href="index.html">main library page</a> instead.
+            </p>
             <button onclick="exportJson()">Generate Export</button>
             <button onclick="downloadExport()" style="margin-left:8px;">Download JSON</button>
-            <button onclick="createGithubPR()" style="margin-left:8px;">Create PR on GitHub</button>
             <textarea id="exportOutput" readonly></textarea>
 
             <h3 style="margin-top:1rem;">Import JSON</h3>
@@ -256,16 +265,21 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="language">Language</label>
-                    <select id="language" required>
-                        <option value="aeries-query">Aeries Query</option>
-                    </select>
+                    <label for="language">Category</label>
+                    <input type="text" id="language" list="categoryList" required placeholder="e.g. student queries">
+                    <datalist id="categoryList"></datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author (optional)</label>
+                    <input type="text" id="author" placeholder="Your name">
                 </div>
 
                 <div class="form-group">
                     <label for="newTag">Tags</label>
                     <div class="tag-input-container">
-                        <input type="text" id="newTag" placeholder="Add a tag and press Enter">
+                        <input type="text" id="newTag" list="tagSuggestList" placeholder="Add a tag and press Enter">
+                        <datalist id="tagSuggestList"></datalist>
                         <div id="tagContainer" class="tag-container"></div>
                     </div>
                 </div>
@@ -313,23 +327,50 @@
                 const data = await response.json();
                 snippets = data.snippets || [];
                 displaySnippetList();
+                populateFormDatalists();
             } catch (error) {
                 console.error('Failed to load snippets:', error);
             }
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // Populate the Category/Tags datalists from existing snippet values
+        function populateFormDatalists() {
+            const categories = Array.from(new Set(snippets.map(s => s.language).filter(Boolean))).sort();
+            const tags = Array.from(new Set(snippets.flatMap(s => s.tags || []))).sort();
+            document.getElementById('categoryList').innerHTML = categories.map(c => `<option value="${escapeHtml(c)}"></option>`).join('');
+            document.getElementById('tagSuggestList').innerHTML = tags.map(t => `<option value="${escapeHtml(t)}"></option>`).join('');
         }
 
         // Display snippet list
         function displaySnippetList() {
             const container = document.getElementById('snippetList');
             container.innerHTML = snippets.map(snippet => `
-                <div class="snippet-card" onclick="editSnippet('${snippet.id}')">
-                    <h3 class="snippet-title">${snippet.title}</h3>
+                <div class="snippet-card" data-id="${escapeHtml(snippet.id)}">
+                    <h3 class="snippet-title">${escapeHtml(snippet.title)}</h3>
+                    ${snippet.author ? `<div style="color:#6b7280;font-size:0.8rem;">by ${escapeHtml(snippet.author)}</div>` : ''}
                     <div class="snippet-tags">
-                        ${snippet.tags.map(tag => `<span class="snippet-tag">${tag}</span>`).join('')}
+                        ${snippet.tags.map(tag => `<span class="snippet-tag">${escapeHtml(tag)}</span>`).join('')}
                     </div>
                 </div>
             `).join('');
         }
+
+        // Event delegation for opening a card to edit it (avoids inline onclick with
+        // interpolated snippet data, which is unsafe if ids/tags ever came from an
+        // imported/untrusted JSON file)
+        document.getElementById('snippetList').addEventListener('click', (e) => {
+            const card = e.target.closest('.snippet-card');
+            if (card) editSnippet(card.getAttribute('data-id'));
+        });
 
         // Edit existing snippet
         function editSnippet(id) {
@@ -340,6 +381,7 @@
                 document.getElementById('description').value = snippet.description;
                 document.getElementById('code').value = snippet.code;
                 document.getElementById('language').value = snippet.language;
+                document.getElementById('author').value = snippet.author || '';
                 currentTags = [...snippet.tags];
                 displayTags();
                 // Show delete button when editing
@@ -385,8 +427,8 @@
             const container = document.getElementById('tagContainer');
             container.innerHTML = currentTags.map(tag => `
                 <span class="tag">
-                    ${tag}
-                    <button type="button" onclick="removeTag('${tag}')">&times;</button>
+                    ${escapeHtml(tag)}
+                    <button type="button" class="remove-tag-btn" data-tag="${escapeHtml(tag)}">&times;</button>
                 </span>
             `).join('');
         }
@@ -397,22 +439,55 @@
             displayTags();
         }
 
+        document.getElementById('tagContainer').addEventListener('click', (e) => {
+            const btn = e.target.closest('.remove-tag-btn');
+            if (btn) removeTag(btn.getAttribute('data-tag'));
+        });
+
+        // Look for an existing snippet that's probably the same thing, so we can warn
+        // before adding what might be a duplicate. Deliberately simple: exact code match
+        // (whitespace-insensitive) or a near-identical title.
+        function findLikelyDuplicate(title, code, excludeId) {
+            const normTitle = title.trim().toLowerCase();
+            const normCode = code.replace(/\s+/g, ' ').trim().toLowerCase();
+            return snippets.find(s => {
+                if (s.id === excludeId) return false;
+                if (s.code.replace(/\s+/g, ' ').trim().toLowerCase() === normCode) return true;
+                return s.title.trim().toLowerCase() === normTitle;
+            }) || null;
+        }
+
         // Handle form submission
         document.getElementById('snippetForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const snippetId = document.getElementById('snippetId').value || `snippet-${Date.now()}`;
+
+            const existingId = document.getElementById('snippetId').value;
+            const isEditing = !!existingId;
+            const title = document.getElementById('title').value;
+            const code = document.getElementById('code').value;
+
+            if (!isEditing) {
+                const dup = findLikelyDuplicate(title, code, existingId);
+                if (dup && !confirm(`This looks similar to an existing snippet: "${dup.title}". Add it anyway?`)) {
+                    return;
+                }
+            }
+
+            const snippetId = existingId || String(Date.now());
+            const existingIndex = snippets.findIndex(s => s.id === snippetId);
+            const preservedCreatedAt = existingIndex >= 0 ? snippets[existingIndex].createdAt : new Date().toISOString();
+
             const newSnippet = {
                 id: snippetId,
-                title: document.getElementById('title').value,
+                title,
                 description: document.getElementById('description').value,
-                code: document.getElementById('code').value,
+                code,
                 language: document.getElementById('language').value,
+                author: document.getElementById('author').value.trim() || undefined,
                 tags: currentTags,
-                createdAt: Date.now()
+                createdAt: preservedCreatedAt
             };
 
-            const existingIndex = snippets.findIndex(s => s.id === snippetId);
             if (existingIndex >= 0) {
                 snippets[existingIndex] = newSnippet;
             } else {
@@ -420,6 +495,7 @@
             }
 
             displaySnippetList();
+            populateFormDatalists();
             closeModal();
         });
 
@@ -484,124 +560,6 @@
 
         // Initialize
         loadSnippets();
-
-        // -----------------------------
-        // GitHub PR helper functions
-        // -----------------------------
-        function unicodeToBase64(str) {
-            // Properly handle Unicode when encoding to base64
-            return btoa(unescape(encodeURIComponent(str)));
-        }
-
-        async function createGithubPR() {
-            if (!snippets || snippets.length === 0) {
-                alert('No snippets to push. Add snippets before creating a PR.');
-                return;
-            }
-
-            if (!confirm('This feature will ask you for a GitHub Personal Access Token (with repo scope) to create a branch, push changes to `app/snippets.json`, and open a pull request. Do NOT use a token you do not trust. Continue?')) {
-                return;
-            }
-
-            const token = prompt('GitHub Personal Access Token (repo scope):');
-            if (!token) return;
-
-            const owner = prompt('GitHub owner/user/org:', window.location.hostname === 'localhost' ? prompt('Owner:','') : 'Santa-Rosa-City-Schools') || '';
-            if (!owner) return;
-            const repo = prompt('Repository name:', 'snippets') || '';
-            if (!repo) return;
-            const base = prompt('Base branch to branch from (base):', 'main') || 'main';
-            const path = prompt('Repository path to snippets.json (relative):', 'app/snippets.json') || 'app/snippets.json';
-            const prTitle = prompt('Pull request title:', 'Update snippets.json from editor') || 'Update snippets.json from editor';
-            const prBody = prompt('Pull request body:', 'Automated update of snippets.json from in-browser editor.') || '';
-
-            const headers = {
-                'Authorization': 'token ' + token,
-                'Accept': 'application/vnd.github+json'
-            };
-
-            try {
-                // 1) Get current file contents (to obtain sha if exists)
-                const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${base}`;
-                let getRes = await fetch(getUrl, { headers });
-                let existingSha = null;
-                if (getRes.ok) {
-                    const fileData = await getRes.json();
-                    existingSha = fileData.sha;
-                } else if (getRes.status === 404) {
-                    // file doesn't exist on base - we'll create it
-                    existingSha = null;
-                } else {
-                    const txt = await getRes.text();
-                    throw new Error('Failed to fetch existing file: ' + getRes.status + ' ' + txt);
-                }
-
-                // 2) Get base branch ref
-                const refUrl = `https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${base}`;
-                const refRes = await fetch(refUrl, { headers });
-                if (!refRes.ok) {
-                    const t = await refRes.text();
-                    throw new Error('Failed to get base branch ref: ' + refRes.status + ' ' + t);
-                }
-                const refData = await refRes.json();
-                const baseCommitSha = refData.object.sha;
-
-                // 3) Create new branch
-                const branchName = `update-snippets-${Date.now().toString(36)}`;
-                const createRefUrl = `https://api.github.com/repos/${owner}/${repo}/git/refs`;
-                const createRefRes = await fetch(createRefUrl, {
-                    method: 'POST',
-                    headers: Object.assign({'Content-Type':'application/json'}, headers),
-                    body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha: baseCommitSha })
-                });
-                if (!createRefRes.ok) {
-                    const t = await createRefRes.text();
-                    throw new Error('Failed to create branch: ' + createRefRes.status + ' ' + t);
-                }
-
-                // 4) Put updated file on new branch
-                const contentObj = { snippets: snippets };
-                const contentStr = JSON.stringify(contentObj, null, 2);
-                const encoded = unicodeToBase64(contentStr);
-
-                const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-                const putBody = {
-                    message: `Update ${path} via editor`,
-                    content: encoded,
-                    branch: branchName
-                };
-                if (existingSha) putBody.sha = existingSha;
-
-                const putRes = await fetch(putUrl, {
-                    method: 'PUT',
-                    headers: Object.assign({'Content-Type':'application/json'}, headers),
-                    body: JSON.stringify(putBody)
-                });
-                if (!putRes.ok) {
-                    const t = await putRes.text();
-                    throw new Error('Failed to update file: ' + putRes.status + ' ' + t);
-                }
-
-                // 5) Create PR
-                const prUrl = `https://api.github.com/repos/${owner}/${repo}/pulls`;
-                const prRes = await fetch(prUrl, {
-                    method: 'POST',
-                    headers: Object.assign({'Content-Type':'application/json'}, headers),
-                    body: JSON.stringify({ title: prTitle, head: branchName, base: base, body: prBody })
-                });
-                if (!prRes.ok) {
-                    const t = await prRes.text();
-                    throw new Error('Failed to create PR: ' + prRes.status + ' ' + t);
-                }
-
-                const prData = await prRes.json();
-                window.open(prData.html_url, '_blank');
-                alert('Pull request created: ' + prData.html_url);
-            } catch (err) {
-                console.error(err);
-                alert('Error during GitHub PR flow: ' + err.message);
-            }
-        }
     </script>
 </body>
 </html>

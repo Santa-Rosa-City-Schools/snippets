@@ -213,19 +213,93 @@
             background-color: var(--primary-color);
             color: white;
         }
-        .tag-filter-btn {
-            background: #f3f4f6;
+        #categorySelect,
+        #sortSelect {
+            padding: 0.5rem;
             border: 1px solid #ddd;
-            padding: 0.35rem 0.6rem;
-            border-radius: 9999px;
-            cursor: pointer;
-            font-size: 0.9rem;
+            border-radius: 0.375rem;
+            font-size: 0.95rem;
+            background: white;
             color: var(--text-color);
         }
-        .tag-filter-btn.active {
+        #tagPickerInput {
+            width: 180px;
+            flex: none;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+            font-size: 0.95rem;
+        }
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin: -1rem 0 1.5rem 0;
+        }
+        .active-filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
             background: var(--primary-color);
             color: white;
-            border-color: var(--primary-color);
+            padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+        }
+        .active-filter-chip button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 0;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0.85;
+        }
+        .active-filter-chip button:hover {
+            opacity: 1;
+        }
+        .tag-mode-toggle {
+            background: none;
+            border: 1px dashed #9ca3af;
+            color: #6b7280;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .clear-filters-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            text-decoration: underline;
+            padding: 0.2rem 0.4rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .snippet-category-badge {
+            display: inline-block;
+            background: #ede9fe;
+            color: var(--primary-color);
+            border-radius: 0.25rem;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        #suggestForm .form-group {
+            margin-bottom: 1rem;
+        }
+        #suggestForm label {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+        }
+        #suggestForm input,
+        #suggestForm textarea {
+            width: 100%;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -234,14 +308,26 @@
     <div class="container">
         <div class="header">
             <h1>Santa Rosa City Schools - Code Snippets Library</h1>
+            <button id="suggestSnippetBtn" type="button">Suggest a Snippet</button>
         </div>
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search snippets...">
+            <select id="categorySelect" title="Filter by category">
+                <option value="">All Categories</option>
+            </select>
+            <input type="text" id="tagPickerInput" list="tagPickerList" placeholder="+ Add tag filter&hellip;">
+            <datalist id="tagPickerList"></datalist>
+            <select id="sortSelect" title="Sort results">
+                <option value="relevance">Sort: Relevance</option>
+                <option value="newest">Sort: Newest</option>
+                <option value="oldest">Sort: Oldest</option>
+                <option value="title">Sort: Title (A-Z)</option>
+            </select>
             <button onclick="searchSnippets()">Search</button>
         </div>
 
-        <div id="tagFilterContainer" style="margin-bottom:1rem;"></div>
+        <div id="activeFiltersContainer" class="active-filters" style="display:none;"></div>
 
         <div id="snippetsContainer" class="empty">
             Start searching to view code snippets
@@ -253,10 +339,60 @@
         </div>
     </div>
 
+    <div id="suggestModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="suggestModalClose">&times;</span>
+            <h2>Suggest a Snippet</h2>
+            <p style="color:#6b7280;font-size:0.9rem;">
+                This opens a pre-filled GitHub issue in a new tab so a maintainer can review and add it &mdash;
+                no GitHub access token is needed or requested here.
+            </p>
+            <form id="suggestForm">
+                <div class="form-group">
+                    <label for="suggestTitle">Title</label>
+                    <input type="text" id="suggestTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="suggestDescription">Description (Markdown supported)</label>
+                    <textarea id="suggestDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="suggestCode">Code</label>
+                    <textarea id="suggestCode" rows="6" required style="font-family: monospace;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="suggestCategory">Category</label>
+                    <input type="text" id="suggestCategory" list="suggestCategoryList" placeholder="e.g. student queries">
+                    <datalist id="suggestCategoryList"></datalist>
+                </div>
+                <div class="form-group">
+                    <label for="suggestTags">Tags (comma separated)</label>
+                    <input type="text" id="suggestTags" list="suggestTagList" placeholder="e.g. Student, Attendance">
+                    <datalist id="suggestTagList"></datalist>
+                </div>
+                <div class="form-group">
+                    <label for="suggestAuthor">Your name (optional)</label>
+                    <input type="text" id="suggestAuthor">
+                </div>
+                <button type="submit">Open GitHub Issue&hellip;</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Global state
         let _allSnippets = [];
         let _activeTags = new Set();
+        let _tagMode = 'AND'; // 'AND' | 'OR'
+        let _activeCategory = '';
+        let _sortMode = 'relevance'; // 'relevance' | 'newest' | 'oldest' | 'title'
+        let _restoringFromUrl = false;
+
+        // GitHub repo that hosts the issue form used for snippet suggestions.
+        // Update these if the repo is renamed/transferred.
+        const SUGGESTION_REPO_OWNER = 'Santa-Rosa-City-Schools';
+        const SUGGESTION_REPO_NAME = 'snippets';
+        const SUGGESTION_ISSUE_TEMPLATE = 'new-snippet.yml';
 
         // Utilities
         function getWordSimilarity(word1, word2) {
@@ -335,6 +471,7 @@
             const snippetText = `${snippet.title} ${snippet.description}`.toLowerCase();
             const snippetWords = snippetText.split(/\W+/);
             const tags = snippet.tags.map(tag => tag.toLowerCase());
+            const codeText = (snippet.code || '').toLowerCase();
 
             let totalScore = 0;
 
@@ -349,6 +486,11 @@
                 // Check title matches (high priority)
                 if (snippet.title.toLowerCase().includes(searchTerm)) {
                     termScore += 1.5;
+                }
+
+                // Check code contents (medium priority - exact substring only, code isn't prose)
+                if (codeText.includes(searchTerm)) {
+                    termScore += 1.2;
                 }
 
                 // Check description for contextual relevance
@@ -366,7 +508,19 @@
             return totalScore / searchTerms.length;
         }
 
-        // Modify searchSnippets to limit results, handle empty state, and apply tag filters
+        function sortSnippets(list, mode) {
+            const sorted = list.slice();
+            if (mode === 'newest') {
+                sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            } else if (mode === 'oldest') {
+                sorted.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+            } else if (mode === 'title') {
+                sorted.sort((a, b) => a.title.localeCompare(b.title));
+            }
+            return sorted;
+        }
+
+        // Modify searchSnippets to limit results, handle empty state, and apply tag/category filters
         async function searchSnippets() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const snippetsContainer = document.getElementById('snippetsContainer');
@@ -383,29 +537,43 @@
                 // Build search terms
                 const searchTerms = query.trim() ? query.split(/\s+/).filter(term => term.length > 1) : [];
 
-                // Filter by tags first if any active tags (AND semantics)
+                // Filter by category first, if selected
                 let filtered = snippets;
-                if (_activeTags.size > 0) {
-                    const activeArray = Array.from(_activeTags);
-                    filtered = filtered.filter(s => s.tags && activeArray.every(at => s.tags.includes(at)));
+                if (_activeCategory) {
+                    filtered = filtered.filter(s => s.language === _activeCategory);
                 }
 
-                // If no query, show top recent snippets (or those filtered by tag)
+                // Filter by tags (AND or OR semantics depending on _tagMode)
+                if (_activeTags.size > 0) {
+                    const activeArray = Array.from(_activeTags);
+                    filtered = filtered.filter(s => {
+                        if (!s.tags) return false;
+                        return _tagMode === 'AND'
+                            ? activeArray.every(at => s.tags.includes(at))
+                            : activeArray.some(at => s.tags.includes(at));
+                    });
+                }
+
+                if (!_restoringFromUrl) updateUrlState(query, _sortMode);
+
+                // If no query, show top recent/sorted snippets (or those filtered by tag/category)
                 if (searchTerms.length === 0) {
-                    // sort by createdAt desc and show latest 20
-                    const sorted = filtered.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 20);
+                    const sortMode = _sortMode === 'relevance' ? 'newest' : _sortMode;
+                    const sorted = sortSnippets(filtered, sortMode).slice(0, 20);
                     if (sorted.length === 0) {
                         snippetsContainer.innerHTML = 'No snippets found';
                         snippetsContainer.classList.add('empty');
                     } else {
                         snippetsContainer.classList.remove('empty');
                         displaySnippets(sorted);
-                        buildTagFilters(filtered);
                     }
+                    buildTagPicker(filtered);
+                    buildCategorySelect(snippets);
+                    buildActiveFiltersRow();
                     return;
                 }
 
-                const results = filtered
+                let results = filtered
                     .map(snippet => ({
                         snippet,
                         score: calculateSnippetScore(snippet, searchTerms)
@@ -414,7 +582,10 @@
                     .sort((a, b) => b.score - a.score)
                     .slice(0, 50);
 
-                const displayResults = results.map(({ snippet }) => snippet);
+                let displayResults = results.map(({ snippet }) => snippet);
+                if (_sortMode !== 'relevance') {
+                    displayResults = sortSnippets(displayResults, _sortMode);
+                }
 
                 if (displayResults.length === 0) {
                     snippetsContainer.innerHTML = 'No snippets found matching your search';
@@ -422,9 +593,11 @@
                 } else {
                     snippetsContainer.classList.remove('empty');
                     displaySnippets(displayResults);
-                    // rebuild related tag filters based on currently filtered results
-                    buildTagFilters(filtered);
                 }
+                // rebuild related tag/category filters based on currently filtered results
+                buildTagPicker(filtered);
+                buildCategorySelect(snippets);
+                buildActiveFiltersRow();
             } catch (error) {
                 console.error('Search failed:', error);
                 snippetsContainer.innerHTML = 'An error occurred while searching snippets';
@@ -506,16 +679,21 @@
 
             container.innerHTML = snippets.map(snippet => {
                 const isBookmarked = bookmarks.includes(snippet.id);
+                // Prism doesn't have a grammar for these category-style "language" values
+                // (e.g. "student queries"), and spaces in a class name split into multiple
+                // bogus classes, so render with a safe generic class and show the
+                // category as a separate badge instead.
+                const prismClass = /^[a-z0-9-]+$/i.test(snippet.language || '') ? `language-${snippet.language}` : 'language-none';
 
                 return `
         <div class="snippet-card" data-id="${snippet.id}">
             <div class="snippet-header">
-                <h3 class="snippet-title">${snippet.title}</h3>
+                <h3 class="snippet-title">${escapeHtml(snippet.title)}</h3>
                 <div>
                     <button class="copy-btn" data-id="${snippet.id}">Copy Code</button>
                     <button class="share-btn" data-id="${snippet.id}">Share</button>
-                    <button 
-                        class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" 
+                    <button
+                        class="bookmark-btn ${isBookmarked ? 'bookmarked' : ''}"
                         data-id="${snippet.id}" aria-label="Toggle bookmark">
                         ${isBookmarked ? '★' : '☆'}
                     </button>
@@ -523,11 +701,13 @@
             </div>
             <div class="snippet-metadata">
                 Created on ${new Date(snippet.createdAt).toLocaleDateString()}
+                ${snippet.author ? ` by ${escapeHtml(snippet.author)}` : ''}
+                ${snippet.language ? `<span class="snippet-category-badge">${escapeHtml(snippet.language)}</span>` : ''}
             </div>
             <div>${marked.parse(snippet.description)}</div>
-            <pre><code class="language-${snippet.language}">${escapeHtml(snippet.code)}</code></pre>
+            <pre><code class="${prismClass}">${escapeHtml(snippet.code)}</code></pre>
             <div class="tags">
-                ${snippet.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                ${snippet.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
             </div>
         </div>
     `}).join('');
@@ -539,7 +719,9 @@
             return String(str)
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
 
         // Modify existing search function to call displayBookmarks
@@ -550,35 +732,135 @@
         }
 
         // Build tag filter UI from snippets
-        function buildTagFilters(snippets) {
-            const container = document.getElementById('tagFilterContainer');
-            const tagCounts = {};
-            (snippets || []).forEach(s => (s.tags || []).forEach(t => tagCounts[t] = (tagCounts[t] || 0) + 1));
+        // Populate the Category <select> from all snippets (counts shown in the option label)
+        function buildCategorySelect(allSnippets) {
+            const select = document.getElementById('categorySelect');
+            const counts = {};
+            (allSnippets || []).forEach(s => {
+                if (s.language) counts[s.language] = (counts[s.language] || 0) + 1;
+            });
+            const categories = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
 
-            const tags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
-            container.innerHTML = tags.map(tag => `
-                <button class="tag-filter-btn" data-tag="${tag}" style="margin-right:6px;margin-bottom:6px;">${tag} (${tagCounts[tag]})</button>
+            select.innerHTML = '<option value="">All Categories</option>' +
+                categories.map(cat => `<option value="${escapeHtml(cat)}">${escapeHtml(cat)} (${counts[cat]})</option>`).join('');
+            select.value = _activeCategory;
+        }
+
+        // Populate the tag-picker datalist with tags not already active, most common first
+        function buildTagPicker(allSnippets) {
+            const tagCounts = {};
+            (allSnippets || []).forEach(s => (s.tags || []).forEach(t => tagCounts[t] = (tagCounts[t] || 0) + 1));
+            const tags = Object.keys(tagCounts)
+                .filter(t => !_activeTags.has(t))
+                .sort((a, b) => tagCounts[b] - tagCounts[a]);
+
+            document.getElementById('tagPickerList').innerHTML =
+                tags.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)} (${tagCounts[t]})</option>`).join('');
+        }
+
+        // Render the "active filters" row (selected tag chips + match-mode toggle + clear-all),
+        // hidden entirely when no filters are applied so the page stays uncluttered by default.
+        function buildActiveFiltersRow() {
+            const container = document.getElementById('activeFiltersContainer');
+            const hasFilters = _activeTags.size > 0 || !!_activeCategory;
+
+            if (!hasFilters) {
+                container.style.display = 'none';
+                container.innerHTML = '';
+                return;
+            }
+
+            container.style.display = 'flex';
+            container.innerHTML = Array.from(_activeTags).map(tag => `
+                <span class="active-filter-chip" data-tag="${escapeHtml(tag)}">
+                    ${escapeHtml(tag)}
+                    <button type="button" class="remove-active-tag" data-tag="${escapeHtml(tag)}" aria-label="Remove tag filter">&times;</button>
+                </span>
             `).join('');
 
-            // Mark active tags
-            container.querySelectorAll('.tag-filter-btn').forEach(btn => {
-                const t = btn.getAttribute('data-tag');
-                if (_activeTags.has(t)) btn.classList.add('active');
-            });
+            if (_activeTags.size > 1) {
+                const modeBtn = document.createElement('button');
+                modeBtn.type = 'button';
+                modeBtn.className = 'tag-mode-toggle';
+                modeBtn.textContent = `Match: ${_tagMode}`;
+                modeBtn.title = 'Toggle whether selected tags must ALL match (AND) or ANY match (OR)';
+                modeBtn.addEventListener('click', () => {
+                    _tagMode = _tagMode === 'AND' ? 'OR' : 'AND';
+                    searchSnippets();
+                });
+                container.appendChild(modeBtn);
+            }
 
-            // Clear all button
             const clearBtn = document.createElement('button');
-            clearBtn.textContent = 'Clear Tags';
-            clearBtn.className = 'secondary-button';
-            clearBtn.style.marginLeft = '8px';
+            clearBtn.type = 'button';
+            clearBtn.className = 'clear-filters-btn';
+            clearBtn.textContent = 'Clear all';
             clearBtn.addEventListener('click', () => {
                 _activeTags.clear();
-                container.querySelectorAll('.tag-filter-btn.active').forEach(b => b.classList.remove('active'));
-                // Rebuild using full snippets when cleared
-                buildTagFilters(_allSnippets);
+                _activeCategory = '';
+                _tagMode = 'AND';
+                document.getElementById('categorySelect').value = '';
                 searchSnippets();
             });
             container.appendChild(clearBtn);
+        }
+
+        // Reflect current search/filter/sort state in the URL (without adding history entries)
+        // so a filtered/searched view can be bookmarked or shared.
+        function updateUrlState(query, sortMode) {
+            const url = new URL(window.location.href);
+            const params = url.searchParams;
+
+            if (query && query.trim()) params.set('q', query.trim()); else params.delete('q');
+            if (_activeTags.size > 0) params.set('tags', Array.from(_activeTags).join(',')); else params.delete('tags');
+            if (_activeTags.size > 1) params.set('tagMode', _tagMode); else params.delete('tagMode');
+            if (_activeCategory) params.set('category', _activeCategory); else params.delete('category');
+            if (sortMode && sortMode !== 'relevance') params.set('sort', sortMode); else params.delete('sort');
+
+            history.replaceState(null, '', `${url.pathname}${params.toString() ? '?' + params.toString() : ''}`);
+        }
+
+        // Restore search/filter/sort state from the URL on initial load
+        function applyUrlState() {
+            const params = new URLSearchParams(window.location.search);
+            const q = params.get('q');
+            const tags = params.get('tags');
+            const tagMode = params.get('tagMode');
+            const category = params.get('category');
+            const sort = params.get('sort');
+
+            if (q) document.getElementById('searchInput').value = q;
+            if (tags) _activeTags = new Set(tags.split(',').filter(Boolean));
+            if (tagMode === 'AND' || tagMode === 'OR') _tagMode = tagMode;
+            if (category) _activeCategory = category;
+            if (sort) {
+                _sortMode = sort;
+                document.getElementById('sortSelect').value = sort;
+            }
+        }
+
+        // Populate the datalists in the "Suggest a Snippet" form from known categories/tags
+        function populateSuggestionDatalists() {
+            const categories = Array.from(new Set(_allSnippets.map(s => s.language).filter(Boolean))).sort();
+            const tags = Array.from(new Set(_allSnippets.flatMap(s => s.tags || []))).sort();
+
+            document.getElementById('suggestCategoryList').innerHTML = categories.map(c => `<option value="${escapeHtml(c)}"></option>`).join('');
+            document.getElementById('suggestTagList').innerHTML = tags.map(t => `<option value="${escapeHtml(t)}"></option>`).join('');
+        }
+
+        // Build a GitHub "new issue" URL, pre-filled via the issue form's query-string prefill
+        // support, so the browser never needs a GitHub token to submit a suggestion.
+        function buildSuggestionIssueUrl({ title, description, code, category, tags, author }) {
+            const url = new URL(`https://github.com/${SUGGESTION_REPO_OWNER}/${SUGGESTION_REPO_NAME}/issues/new`);
+            url.searchParams.set('template', SUGGESTION_ISSUE_TEMPLATE);
+            url.searchParams.set('title', `New snippet: ${title}`);
+            url.searchParams.set('snippet-title', title);
+            url.searchParams.set('description', description);
+            url.searchParams.set('code', code);
+            if (category) url.searchParams.set('category', category);
+            if (tags) url.searchParams.set('tags', tags);
+            if (author) url.searchParams.set('author', author);
+            return url.toString();
         }
 
         // Function to generate a shareable link for a snippet
@@ -670,19 +952,88 @@
                     return;
                 }
 
-                const tagFilterBtn = e.target.closest('button.tag-filter-btn');
-                if (tagFilterBtn) {
-                    const tag = tagFilterBtn.getAttribute('data-tag');
-                    const isActive = tagFilterBtn.classList.toggle('active');
-                    if (isActive) _activeTags.add(tag); else _activeTags.delete(tag);
+                const removeTagChip = e.target.closest('button.remove-active-tag');
+                if (removeTagChip) {
+                    _activeTags.delete(removeTagChip.getAttribute('data-tag'));
                     searchSnippets();
                     return;
                 }
             });
 
-            // Load snippets and build tags
+            // Category filter
+            document.getElementById('categorySelect').addEventListener('change', (e) => {
+                _activeCategory = e.target.value;
+                searchSnippets();
+            });
+
+            // Tag picker - commit on Enter, matching an existing tag case-insensitively
+            // (mirrors the tag input in edit.html; a datalist click alone only fills the
+            // field, since some tag names are prefixes of others, e.g. "Ed" / "Education")
+            document.getElementById('tagPickerInput').addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter') return;
+                e.preventDefault();
+                const input = e.target;
+                const raw = input.value.trim();
+                if (!raw) return;
+                const allTags = Array.from(new Set(_allSnippets.flatMap(s => s.tags || [])));
+                const match = allTags.find(t => t.toLowerCase() === raw.toLowerCase());
+                input.value = '';
+                if (match && !_activeTags.has(match)) {
+                    _activeTags.add(match);
+                    searchSnippets();
+                }
+            });
+
+            // Sort control
+            document.getElementById('sortSelect').addEventListener('change', (e) => {
+                _sortMode = e.target.value;
+                searchSnippets();
+            });
+
+            // Suggest-a-Snippet modal wiring
+            const suggestModal = document.getElementById('suggestModal');
+            document.getElementById('suggestSnippetBtn').addEventListener('click', () => {
+                populateSuggestionDatalists();
+                suggestModal.style.display = 'block';
+            });
+            document.getElementById('suggestModalClose').addEventListener('click', () => {
+                suggestModal.style.display = 'none';
+            });
+            suggestModal.addEventListener('click', (e) => {
+                if (e.target === suggestModal) suggestModal.style.display = 'none';
+            });
+            document.getElementById('suggestForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const issueUrl = buildSuggestionIssueUrl({
+                    title: document.getElementById('suggestTitle').value.trim(),
+                    description: document.getElementById('suggestDescription').value.trim(),
+                    code: document.getElementById('suggestCode').value,
+                    category: document.getElementById('suggestCategory').value.trim(),
+                    tags: document.getElementById('suggestTags').value.trim(),
+                    author: document.getElementById('suggestAuthor').value.trim()
+                });
+                window.open(issueUrl, '_blank');
+                suggestModal.style.display = 'none';
+                document.getElementById('suggestForm').reset();
+            });
+
+            // Restore any search/filter/sort state from the URL before first render
+            const hadUrlState = ['q', 'tags', 'category', 'sort'].some(p => new URLSearchParams(window.location.search).has(p));
+            applyUrlState();
+
+            // Load snippets and build tag/category filters
             const snippets = await loadSnippets();
-            buildTagFilters(snippets);
+            buildTagPicker(snippets);
+            buildCategorySelect(snippets);
+            buildActiveFiltersRow();
+
+            // Only auto-render on load if we're restoring a shared/bookmarked filtered view;
+            // otherwise preserve the "Start searching" empty state.
+            if (hadUrlState) {
+                _restoringFromUrl = true;
+                await searchSnippets();
+                _restoringFromUrl = false;
+            }
 
             // Display bookmarks on initial load
             displayBookmarks();

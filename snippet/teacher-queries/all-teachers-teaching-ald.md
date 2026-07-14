@@ -1,0 +1,13 @@
+---
+id: "1738287868498"
+title: "All teachers teaching ALD"
+category: "teacher queries"
+tags: ["Teacher"]
+createdAt: "2025-01-31T01:44:28Z"
+---
+
+List all ALD teachers 7-12
+
+```text
+LIST SSE STF MST CRS LOC LOC.SNM STF.LN STF.FN STF.EM CRS.DC? MST.SC? IF MST.SC < 60 AND ( CRS.CN = NM107 OR CRS.CN = NM108 OR CRS.CN = NH032 OR CRS.CN = NHV32 OR CRS.CN = NH031 OR CRS.CN = NHV31 )
+```

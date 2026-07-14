@@ -1,0 +1,13 @@
+---
+id: "1738287868426"
+title: "Hearing and Vision Results"
+category: "student queries"
+tags: ["Health"]
+createdAt: "2025-01-31T01:44:28Z"
+---
+
+Hearing and Vision Results
+
+```text
+LIST STU HRN VSN STU.ID STU.LN STU.FN STU.GR STU.SC? HRN.TD HRN.SR HRN.SL HRN.PR HRN.PL HRN.PF VSN.TD VSN.RG VSN.LG VSN.BG VSN.RN VSN.LN VSN.BN VSN.CT VSN.MU VSN.SCN VSN.PF VSN.RGF VSN.LGF VSN.BGF VSN.RNF VSN.LNF VSN.BNF VSN.MUF IF HRN.TD > 8/10/2023 AND VSN.TD > 8/10/2023 
+```

@@ -1,0 +1,142 @@
+name: Open PR from snippet submission
+
+# Triggered by the "Suggest a Snippet" issue form (.github/ISSUE_TEMPLATE/new-snippet.yml).
+# Parses the issue body, writes a new snippet/<category>/<title>.md file, and opens a
+# PR for review - this is the only path that writes to snippet/ on behalf of a
+# non-maintainer, and it never needs a token in anyone's browser.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    if: contains(github.event.issue.labels.*.name, 'snippet-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v6.0.0
+        with:
+          python-version: "3.x"
+
+      - name: Build current snippets.json (for duplicate checking)
+        run: python3 scripts/build_snippets_json.py --src snippet --out app/snippets.json
+
+      - name: Parse issue and check for duplicates
+        id: build
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            function parseIssueForm(body) {
+              const sections = {};
+              const chunks = body.split(/\r?\n(?=### )/);
+              for (const chunk of chunks) {
+                const m = chunk.match(/^### (.+?)\r?\n\r?\n([\s\S]*?)\s*$/);
+                if (m) sections[m[1].trim()] = m[2].trim();
+              }
+              return sections;
+            }
+
+            function stripCodeFence(s) {
+              const m = s.match(/^```[a-zA-Z0-9]*\r?\n([\s\S]*?)\r?\n?```$/);
+              return m ? m[1] : s;
+            }
+
+            function cleanField(v) {
+              if (!v || v.trim() === '_No response_') return '';
+              return v.trim();
+            }
+
+            const body = context.payload.issue.body || '';
+            const sections = parseIssueForm(body);
+
+            const title = cleanField(sections['Title']);
+            const description = cleanField(sections['Description']);
+            const code = stripCodeFence(cleanField(sections['Code']));
+            const category = cleanField(sections['Category']);
+            const tagsRaw = cleanField(sections['Tags']);
+            const author = cleanField(sections['Your name (optional)']);
+
+            if (!title || !description || !code || !category) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: 'Could not parse this submission (missing a required field). A maintainer will need to add it manually.'
+              });
+              core.setOutput('skip', 'true');
+              return;
+            }
+
+            const data = JSON.parse(fs.readFileSync('app/snippets.json', 'utf8'));
+            const snippets = data.snippets || [];
+
+            const normCode = code.replace(/\s+/g, ' ').trim().toLowerCase();
+            const normTitle = title.trim().toLowerCase();
+            const duplicate = snippets.find(s =>
+              s.code.replace(/\s+/g, ' ').trim().toLowerCase() === normCode ||
+              s.title.trim().toLowerCase() === normTitle
+            );
+
+            if (duplicate) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `This looks like it might already exist: **${duplicate.title}** (id \`${duplicate.id}\`). ` +
+                      'No PR was opened automatically. If this is actually different, a maintainer can add it manually.'
+              });
+              core.setOutput('skip', 'true');
+              return;
+            }
+
+            const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+            const descriptorPath = path.join(process.env.RUNNER_TEMP, 'new-snippet.json');
+            fs.writeFileSync(descriptorPath, JSON.stringify({ title, description, code, category, tags, author }));
+
+            core.setOutput('skip', 'false');
+            core.setOutput('snippetTitle', title);
+            core.setOutput('issueNumber', String(context.issue.number));
+            core.setOutput('descriptorPath', descriptorPath);
+
+      - name: Write snippet markdown file
+        if: steps.build.outputs.skip == 'false'
+        run: python3 scripts/write_snippet_md.py --input "${{ steps.build.outputs.descriptorPath }}" --out snippet
+
+      - name: Create pull request
+        if: steps.build.outputs.skip == 'false'
+        id: cpr
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          commit-message: "Add snippet: ${{ steps.build.outputs.snippetTitle }}"
+          title: "Add snippet: ${{ steps.build.outputs.snippetTitle }}"
+          body: |
+            Automated PR from #${{ steps.build.outputs.issueNumber }}.
+
+            Please review the snippet content before merging.
+          branch: "snippet-submission-${{ steps.build.outputs.issueNumber }}"
+          add-paths: snippet/**
+
+      - name: Comment on issue with PR link
+        if: steps.build.outputs.skip == 'false' && steps.cpr.outputs.pull-request-url != ''
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Opened ${process.env.PR_URL} for review. Thanks for the contribution!`
+            });
