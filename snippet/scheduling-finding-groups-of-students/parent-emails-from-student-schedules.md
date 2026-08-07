@@ -6,7 +6,7 @@ tags: ["Contact"]
 createdAt: "2026-08-06T23:19:02Z"
 ---
 
-Exports a list of all education rights holders emails from scheduling master schedule section(s). Add additional OR SSS.SE = ## if you want to include additional sections.
+Exports a list of all education rights holders emails from scheduling master schedule section(s). Add additional `OR SSS.SE = ##` if you want to include additional sections.
 
 Replace ## with the section number.
 
